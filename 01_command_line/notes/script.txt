@@ -1,0 +1,60 @@
+Intro
+  Chapters
+  Why UNIX?
+  History
+  Unix philosophy
+
+Navigatation
+  Getting help
+  Commands
+  Files
+  Searching
+  Globbing
+  Dirs (Hier)
+  Moving around
+  Links
+
+Environment
+  Prompt
+  History
+  Keyboard short cuts
+  Aliases
+  Functions
+  df
+
+Processes
+  Startup
+  Deamons
+  Job control
+  Cron
+  Time
+
+Text processing
+  Redirection
+  Pipes
+  grep/ack
+  Basic regex
+  cmp/diff
+  cut/sort/uniq et. al
+  advanced piping (Doug McIlroy)
+  editors
+
+Package management
+  brew
+  apt
+  install programming language env
+
+Networking
+  ssh/scp
+  ftp
+  curl
+  links
+  wifi/LAN
+
+Scripting (bash)
+  env bang
+  loops
+  conditionals
+  ruby/python
+
+Conclusion
