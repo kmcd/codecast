@@ -1,3 +1,5 @@
 .post-commit.log
+.DS_Store
 **/reference/*
 **/video/*
+**/.DS_Store

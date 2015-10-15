@@ -1,3 +1,5 @@
 = Unix power tools
 
 http://docstore.mik.ua/orelly/unix/upt
+
+https://developer.apple.com/library/mac/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW7
