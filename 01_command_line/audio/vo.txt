@@ -1,0 +1,65 @@
+So you can see clearly text editor and and online 15 if we scroll down you can
+
+load text editor alias from the terminal I comment out the prompt and reload
+
+which is an alias and now open the text editor again to customise the prompt so
+
+in search history for every time you typed in alias H is an alias itself for
+
+history and then search the history listing for text pattern so give me a
+
+listing along listings directory so if you use this command many times great
+
+alias so you can create an alias LL and you can use that with of argument as
+
+long as five space at the end of the alias so if we scroll down through the text
+
+editor see online 25 a alias to open up the Ruby on rails guides which I find
+
+very handy to have that on the command line instead of having to type an URL
+
+when you're developing 
+
+so online 34 and I have an alias to open number of text
+files files in my text editor so this means find all files matching text pattern
+
+so he you see a listing of all text files in this directory listing of all text
+
+files T followed by anything ending in.txt now open in my text editor if you
+
+enclosed expression in `spirit will evaluate the expression and impersonal
+
+argument the command the effect being that you "fires in your text editor okay
+
+type is a command which will show you how an alias function is defined is quite
+
+handy aliased number, you are not sure what arguments are into the alias here
+
+you can the JL is an alias it open and okay and all those files are opened in
+
+separate buffers in the text Pam's environment variable which shows you all the
+
+executable's our for your environment you can see if you hit tab dollar capital
+
+dollar followed by it will expand out all of the variables and random just
+
+generates random number should be quite useful are in reality I don't use many
+
+variables they are quite useful of and variables which are used and okay so if
+
+in your home directory a you may want to create Shell scripts various things
+
+like I know downloading document station a build script for are your software
+
+tools so touches the command which will create a file more update the timestamp
+
+of an existing file topic and in this file weekend rightly commands that you
+
+need to download until say rails okay change mode which is a command which
+
+changes the operating mode of the existing command and plus X means that make it
+
+executable I don't use change mode many times you can see and download rails X
+
+means is achievable
+

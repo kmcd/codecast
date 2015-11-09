@@ -1,4 +1,45 @@
-# Premable
+# Command line
+
+## INTRO
+  Pre-requisite knowledge
+
+  ## What is UNIX / command line?
+
+  http://c1.staticflickr.com/3/2323/2167070556_9bf42ec329_b.jpg
+
+  * kernel
+  * shell
+  * proccesses
+
+  ## What are commands ?
+
+  https://www.flickr.com/photos/80901381@N04/7649502498
+  https://www.flickr.com/photos/sagesolar/15388034734/in/photolist-prMGBG-78vb2H-9Vaf28-9sRYuo-73xQJY-8Zp6sD-73tV4x-73xTPS-73-73tTED-73tTzT-73tS26-73xQG3-73tPE2-73tPwn-73tPqR-73tPoe-73xNf1-73tNPc-73tHvg-73xGoU-73xGku-73xEny-73txGr-73xwwy-6JkGER-73xwrC-73txqX-4BygUB-6JkF8P
+
+  An executable program
+  Takes/accepts args
+  Carries out action
+  Returns 0 or more result(s)
+
+  N.B. case sensitive
+  N.B. no output
+
+  ## File system
+
+  * Hier
+  * Files
+  * Dirs
+  * Root
+  * Home
+
+  1. Most useful commands
+
+  (Moving around)
+  pwd, ls, cd
+
+  http://blog.teamtreehouse.com/introduction-to-the-mac-os-x-command-line
+  https://developer.apple.com/library/mac/documentation/OpenSource/Conceptual/ShellScripting/CommandLInePrimer/CommandLine.html
+  http://cli.learncodethehardway.org/book/
 
   https://www.flickr.com/photos/tasteful_tn/226000168/in/photolist-kYiYC-4Eu1S4-p9f6qM-vvU95h-4PRucd-9EVhyB-4A5uKR-rn188X-ny9smg-r1UnXb-3pCTXe-rNj5DS-ts1oSK-ow2386-hwhZjx-9DqkD-brnogF-wxW3PX-jEgYUf-hP1MxN-nskQHV-a411n8-8PXGoh-pUNKVi-ynfNNJ-nkxvmB-8WgkdU-xp7Dcq-sEk3Lv-4eCfzf-xfiiJE-gXv7QQ-qVmVzx-5CKVcG-7Zz4pe-eeSJSJ-eeBxiZ-kLoJy-a3v3xz-5gC7GZ-qaaU3R-oFPAn5-eyu4RF-7Q3bH2-6WmEs-q2hP-395Bw2-Dmw1V-6rq2m-r6WSjr
   https://www.flickr.com/photos/deanhochman/14779546027/in/photolist-4H9aYS-ntf64z-qbWXEQ-ou5LTx-rn188X-kYiYC-ow2386-hP1MxN-a411n8-qVmVzx-kLoJy-oFPAn5-q2hP-395Bw2-vgiKwd-7FW2Z5-5DDWHc-weSgU-vXC8X-4v6Yx-fsnBrM-ufcFNb-mj9CNQ-aKucgK-rm1JK-p3JemQ-2fzKJV-oMxF3-faD6mK-fa1XNk-8VRU3W-nZpewH-oc9NCr-oMy3p-6NGW3e-6kANKN-oA4X5T-8VRTZS-bBdXxC-9eY26m-eTYiPm-3QvMNX-2CG8L-mhynyq-m7W9er-nxVPna-jwuMQJ-9DxTBv-zSiAb-7oP9iD
@@ -46,9 +87,7 @@
 
   ## Unix philosophy
 
-# Your shell environment
-
-  -> Defer to readme.html#beginners (or exlcude?)
+## Getting started
 
   1. Getting help
 
@@ -64,18 +103,12 @@
   apropos—Display a list of appropriate commands.
   info—Display a command’s info entry.
   whatis—Display a very brief description of a command.
-  
-  Example: find all executables, display whatis/man
-
-  builtin help
-
-  Google
 
   1. History
 
   1. Keyboard shortcuts
 
-  ## Config
+## Shell environment
 
   https://www.flickr.com/search/?license=4%2C5%2C6%2C9%2C10&orientation=landscape&dimension_search_mode=min&height=640&width=640&advanced=1&tags=Environment
   https://www.flickr.com/photos/fr4dd/8425434209
@@ -86,6 +119,7 @@
   ## Prompt
 
   PS1=
+
   Codes/Color reference [add table to readme]
 
   ## History
@@ -108,9 +142,8 @@
 
   ## Functions
 
-  ## Customising OSX Terminal.app ?
 
-# Working with files
+# files
   https://www.flickr.com/photos/apothecary/5886670151/in/photolist-raJ5A6-dCecGb-qZXZUD-69Nzkm-qovZMz-q4b7zr-6gGrBF-spsSVA-6DASU6-pd3Qgt-9YbHWX-8uWBzH-9qWy6T-8kFone-816He9-813yjr-tMq5M4-urNQCK-fJZFLp-813yg2-813ypn
   http://c2.staticflickr.com/6/5303/5886670151_109fa7e33f_b.jpg
 
@@ -166,7 +199,7 @@
   * locate
   * mdfind
 
-# Working with text
+# text
   1. explain pipes
   1. explain grep / ack (Basic regex)
   1. ack examples
@@ -197,7 +230,7 @@
 
   editors: nano/vi/emacs/jedit open
 
-# Working with processes
+## Processes
 
   https://www.flickr.com/photos/onepointfour/13437748603
   https://www.flickr.com/photos/87895263@N06/8621155792/in/photolist-e8PFg7-qUgJ5N-h1KJp8-e8HW2P-g4fVt1-pMq8FA-gHX1pz-s9YcR4-7b6Bxv-ddThpa-njFxUE-doN3Ri-bMHJY2-e8J3SM-pJkzSk-qfYU62-pACFxk-8XKwu4-5svV7B-zkXog-5AeUUk-5i55Ka-pspRMA-dc3EWC-qkPLBB-oQu1VR-puQtWG-8TM4Cx-9VE68R-599hc3-c6gKq7-qRaiFD-5YFHH4-e8J39k-ncad5C-kRQWfK-k59rx-9DxNcq-hrBQpH-qxoMZP-4hsTha-qxk8od-pApfgA-9YaYLy-5K7Ny9-neYp1X-8zL2VW-55igSj-ppfdyk-54NUDu
@@ -219,7 +252,7 @@
 
   https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/ScheduledJobs.html#//apple_ref/doc/uid/10000172i-CH1-SW2
 
-# Networking
+## Networking
 
   https://www.flickr.com/photos/wwworks/2712985992/in/photolist-58JLko-58JLdy-58JL9G-8UFMJ2-mehDfW
   https://upload.wikimedia.org/wikipedia/commons/1/13/Nile_River_Delta_at_Night.JPG
@@ -231,8 +264,10 @@
   1. SSH config
   1. ftp
   1. curl
+  1. lsof
+  1. ifconfig
 
-# Installing software (OS package management, ruby, rubygems)
+## Package management
 
   https://www.flickr.com/search/?license=4%2C5%2C6%2C9%2C10&orientation=landscape&dimension_search_mode=min&height=640&width=640&advanced=1&media=photos&tags=package
   https://www.flickr.com/photos/skohlmann/16238657422/in/photolist-qJXn77-rHS3W1-qQCY8T-v9rYRY-aDi321-4A15jm-kTR5RH-rMjckm-qZcDjY-8qQ7ng-pA4syi-s9jT1s-99ZHce-6qyvzc-7XM9sZ-wLKEpU-66o9iB-7mwoX8-5u8Nod-8N4AVD-cpNVy9-d3Vu5j-chf6Nj-rgJkH8-7K5fcz-asBCoE-bDGi5e-8N7GH9-rRSRgj-rW5nAW-7sbQz2-gxzpGa-cVcqew-8Ux54E-6zZF9N-4zVN6P-aUdHM2-a5ryhw-bVVjop-YeMgN-qiRFRg-oNMFd8-6MAMum-bD6GTJ-9dRGVj-xdPqsY-dkjepU-e5dxui-cpNVj1-br46u7
@@ -252,7 +287,6 @@
   see: TLCL pp150/183
   ? Install elastic search / mysql
 
-# Scripting (bash)
   https://www.flickr.com/photos/gastev/2174504149
   https://www.flickr.com/photos/85264217@N04/9309444408/
 
@@ -261,24 +295,17 @@
   1. conditionals
   1. ruby/python lang as shell script
 
-# Conclusion
+## Outro
 
   https://www.flickr.com/photos/ivva/2062335626/in/photolist-49f1wN-e6i4XM-e7fDXQ-e7a1aV-e7fE53-e7fEhQ-6aYQA1-e6i5Ex-e8Zp1r-7DZMw9-9oE3Fo-e8ZoWH-e8ZoUi-e5CMfM-e5CM2B-e8Zoyt-4iRFgU-peAY8r-e6HKoQ-4BXiZr-7YXtjd-4C2AZW-aNGqCk-aNGd8v-aNG8zr-aNG6Qg-4C2vf7-e7a21M-e7a25V-4fdWoZ-9twnvu-5M2j6a-4BXmUT-e88bXF-e6C5Yv-e7KbAa-e7fDcq-Hzi8t-e963Vj-EWF7r-e7a2hR-4BXmqF-e6i5tP-e6oHts-e6i4Sr-e624YK-e624RM-28YTKB-e7fDG1-9BJXFC
 
-  ## Recap
+  Recap
 
-  ## References/bibliography
-
+  ## Further reading
+  
   * http://docstore.mik.ua/orelly/unix/upt
   * https://developer.apple.com/library/mac/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW7
   * http://www.mitchchn.me/2014/os-x-terminal/
-
-  ## Further reading
-
-  * See readme
-
-# Outro
-
   * Credits / attributions
   * Contact info (email address)
   * email list CTA

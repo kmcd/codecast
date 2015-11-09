@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<EDIT appVersion="6.2.3" creationTime="1446919213616" timecodeFormat="millisecs"
+      modifiedBy="kmcd" mediaId="8eccfc/21c749b" lastSignificantChange="150e321fa43">
+  <TEMPOSEQUENCE>
+    <TEMPO startBeat="0" bpm="120" curve="1"/>
+    <TIMESIG numerator="4" denominator="4" startBeat="0"/>
+  </TEMPOSEQUENCE>
+  <PITCHSEQUENCE>
+    <PITCH start="0" pitch="60"/>
+  </PITCHSEQUENCE>
+  <VIEWSTATE sidePanelShown="0" filterAreaWidth="0.84659653902053833008" tempoTrackVisible="0"
+             controlsVisible="1" filtersVisible="1" cursorpos="690" viewleft="0"
+             viewright="2143.7620420273328818" tracktop="0"/>
+  <AUTOMAPXML/>
+  <CLICKTRACK level="1.4125399589538574219"/>
+  <ID3VORBISMETADATA trackNumber="1" date="2015"/>
+  <MASTERVOLUME>
+    <FILTER type="volume" volume="0.63762813806533813477" id="0/295ba794"/>
+  </MASTERVOLUME>
+  <RACKFILTERS>
+    <RACKFILTER id="2dbdb25" name="VO" windowPos="182 175 600 500" windowLocked="0">
+      <OUTPUT name="midi output"/>
+      <OUTPUT name="output 1 (left)"/>
+      <OUTPUT name="output 2 (right)"/>
+      <INPUT name="midi input"/>
+      <INPUT name="input 1 (left)"/>
+      <INPUT name="input 2 (right)"/>
+      <FILTERINSTANCE x="0.42736485600471496582" y="0.37218046188354492188">
+        <FILTER type="volume" id="0/36a99a28"/>
+      </FILTERINSTANCE>
+      <FILTERCONNECTION src="0/0" dst="0/36a99a28" srcPin="1" dstPin="1"/>
+      <FILTERCONNECTION src="0/0" dst="0/36a99a28" srcPin="2" dstPin="2"/>
+      <FILTERCONNECTION src="0/36a99a28" dst="0/0" srcPin="1" dstPin="1"/>
+      <FILTERCONNECTION src="0/36a99a28" dst="0/0" srcPin="2" dstPin="2"/>
+      <FILTERCONNECTION src="0/0" dst="0/36a99a28" srcPin="0" dstPin="0"/>
+      <FILTERCONNECTION src="0/36a99a28" dst="0/0" srcPin="0" dstPin="0"/>
+      <FILTERINSTANCE x="0.65587044534412952679" y="0.05999999999999999778">
+        <FILTER type="level" id="0/37151e35"/>
+      </FILTERINSTANCE>
+    </RACKFILTER>
+  </RACKFILTERS>
+  <MASTERFILTERS/>
+  <AUXBUSNAMES/>
+  <TRACKCOMPS/>
+  <TEMPOTRACK name="Global" mediaId="8eccfc/259c722b"/>
+  <MARKERTRACK name="Marker" trackType="2" mediaId="8eccfc/275deb3b"/>
+  <MARKERTRACK name="Marker" trackType="1" mediaId="8eccfc/8496222"/>
+  <MARKERTRACK name="Marker" trackType="0" mediaId="8eccfc/3adf23fb">
+    <CLIP name="Marker 1" type="absoluteMarker" start="0" length="2" offset="0"
+          sync="1" mediaId="8eccfc/32142e1" colour="67015d8b" markerId="1"/>
+    <CLIP name="GETTING STARTED" type="absoluteMarker" start="300" length="360"
+          offset="0" sync="1" mediaId="8eccfc/345e0a7" colour="ff4cffc4"
+          markerId="2"/>
+  </MARKERTRACK>
+  <TRACK mediaId="8eccfc/375c2a73" midiVProp="0.28125" midiVOffset="0.359375"
+         height="245.45455276966094971" name="NARRATION" currentAutoParamFilter="0/926fd87"
+         currentAutoParamTag="volume">
+    <OUTPUTDEVICES>
+      <DEVICE name="(default audio output)"/>
+    </OUTPUTDEVICES>
+    <FILTER type="rack" rackType="2dbdb25" id="0/7021ccc"/>
+    <FILTER type="volume" id="0/926fd87" volume="0.74081820249557495117"/>
+  </TRACK>
+  <TRACK mediaId="8eccfc/39c50e9a" midiVProp="0.28125" midiVOffset="0.359375"
+         name="MUSIC" height="245.45455276966094971" currentAutoParamFilter="0/15b7f40"
+         currentAutoParamTag="volume">
+    <OUTPUTDEVICES>
+      <DEVICE name="(default audio output)"/>
+    </OUTPUTDEVICES>
+    <FILTER type="rack" rackType="2dbdb25" id="0/34b2d5b"/>
+    <FILTER type="volume" id="0/15b7f40" volume="0.74081820249557495117"/>
+  </TRACK>
+  <DEVICESEX>
+    <INPUTDEVICE name="Input 1" targetIndex="-1" armed="0"/>
+    <INPUTDEVICE name="Input 2" targetIndex="-1" armed="0"/>
+    <INPUTDEVICE name="guitar" targetIndex="-1" armed="0"/>
+  </DEVICESEX>
+  <ARADOCUMENT/>
+  <CONTROLLERMAPPINGS/>
+</EDIT>
