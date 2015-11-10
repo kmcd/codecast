@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<EDIT appVersion="6.2.3" creationTime="1447069659269" modifiedBy="kmcd"
+      mediaId="218275/ae722" lastSignificantChange="150ed823dfa" timecodeFormat="millisecs"
+      lastPluginChange="1447093496503">
+  <TEMPOSEQUENCE>
+    <TEMPO startBeat="0" bpm="120" curve="1"/>
+    <TIMESIG numerator="4" denominator="4" startBeat="0"/>
+  </TEMPOSEQUENCE>
+  <PITCHSEQUENCE>
+    <PITCH start="0" pitch="60"/>
+  </PITCHSEQUENCE>
+  <VIEWSTATE sidePanelShown="0" controlsVisible="1" viewleft="71.827785403906261763"
+             viewright="2637.8266760083297413" cursorpos="519.19852032432720534"
+             tempoTrackVisible="0" endToEnd="0" filterAreaWidth="1" markOut="0"
+             markIn="0"/>
+  <AUTOMAPXML/>
+  <CLICKTRACK level="1.4125399589538574219"/>
+  <ID3VORBISMETADATA trackNumber="1" date="2015"/>
+  <MASTERVOLUME>
+    <FILTER type="volume" volume="0.63762813806533813477" id="0/2bfceb96"/>
+  </MASTERVOLUME>
+  <RACKFILTERS>
+    <RACKFILTER id="54fe9c" name="VO" windowPos="182 175 600 500" windowLocked="0">
+      <OUTPUT name="midi output"/>
+      <OUTPUT name="output 1 (left)"/>
+      <OUTPUT name="output 2 (right)"/>
+      <INPUT name="midi input"/>
+      <INPUT name="input 1 (left)"/>
+      <INPUT name="input 2 (right)"/>
+      <FILTERINSTANCE x="0.350202429149797545" y="0.66500000000000003553">
+        <FILTER type="volume" id="0/322f877" volume="0.74512857198715209961"/>
+      </FILTERINSTANCE>
+      <FILTERCONNECTION src="0/0" dst="0/322f877" srcPin="1" dstPin="1"/>
+      <FILTERCONNECTION src="0/0" dst="0/322f877" srcPin="2" dstPin="2"/>
+      <FILTERCONNECTION src="0/322f877" dst="0/0" srcPin="1" dstPin="1"/>
+      <FILTERCONNECTION src="0/322f877" dst="0/0" srcPin="2" dstPin="2"/>
+      <FILTERCONNECTION src="0/0" dst="0/322f877" srcPin="0" dstPin="0"/>
+      <FILTERCONNECTION src="0/322f877" dst="0/0" srcPin="0" dstPin="0"/>
+      <FILTERINSTANCE x="0.65587044534412952679" y="0.05999999999999999778">
+        <FILTER type="level" id="0/eee130"/>
+      </FILTERINSTANCE>
+      <FILTERINSTANCE x="0.12348178137651821817" y="0.25">
+        <FILTER type="vst" uid="61756d60" filename="AudioUnit:Effects/aufx,ACDV,ACON"
+                name="Acon Digital DeVerberate" manufacturer="Acon Digital" id="0/c7ed0cf"
+                programNum="-1" state="557.hAGaoMGcv.y0AHv.DTfAGfPBJr.CM3.UzkGbkwUag4VclE1XzUmbkIGUtEVakQEYgQWXeAwCpU2XkAEa0cVZtMEcgQWYWYWYxMWZu41UyUmXzkGbkIQX0YFdRDzPO4DVU4FcoQGakQ1SPPK..............TA..............D..........B.........v..........P..........E.........fA.........b..........H.........PB.........n..........K..........C.........z..........N.........vC..........A.........Q.........fD.........LA.........T.....vSPXrSOMTPVQzPAQPAA.PE.............9S........PAO..........B..........A.........T.......frPF.........vA.......PAg.......n+PI.........fB.......f+r.......nOQL.........PC.......f+3.......neQO..........D.......PAEA.........R........9yD.........PA.........9bzPInzqDbnTkMWYzA.D.HQPCQjU.f..W..G.jB.t.vL.TD.MAPU.nE.eA.ZA7Q.nGf5........BD..........O...................A7N"/>
+      </FILTERINSTANCE>
+      <FILTERINSTANCE x="0.46356275303643723618" y="0.22000000000000000111">
+        <FILTER type="vst" uid="46513270" filename="/Library/Audio/Plug-Ins/VST/FabFilter Pro-Q 2.vst"
+                name="FabFilter Pro-Q 2" manufacturer="FabFilter" id="0/3986d7ca"
+                programNum="0" state="972.CMlaKA....fQ3IzZ....AXTTx.G...P.....A...........................................................................................................................................................................CMlaKA....fQ3MzZ....AXTTx.G...P.....9RTYlEVcrQGHSUFczklamA................vO.B..976jK3i+UbwOG3qJ9HYRk7CP..vO.B..+.H..7yD+z3O....+.........fO....+.H..7Cf..vOS7Si+....7C.........9....7Cf..vO.B..+LwOM9C...vO.........3C...vO.B..+.H..7yD+z3O....+.........fO....+.H..7Cf..vOS7Si+....7C.........9....7Cf..vO.B..+LwOM9C...vO.........3C...vO.B..+.H..7yD+z3O....+.........fO....+.H..7Cf..vOS7Si+....7C.........9....7Cf..vO.B..+LwOM9C...vO.........3C...vO.B..+.H..7yD+z3O....+.........fO....+.H..7Cf..vOS7Si+....7C.........9....7Cf..vO.B..+LwOM9C...vO.........3C...vO.B..+.H..7yD+z3O....+.........fO....+.H..7Cf..vOS7Si+....7C.........9....7Cf..vO.B..+LwOM9C...vO.........3C...vO.B..+.H..7yD+z3O....+.........fO....+.H..7Cf..vOS7Si+....7C.........9....7Cf..vO.B..+LwOM9C...vO.........3C...vO.B..+.H..7yD+z3O....+.........fO....+.H..7Cf..vOS7Si+....7C.........9....7Cf..vO.B..+LwOM9C...vO.........3C...vO.B..+.H..7yD+z3O....+.........fO....+.H..7Cf..vOS7Si+....7C.........9....7Cf........9.H.......vO....+....7C...................vO.B..+.H..7Cf..vO....9nppq9C...vO.A.......7Cf..vOpn5p................"/>
+      </FILTERINSTANCE>
+    </RACKFILTER>
+  </RACKFILTERS>
+  <MASTERFILTERS/>
+  <AUXBUSNAMES/>
+  <TRACKCOMPS/>
+  <DEVICESEX>
+    <INPUTDEVICE name="Input 1" targetIndex="-1" armed="0"/>
+    <INPUTDEVICE name="Input 2" targetIndex="-1" armed="0"/>
+    <INPUTDEVICE name="guitar" targetIndex="-1" armed="0"/>
+  </DEVICESEX>
+  <ARADOCUMENT/>
+  <CONTROLLERMAPPINGS/>
+  <TEMPOTRACK name="Global" mediaId="218275/387d2529"/>
+  <MARKERTRACK name="Marker" trackType="2" mediaId="218275/36892857"/>
+  <MARKERTRACK name="Marker" trackType="1" mediaId="218275/5492f94"/>
+  <MARKERTRACK name="Marker" trackType="0" mediaId="218275/7117287" height="40">
+    <CLIP name="INTRO" type="absoluteMarker" start="60" length="162" offset="0"
+          sync="1" mediaId="218275/a0fc11" colour="ff4cffc4" markerId="1"/>
+    <CLIP name="GETTING STARTED" type="absoluteMarker" start="300" length="162"
+          offset="0" sync="1" mediaId="218275/26d8f27" colour="ff4cffc4"
+          markerId="2"/>
+    <CLIP name="FILES" type="absoluteMarker" start="600" length="162" offset="0"
+          sync="1" mediaId="218275/1af3075" colour="ff4cffc4" markerId="3"/>
+  </MARKERTRACK>
+  <TRACK mediaId="218275/3e179095" midiVProp="0.28125" midiVOffset="0.359375"
+         height="64.420596866803464309">
+    <AUTOMATIONTRACK mediaId="218275/11225040" currentAutoParamFilter="0/12b06a4d"
+                     currentAutoParamTag="volume" height="64.420596866803464309"/>
+    <FILTER type="rack" rackType="54fe9c" id="0/26c38ae4"/>
+    <FILTER type="volume" id="0/12b06a4d"/>
+    <OUTPUTDEVICES>
+      <DEVICE name="(default audio output)"/>
+    </OUTPUTDEVICES>
+  </TRACK>
+  <TRACK mediaId="218275/3e299c88" midiVProp="0.28125" midiVOffset="0.359375"
+         currentAutoParamFilter="0/0" currentAutoParamTag="" height="64.420596866803464309">
+    <AUTOMATIONTRACK mediaId="218275/199196eb" currentAutoParamFilter="0/21039341"
+                     currentAutoParamTag="volume" height="64.420596866803464309"/>
+    <FILTER type="volume" id="0/21039341"/>
+    <OUTPUTDEVICES>
+      <DEVICE name="(default audio output)"/>
+    </OUTPUTDEVICES>
+  </TRACK>
+</EDIT>
