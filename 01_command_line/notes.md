@@ -1,156 +1,235 @@
-## OUTRO
-
-* List behavioral/knowledge objectives
-
 # TOC
 
-## Intro
+## Intro 1m
 
-* Title
-* Time required
-* required materials
-* presumed knowledge
+Title
+Time required
+Required materials
+Presumed knowledge
   * cp,mv,cd,rm
-* behavioral/knowledge objectives
-  a. Two or three interesting but relevant questions
-  b. Showing a picture/s, a chart or a model
-  c. A situation Statement of Aim: Announcement of the statement of the lesson in a clear, concise, like this "Today, we shall study the..."
-    
-## Getting help
+behavioral/knowledge objectives
+  * Two or three interesting but relevant questions
+  * Showing a picture/s, a chart or a model
+  * A situation Statement of Aim: Announcement of the statement of the lesson in a clear, concise, like this "Today, we shall study the..."
 
-* List behavioral/knowledge objectives
-* instructional input & guided practice
-    citing suitable examples any by drawing comparison with the related concepts
-    apply the principles learn to new situations
-    * man
-    * man -k
-    * help
-* evaluation: test skills / knowledge
-* summary
+## Getting help 2m
 
-## Shell environment
-  ~/.bashrc
-	prompt customisation
-	aliases
-	functions (show with type)
-	variables, e.g. $EDITOR
-	~/bin, $PATH
-	
-## History
+Instruction:
+* man
+* man -k
+* help
 
-## Keyboard shortcuts
+Self-directed:
+* info
 
-## Directory navigation
+Evaluation:
+* find out how to X
 
-## Displaying files
+## Shell environment 4m
 
-## File modification
+~/.bashrc
+variables, e.g. $EDITOR
+~/bin, $PATH
+aliases
+functions (show with type)
 
-## Text processing
+Chapter 6: Shell and Environment Variables
+1.6 Shell quoting
 
-## Networking
+Aliases ( 10.2 )
+Shell functions ( 10.9 )
+16.9 Keeping a Private Stash of Utilities by Adding ~/bin
 
-## Processes
+Self-directed
+* prompt customisation
+* create a desk clone (later with find?)
 
-## Package management
+Evaluation
+* Create an alias for X
 
-  * brew install ...
+## Keyboard shortcuts 2m
 
+Faster erasing ( 9.2 )
+Filename completion ( 9.8 , 9.9 , 9.10 )
+Build Strings with { }
+102 Command Line Editing
+clear
+exit
 
+## History 2m
 
-Getting started
-  man scroll/search
-	man -k
+Chapter 11: The Lessons of History
+16.12 Setting Shell History Options
+106 Using History
 
-	keyboard shortcuts: exit, clear, start/end, *word modifcation
+## Directory navigation 4m
 
-Shell environment
-  ~/.bashrc
-	prompt customisation
-	aliases
-	functions (show with type)
-	variables, e.g. $EDITOR
-	~/bin, $PATH
+e.g. Rails source
 
-Dir navigation
-  pwd, cd, ls
-	file globbing
-	ls -R
-	tree
-	man hier (file system layout)
-	/Volumes see: OSX page
+pwd, cd, ls
+file globbing
+ls -R
+tree
+man hier (file system layout)
+/Volumes see: OSX page
+df / du
 
-File display
-  cat / less (syntax highlight)
-	df / du
-	wc
-	head / tail
-	openFile search
-  find
-	locate
+Chapter 9: Saving Time on the Command Line
+Chapter 15: Wildcards
 
-	mdfind
+4.3 Running Several Commands in Sequence
+4.4 Running Several Commands All at Once
+4.10 Running All Scripts in a Directory (loop)
+2.14 Saving or Grouping Output from Several Commands
 
-File modification
-  cp *-dt-*-nt-~
-	cp foo.{txt,md}
-	ln
-	chown (permissions)
-	chmod
-	touch
-	tar / gzip
+## Displaying files 4m
 
-Text processing
-  grep / ack (Basic regex)
-	STDOUT/STDIN/STDERR → redirection
-	awk
-	xargs
-	cmp / diff
-	cut
-	sort
-	uniq
-	sed
-	for/while loop
+e.g. Rails source
 
-Processes
-  ps / pstree
-	top / htop / activity monitor
-	job control: bg, fg
-	kill / killall
-	nohup
-	at
-	cron
-	cron format
-	Deamon processes
-	init
-	OSX launchctl
+cat / less (syntax highlight)
+df / du
+wc
+head / tail
+open
+Chapter 25: Showing What's in a File
+59 Calculating File Size and Disk Space
+165 Launching GUI Applications
 
-Networking
-  ftp
-	curl / wget / httrack
-	ssh
-	scp
-	SSH config
-	lsof
-	ifconfig
+## File search 4m
 
-Package management
-  install home brew
-	find app
-	install app
-	boot config
-	taps/custom
-	xcode-select -p
-	xcode-select --install
-	remove app
-	ruby/prog lang env
+e.g. Rails source
 
-Outro
-  Recap
-	Further reading
+find
+locate
+mdfind
+grep / ack (Basic regex)
 
-Self directed
-* customise prompt
+Chapter 17: Finding Files with find
+Chapter 27: Searching Through Files
+
+19.15 Shell wildcards vs. Regular expressions
+
+128 Shining a Light on Spotlight
+
+9.1 Finding All Your MP3 Files
+9.2 Handling Filenames Containing Odd Characters
+9.5 Finding Files Irrespective of Case
+9.6 Finding Files by Date
+9.7 Finding Files by Type
+9.9 Finding Files by Content
+9.8 Finding Files by Size
+
+103 Shell games
+219 Searching for files
+
+211 Command Line
+
+## File modification 2m
+
+(CRUD)
+
+Chapter 13: Redirecting Input and Output
+cp *-dt-*-nt-~
+cp foo.{txt,md}
+ln
+chown (permissions)
+chmod
+touch
+tar / gzip
+Chapter 22: File Security, Ownership, and Sharing
+17.1 Renaming Many Files
+109 Permissions
+
+## Text processing 4m
+
+awk
+xargs
+cmp / diff
+cut
+sort
+uniq
+sed
+for/while loop
+
+9.16  backquotes ( ` ` ) does command substitution
+Process substitution ( 9.18 )
+
+Chapter 34: The sed Stream Editor
+Chapter 36: Sorting
+
+8.1 Sorting Your Output
+8.2 Sorting Numbers
+8.4 Cutting Out Parts of Your Output
+8.5 Removing Duplicate Lines
+8.9 Translating Characters
+
+141 Pipes and Filters
+
+265 Text processing
+
+## Networking 2m
+
+ftp
+curl / wget / httrack
+ssh
+scp
+SSH config
+lsof
+ifconfig
+
+176 Transferring Files
+207 Networking
+
+## Processes 4m
+
+e.g. Rails develeopment: start/stop server, background jobs
+
+Chapter 12: Job Control
+ps / pstree
+top / htop / activity monitor
+job control: bg, fg
+kill / killall
+nohup
+at
+cron
+cron format
+Deamon processes
+init
+OSX launchctl
+
+Job control ( 12.1 )
+
+Chapter 38: Starting, Stopping, and Killing Processes
+Chapter 39: Time and Performance
+Chapter 40: Delayed Execution
+
+154 Running a Command in the Background
+155 Checking on a Process
+162 Canceling a Process
+
+127 Processes
+
+## Package management 2m
+
+e.g. install cheat
+e.g. install PostgreSQL 9.3
+
+brew install ...
+install home brew
+find app
+install app
+boot config
+taps/custom
+xcode-select -p
+xcode-select --install
+remove app
+ruby/prog lang env
+
+## OUTRO 1m
+
+List behavioral/knowledge objectives
+Recap
+Further reading
 
 # REFERENCE
 
@@ -236,7 +315,7 @@ Chapter 40: Delayed Execution
 
 103 Shell games
 
-## Passionate Programmer
+## Productive Programmer
 
 211 Command Line
 
