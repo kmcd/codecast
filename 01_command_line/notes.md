@@ -24,7 +24,7 @@
   Evaluation:
   * find out how to X
 
-## Shell environment 4m
+## Shell environment 2m
 
   ~/.bashrc
   variables, e.g. $EDITOR
@@ -49,20 +49,23 @@
   9.16  backquotes ( ` ` ) does command substitution
   Process substitution ( 9.18 )
 
-## Keyboard shortcuts 2m
-
-  Faster erasing ( 9.2 )
-  Filename completion ( 9.8 , 9.9 , 9.10 )
-  Build Strings with { }
-  102 Command Line Editing
-  clear
-  exit
-
 ## History 2m
 
   Chapter 11: The Lessons of History
   16.12 Setting Shell History Options
   106 Using History
+  
+## Keyboard shortcuts 2m
+
+  Faster erasing ( 9.2 )
+  Filename completion ( 9.8 , 9.9 , 9.10 )
+  102 Command Line Editing
+  clear
+  exit
+  
+## Pattern expansion 2m
+
+  9.5 Build Strings with { }
 
 ## Directory navigation 4m
 
@@ -171,6 +174,8 @@
   2.14 Saving or Grouping Output from Several Commands
   
   211 Command Line
+  
+  Command line substitution : ` ` or $() (in pipe section)
 
 ## Networking 2m
 

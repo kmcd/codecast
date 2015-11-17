@@ -117,6 +117,10 @@
 
   You know the ls command list's a directory contents.
 
+  (?)
+  $ a TAB
+  $ whatis a2p
+
   Let's add nice color output to your directory listing
 
   $ man ls
@@ -339,13 +343,13 @@
   $ ls /usr/bin
 
   A command built into the shell itself; e.g. cd
-  
+
   $ man bash
   $ help
   $ help cd
 
   *alias
-  
+
   An alias. An alias is a command that we can define ourselves, built from other commands.
 
   define abbreviations for commonly used commands
@@ -357,7 +361,7 @@
   alias rl='source ~/.bash_profile'
 
   *functions
-  
+
   A shell function: takes args, executes, returns ouput
 
   feature () { ghi open -m "$1" -L feature ; }
@@ -489,7 +493,6 @@
   [me@linuxbox ~]$ ls Do Then press TAB:
   [me@linuxbox ~]$ ls Documents
   The completion is successful.
-                72 Chapter 8
   While this example shows completion of pathnames, which is comple- tion’s most common use, completion will also work on variables (if the beginning of the word is a $), usernames (if the word begins with ~), com- mands (if the word is the first word on the line), and hostnames (if the beginning of the word is @).
 
   Hostname completion works only for host- names listed in /etc/hosts.
@@ -517,9 +520,60 @@
   CTL + D exit
   CTL + C cancel/quit
 
-   9.5 Build Strings with { }
+### VO 300w
 
-  I've been finding more and more uses for the {} pattern-expansion characters in csh , tcsh , and bash . (Other shells can use {} , too; see article 15.3 .) They're similar to * , ? , and [] ( 15.2 ) , but they don't match filenames the way that * , ? , and [] do. You can give them arbitrary text (not just filenames) to expand - that "expand-anything" ability is what makes them so useful.
+  (Assumed knowledge)
+
+  Completion occurs when you press the TAB key while typing a command.
+
+  $ ma TAB
+
+  $ whatis a2p
+
+  $ ls TAB
+  $ ls D TAB
+
+  (option as meta)
+  ALT-B Move cursor backward one word.
+  ALT-F Move cursor forward one word.
+
+  ALT-BACKSPACE Kill text from the cursor location to the beginning of the cur rent word.
+  ALT-D Kill text from the cursor location to the end of the current word.
+  ALT-L Convert the characters from the cursor location to the end of the word to lowercase.
+  ALT-T Transpose the word at the cursor location with the one pre ceding it.
+  ALT-U Convert the characters from the cursor location to the end of the word to uppercase.
+
+  CTRL-A Move cursor to the beginning of the line.
+  CTRL-B Move cursor backward one character; same as the left arrow key.
+  CTRL-D Delete the character at the cursor location.
+  CTRL-E Move cursor to the end of the line.
+  CTRL-F Move cursor forward one character; same as the right arrow key.
+  CTRL-K Kill text from the cursor location to the end of line.
+  CTRL-L Clear the screen and move the cursor to the top left corner.
+  CTRL-T Transpose (exchange) the character at the cursor location with the one preceding it.
+  CTRL-U Kill text from the cursor location to the beginning of the line.
+  CTRL-b 	Move backward one character (without deleting).
+  CTRL-c 	Delete entire line.
+  CTRL-d 	Delete one character forward.
+  CTRL-e 	Move to end of line.
+  CTRL-f 	Move forward one character.
+  CTRL-k 	Delete ("kill") forward to end of line.
+  CTRL-w 	Delete ("wipe") backward to beginning of line.
+  CTRL-y 	Retrieve ("yank") last deleted item.
+  CTRL-z 	Move to beginning of line.
+
+  CTL + L clear
+  CTL + D exit
+  CTL + C cancel/quit
+
+## Pattern expansion 2m
+  9.5 Build Strings with { }
+
+  I've been finding more and more uses for the {} pattern-expansion characters in csh , tcsh , and bash . (Other shells can use {} , too; see article 15.3 .)
+
+  They're similar to * , ? , and [] ( 15.2 ) , but they don't match filenames the way that * , ? , and [] do.
+
+  You can give them arbitrary text (not just filenames) to expand - that "expand-anything" ability is what makes them so useful.
 
   Here are some examples to get you thinking:
 
@@ -613,6 +667,63 @@
 
       lpr project_repor{t,t,t,t,t,t,t,t,t,t}
 
+### VO 300w
+  Build Strings with pattern-expansion characters: {}
+
+  You can give them arbitrary text (not just filenames) to expand which is very handy.
+
+  To fix a typo in a filename (change fixbold5.c to fixbold6.c ):
+
+  $ mv typo{5,6}.rb
+
+  An easy way to see what the shell does with {} is by adding echo ( 8.6 ) before the mv :
+
+  $ echo mv fixbold{5,6}.c
+
+  mv fixbold5.c fixbold6.c
+
+  To copy filename to filename.bak in one easy step:
+
+  $ cp filename{,.bak}
+  
+  To print files from other directory(s) without retyping the whole pathname:
+
+  $ lpr /usr3/hannah/training/{ed,vi,mail}/lab.{ms,out}
+
+  /usr3/hannah/training/ed/lab.ms
+  /usr3/hannah/training/ed/lab.out
+  /usr3/hannah/training/vi/lab.ms
+  /usr3/hannah/training/vi/lab.out
+  /usr3/hannah/training/mail/lab.ms
+  /usr3/hannah/training/mail/lab.out
+
+  ...in one fell swoop!
+
+  To edit ten new files that don't exist yet:
+
+  $ vi /usr/foo/file{a,b,c,d,e,f,g,h,i,j}
+
+  That would make /usr/foo/filea , /usr/foo/fileb , ... /usr/foo/filej . Because the files don't exist before the command starts, the wildcard vi   /usr/foo/file[a-j] would not work ( 9.4 ) .
+
+  An easy way to step through three-digit numbers 000, 001, ..., 009, 010, 011, ..., 099, 100, 101, ... 299 is:
+
+  for n in ({0,1,2}{0,1,2,3,4,5,6,7,8,9}{0,1,2,3,4,5,6,7,8,9})
+  end
+
+  Yes, csh also has built-in arithmetic, but its @ operator ( 47.4 ) can't make numbers with leading zeros. This nice trick shows that the {} operators are good for more than just filenames.
+
+  To create sets of subdirectories:
+
+  $ mkdir man
+  $ mkdir man/{man,cat}{1,2,3,4,5,6,7,8}
+  $ ls -F man
+
+  cat1/   cat3/   cat5/   cat7/   man1/   man3/   man5/   man7/
+  cat2/   cat4/   cat6/   cat8/   man2/   man4/   man6/   man8/
+
+  To print ten copies of the file project_report command doesn't have a -#10 option):
+
+  $ lpr project_repor{t,t,t,t,t,t,t,t,t,t}
 
 
 ## History 2m
