@@ -36,7 +36,6 @@
   Clearly the list could go on. The shell commands may be obscure or terse, but they are powerful and concise. And, because shell commands can be combined into script files (or command files under Windows systems), you can build sequences of commands to automate things you do often.
 
 ## Getting help 2m
-
   man COMMAND
   * scroll
   * search
@@ -76,7 +75,7 @@
 
   will display the man page describing the file format of the /etc/passwd file.
 
-  --help—Display Usage Information
+  --help —Display Usage Information
 
   Many executable programs support a --help option that displays a descrip- tion of the command’s supported syntax and options. For example:
 
@@ -98,20 +97,95 @@
   Self-directed:
 
   apropos—Display a list of appropriate commands.
+  man -k
+
   whatis—Display a very brief description of a command.
   info—Display a command’s info entry.
+
+### VO 300w
+
+  OJ
+  * get help
+  * search for man pages
+  * understand man page format
+  * search within a man page
+  * getting help when no man pages available
+
+  To search the available manual pages, type
+
+  $ man -k
+
+  You know the ls command list's a directory contents.
+
+  Let's add nice color output to your directory listing
+
+  $ man ls
+
+  To scroll in a manual page, type
+
+  Enter CTRL+U to Scroll UP
+  Enter CTRL+D to Scroll DOWN
+  Enter / to search
+  Enter n to go forward
+  Enter N to go back
+  Enter - to toggle case sensitive search
+
+  $ man less
+
+  Some programs don’t support the --help option, but try it anyway. Often it results in an error message that will reveal the same usage information.
+
+  bash has a built-in help facility for each of the shell builtins. To use it, type help followed by the name of the shell builtin. For example:
+
+  [me@linuxbox ~]$ help cd
+  cd: cd [-L|-P] [dir]
+
+  square brackets indicate optional items.
+  A vertical bar character indicates mutually exclusive items.
+
+  the command cd may be followed optionally by either a -L or a -P and further, optionally followed by the argument dir.
+
+  SLIDE: Man Page Organization
+   Section
+  1 2 3 4 5 6 7 8
+  Contents
+  User commands
+  Programming interfaces for kernel system calls Programming interfaces to the C library Special files such as device nodes and drivers File formats
+  Games and amusements such as screensavers Miscellaneous
+  System administration commands
+
+  Sometimes we need to look in a specific section of the manual to find what we are looking for. This is particularly true if we are looking for a file format that is also the name of a command. If we don’t specify a section num- ber, we will always get the first instance of a match, probably in section 1. To specify a section number, we use man like this:
+
+  man section search_term For example:
+  [me@linuxbox ~]$ man 5 passwd
+
+  will display the man page describing the file format of the /etc/passwd file.
+
+  Man pages, usually don't have examples, and they are intended as a refer ence, not a tutorial. Install cheat (skip to section) for examples:
+
+  cheat ls
+
+  RC:
+  * search for man pages
+  * understand man page format
+  * search within a man page
+  * getting help when no man pages available
+
+  EV:
+  * search for X man page
+  * within a man page X, search for Y
+  * find 2 sections for crontab
 
 ## Shell environment 4m
 
   A command can be one of four things:
 
-    An executable program like all those files we saw in /usr/bin. Within this category, programs can be compiled binaries, such as programs written in C and C++, or programs written in scripting languages, such as the shell, Perl, Python, Ruby, and so on.
+  An executable program like all those files we saw in /usr/bin. Within this category, programs can be compiled binaries, such as programs written in C and C++, or programs written in scripting languages, such as the shell, Perl, Python, Ruby, and so on.
 
-    A command built into the shell itself. bash supports a number of com- mands internally called shell builtins. The cd command, for example, is a shell builtin.
+  A command built into the shell itself. bash supports a number of com- mands internally called shell builtins. The cd command, for example, is a shell builtin.
 
-    A shell function. Shell functions are miniature shell scripts incorporated into the environment. We will cover configuring the environment and writing shell functions in later chapters, but for now just be aware that they exist.
+  A shell function. Shell functions are miniature shell scripts incorporated into the environment. We will cover configuring the environment and writing shell functions in later chapters, but for now just be aware that they exist.
 
-    An alias. An alias is a command that we can define ourselves, built from other commands.
+  An alias. An alias is a command that we can define ourselves, built from other commands.
 
   type—Indicate how a command name is interpreted.
   which—Display which executable program will be executed.
@@ -184,7 +258,7 @@
   bug () { ghi open -m "$1" -L bug ; }
   feature () { ghi open -m "$1" -L feature ; }
   ka () { ps waux | grep $1 | awk '{print $2}' | xargs kill -9 ; }
-  jo () {  j `find . -name "$*"` ; }
+  jo () {  j ` find . -name "$*" ` ; }
 
   The spaces and the semicolon ( ; ) are both important!
 
@@ -209,12 +283,13 @@
   sudo—Execute a Command as Another User
 
   The sudo command is like su in many ways but has some important addi- tional capabilities. The administrator can configure sudo to allow an ordin- ary user to execute commands as a different user (usually the superuser) in a very controlled way. In particular, a user may be restricted to one or more specific commands and no others. Another important difference is that the use of sudo does not require access to the superuser’s password. To authen- ticate using sudo, the user enters his own password. Let’s say, for example, that sudo has been configured to allow us to run a fictitious backup program called backup_script, which requires superuser privileges.
-        88 Chapter 9
+
   With sudo it would be done like this:
 
   [me@linuxbox ~]$ sudo backup_script Password:
 
   System Backup Starting...
+
   After entering the command, we are prompted for our password (not the superuser’s), and once the authentication is complete, the specified command is carried out. One important difference between su and sudo is that sudo does not start a new shell, nor does it load another user’s environ- ment. This means that commands do not need to be quoted any differently than they would be without using sudo. Note that this behavior can be over- ridden by specifying various options. See the sudo man page for details.
   To see what privileges are granted by sudo, use the -l option to list them:
   [me@linuxbox ~]$ sudo -l
@@ -228,8 +303,75 @@
    `\`
    $()
 
+### VO 300w
 
-## Keyboard shortcuts 2m
+  *bash_profile
+
+  A login bash will read .bash_profile , .bash_login , or .profile . A bash subshell - but not a login shell - will read a file named .bashrc in your home directory.
+
+  .bashrc mention?
+
+  EDITOR ~/.bash_profile
+  source ~/.bash_profile
+
+  *export
+
+  Many UNIX utilities, including the shell, need information about you and what you're doing in order to do a reasonable job.
+
+  e.g. git $EDITOR
+
+  a shell variable is local to a particular instance of the shell (such as a shell script) environment variables are "inherited" by any program you start, including another shell
+
+  echo $TERM
+  echo $PWD
+  echo $HOME
+
+  *export PATH
+
+  You have a stash of personal utilities you like to use, but you are not root on the sys- tem and can’t place them into the normal locations like /bin or /usr/local/bin, or there is some other reason to separate them.
+
+  $ PATH="$PATH:~/bin"
+
+  *commands
+
+  An executable program: compiled binaries or interpreted scripting languages, such as the shell, Perl, Python, Ruby, and so on
+
+  $ ls /usr/bin
+
+  A command built into the shell itself; e.g. cd
+  
+  $ man bash
+  $ help
+  $ help cd
+
+  *alias
+  
+  An alias. An alias is a command that we can define ourselves, built from other commands.
+
+  define abbreviations for commonly used commands
+
+  alias ls='ls -Gp '
+  alias ll='ls -lahGp '
+  alias g='git '
+
+  alias rl='source ~/.bash_profile'
+
+  *functions
+  
+  A shell function: takes args, executes, returns ouput
+
+  feature () { ghi open -m "$1" -L feature ; }
+  jo () {  j ` find . -name "$*" ` ; }
+
+  The "$@" ( 44.15 ) is replaced by the command-line arguments (other options, or directory and filenames), if you use any:
+
+  the shell will replace that string with a quoted ( 8.14 ) set of the script's command-line arguments. Then you can pass as many arguments as you want, including pathnames with unusual characters
+
+  *self-directed
+  * prompt customisation export PS1="\[\e[34;1m\]\w\[\e[0m\] $ "
+  * create a desk clone
+
+## Keyboard shortcuts 4m
 
   Command 	Function
   CTRL-b 	Move backward one character (without deleting).
@@ -3322,7 +3464,7 @@
   14096 May  5 21:18 rmdir
   14192 May  5 18:54 domainname
   14192 May  5 18:54 pwd
-  
+
   sort—Sort Lines of Text Files
   The sort program sorts the contents of standard input, or one or more files specified on the command line, and sends the results to standard output. Using the same technique that we used with cat, we can demonstrate pro- cessing of standard input directly from the keyboard.
   [me@linuxbox ~]$ sort > foo.txt c
@@ -3722,9 +3864,9 @@
                05/31/2007 Fedora 7
                04/19/2007 Ubuntu 7.04
   Note also that, by default, join uses whitespace as the input field delim- iter and a single space as the output field delimiter. This behavior can be modified by specifying options. See the join man page for details.
-  
+
   tr—Transliterate or Delete Characters
-  
+
   The tr program is used to transliterate characters. We can think of this as a sort of character-based search-and-replace operation. Transliteration is the process of changing characters from one alphabet to another. For example, converting characters from lowercase to uppercase is transliteration. We can perform such a conversion with tr as follows:
   [me@linuxbox ~]$ echo "lowercase letters" | tr a-z A-Z LOWERCASE LETTERS
   As we can see, tr operates on standard input and outputs its results on standard output. tr accepts two arguments: a set of characters to convert from and a corresponding set of characters to convert to. Character sets may be expressed in one of three ways:
@@ -3963,7 +4105,7 @@
     262 Chapter 20
   PEOPLE WHO LIKE SED ALSO LIKE...
   sed is a very capable program, able to perform fairly complex editing tasks to streams of text. It is most often used for simple, one-line tasks rather than long scripts. Many users prefer other tools for larger tasks. The most popular of these are awk and perl. These go beyond mere tools like the programs covered here and extend into the realm of complete programming languages. perl, in particular, is often used in place of shell scripts for many system-management and administration tasks, as well as being a very popular medium for web devel- opment. awk is a little more specialized. Its specific strength is its ability to manipu- late tabular data. It resembles sed in that awk programs normally process text files line by line, using a scheme similar to the sed concept of an address fol- lowed by an action. While both awk and perl are outside the scope of this book, they are very good tools for the Linux command line user.
-  
+
   The Command Line
 
   They wanted a powerful set of tools that you could mix and match to form powerful composites.
@@ -4051,7 +4193,7 @@
 ## Networking 2m
 
   NETWORKING
-  
+
   When it comes to networking, there is probably noth- ing that cannot be done with Linux. Linux is used to build all sorts of networking systems and appli- ances, including firewalls, routers, name servers, NAS (network-attached storage) boxes, and on and on.
   Just as the subject of networking is vast, so is the number of commands that can be used to configure and control it. We will focus our attention on just a few of the most frequently used ones. The commands chosen for exam- ination include those used to monitor networks and those used to transfer files. In addition, we are going to explore the ssh program, which is used to perform remote logins. This chapter will cover the following:
     ping—Send an ICMP ECHO_REQUEST to network hosts.
@@ -4457,7 +4599,7 @@
   Two users are logged in.
   Load average refers to the number of processes that are waiting to run; that is, the number of pro- cesses that are in a runnable state and are sharing the CPU. Three values are shown, each for a differ- ent period of time. The first is the average for the last 60 seconds, the next the previous 5 minutes, and finally the previous 15 minutes. Values under 1.0 indicate that the machine is not busy.
   (continued ) Processes 99
-                  
+
   Table 10-3 (continued ) Row Field
   Meaning
    2
@@ -4597,15 +4739,15 @@
   Command
   pstree
   vmstat
-  xload tload        
+  xload tload
   Description
   Outputs a process list arranged in a tree-like pattern showing the parent/child relationships between processes.
   Outputs a snapshot of system resource usage including memory, swap, and disk I/O. To see a continuous display, follow the command with a time delay (in seconds) for updates (e.g., vmstat 5). Terminate the output with CTRL-C.
   A graphical program that draws a graph showing system load over time.
-  Similar to the xload program, but draws the graph in the terminal. Terminate the output with CTRL-C.   
-  
+  Similar to the xload program, but draws the graph in the terminal. Terminate the output with CTRL-C.
+
   PROCESSES
-  
+
   Modern operating systems are usually multitasking, meaning that they create the illusion of doing more than one thing at once by rapidly switching from one executing program to another. The Linux kernel manages this through the use of processes. Processes are how Linux organizes the different programs wait- ing for their turn at the CPU.
   Sometimes a computer will become sluggish, or an application will stop responding. In this chapter, we will look at some of the tools available at the command line that let us examine what programs are doing and how to ter- minate processes that are misbehaving.
   This chapter will introduce the following commands:
@@ -4763,7 +4905,7 @@
   Two users are logged in.
   Load average refers to the number of processes that are waiting to run; that is, the number of pro- cesses that are in a runnable state and are sharing the CPU. Three values are shown, each for a differ- ent period of time. The first is the average for the last 60 seconds, the next the previous 5 minutes, and finally the previous 15 minutes. Values under 1.0 indicate that the machine is not busy.
   (continued ) Processes 99
-                  
+
   Table 10-3 (continued ) Row Field
   Meaning
    2
@@ -4909,166 +5051,166 @@
   Outputs a snapshot of system resource usage including memory, swap, and disk I/O. To see a continuous display, follow the command with a time delay (in seconds) for updates (e.g., vmstat 5). Terminate the output with CTRL-C.
   A graphical program that draws a graph showing system load over time.
   Similar to the xload program, but draws the graph in the terminal. Terminate the output with CTRL-C.
-            
+
   Multitasking, letting you run more than one program at a time, is one of the great things about UNIX. Before job control, though, you had to decide ahead of time whether you wanted to run a job in the foreground (on your screen) or in the background (where you couldn't touch the program except to terminate it before it finished).
 
   The C shell - and other shells since it, including some new Bourne shells - have job control built into them. You can start and stop jobs, pop them in and out of the background, and more. Windowing systems, which let you have multiple terminal windows active on the screen at the same time, make this less essential. Still, there are some important areas where you'll get more productivity out of job control than from simply opening another window. This article is an introduction to job control - there's more to learn.
-  
+
   Job control takes more than a shell to work right: the UNIX kernel has to support it. Berkeley UNIX since BSD 4.0 has had job control, so most Berkeley-type UNIXes will have it, too. Most versions of UNIX System V before Release 4 did not have job control. If your UNIX doesn't support job control, you can still put a job in the background - see the last paragraph in this article.
   12.1.1 Foreground and Background
-  
+
   UNIX distinguishes between foreground and background programs. This feature allows you to run several programs simultaneously from your terminal. When a program is running in the foreground, anything you type at the keyboard is sent to the program's standard input unless you have redirected it. As a result, you can't do anything else until the program finishes. When you run a program in the background, it is disconnected from the keyboard. Anything you type reaches the UNIX shell and is interpreted as a command. Therefore, you can run many programs simultaneously in the background. You can run only one program at a time in the foreground.
-  
+
   To run a program in the background, type an ampersand ( & ) at the end of the command line. For example:
-  
-      % 
-  
+
+      %
+
       f77 program.F &
-  
-  
+
+
       [1] 9145
       %
-  
+
   This runs a FORTRAN compilation in the background, letting you continue other work while the compilation proceeds. The shell responds by printing a job number in brackets ( [] ), followed by the process identification (PID) number ( 38.3 ) for the command. It then prompts you for a new command. Entering the command jobs produces a short report describing all the programs you are executing in the background. For example:
-  
-      % 
-  
+
+      %
+
       f77 program.F &
-  
-  
+
+
       [1] 9145
-      % 
-  
+      %
+
       jobs
-  
-  
+
+
       [1]     + Running       f77 program.F
       %
-  
+
   To bring a program from the background into the foreground, use the foreground command, fg . If you have more than one background job, follow fg with a job identifier - a percent sign ( % ) followed by the job number:
-  
-      % 
-  
+
+      %
+
       jobs
-  
-  
+
+
       [1]     - Running       f77 program.F
       [2]     + Stopped       vi sinus.F
-      % 
-  
+      %
+
       fg %1
-  
+
   The plus sign ( + ) in the report from jobs indicates which job will return to the foreground by default ( 12.3 ) .
-  
+
   To suspend a job running in the foreground, press CTRL-z. [You can use this to stop most frozen or runaway programs until you figure out what to do next. Also, CTRL-z can stop programs that interrupt characters ( 5.9 ) like CTRL-c can't. -JP  ]
-  
+
   Entering the background command, bg , lets a stopped program continue execution in the background. The foreground command, fg , restores this program to execution in the foreground. For example:
-  
-      % 
-  
+
+      %
+
       f77 -o program program.F
-  
-  
-  
+
+
+
       [CTRL-z]
-  
+
       Stopped
-      % 
-  
+      %
+
       bg
-  
-  
+
+
       [1]     + Running       f77 -o program program.F
       %
-  
+
   There is no prompt after the f77 command because the compiler is running in the foreground. After you press CTRL-z, the shell prints the word "Stopped" to indicate that it has stopped execution. At this point, you can enter any command; the bg command lets the job continue executing in the background. This feature is useful if you forget to type an & at the end of the command line or if you decide to do something else while the job is running.
-  
+
   To terminate a background job, you can use the command's job number rather than its PID number, as follows:
-  
-      % 
-  
+
+      %
+
       kill %1
-  
+
   If you omit it, UNIX interprets the job number as a process number. This will probably be the process number of some operating system function. UNIX will not let you make such a mistake unless you are superuser ( 1.24 ) . If you are superuser, the command is fatal. You may be superuser from time to time and therefore should not develop sloppy habits.
-  
+
   In the next few seconds, press RETURN a few times. You should see the message:
-  
+
       [1]  Terminated    f77 -o program program.F
-  
+
   If you don't see that, use the jobs command to check whether the job is still running. If it's still running, use the -9 option as a last resort:
-  
-      % 
-  
+
+      %
+
       kill -9 %1
-  
-  
+
+
       [1]  Killed        f77 -o program program.F
-  
+
   The -9 option doesn't give the process a chance to clean up its temporary files and exit gracefully, so don't use it unless you need to.
-  
+
   A program running in the background cannot read input from a terminal. If a background job needs terminal input, it will stop; the jobs command will print the message Stopped (tty input) . Before the program can continue, you must bring it into the foreground with the fg command and type the required input. You can save yourself this trouble by redirecting the program's input so that it reads all its data from a file. You may also want to redirect standard output and standard error. If you don't, any output the program produces will appear on your terminal (unless you've used stty tostop ( 12.7 ) ). Since you will probably be using other commands, having miscellaneous data and other messages flying across your terminal may be confusing.
-  
+
   On systems and shells without job control features, an & will start a command in the background. It is impossible to move a job from the foreground to the background or vice versa. The ps ( 38.5 ) command is the only tool available for determining what background jobs you have running.
 
   Two commands, time and /bin/time , provide simple timings. Their information is highly accurate, because no profiling overhead distorts the program's performance. Neither program provides any analysis on the routine or trace level. They report the total execution time, some other global statistics, and nothing more. You can use them on any program.
 
   time and /bin/time differ primarily in that time is built into the C shell. Therefore, it cannot be used in Bourne shell scripts or in makefiles. It also cannot be used if you prefer the Bourne shell ( sh ). /bin/time is an independent executable file and therefore can be used in any situation. To get a simple program timing, enter either time or /bin/time , followed by the command you would normally use to execute the program. For example, to time a program named analyze , enter the following command:
-  
-      % 
-  
+
+      %
+
       time analyze inputdata outputfile
-  
-  
+
+
       9.0u 6.7s 0:30 18% 23+24k 285+148io 625pf+0w
-  
+
   This indicates that the program spent 9.0 seconds on behalf of the user (user time), 6.7 seconds on behalf of the system (system time, or time spent executing UNIX kernel routines on the user's behalf), and a total of 30 seconds elapsed time. Elapsed time is the wall clock time from the moment you enter the command until it terminates, including time spent waiting for other users, I/O time, etc.
-  
+
   By definition, the elapsed time is greater than your total CPU time and can even be several times larger. You can set programs to be timed automatically (without typing time first) or change the output format by setting the csh time variable ( 39.3 ) .
-  
+
   The example above shows the CPU time as a percentage of the elapsed time (18 percent). The remaining data report virtual memory management and I/O statistics. The meaning varies, depending on your shell; check your online csh manual page or article 39.3 .
-  
+
   In this example, under SunOS 4.1.1, the other fields show the amount of shared memory used, the amount of nonshared memory used ( k ), the number of block input and output operations ( io ), and the number of page faults plus the number of swaps ( pf and w ). The memory management figures are unreliable in many implementations, so take them with a grain of salt.
-  
+
   /bin/time reports only the real time (elapsed time), user time, and system time. For example:
-  
-      % 
-  
+
+      %
+
       /bin/time analyze inputdata outputfile
-  
-  
+
+
              60.8 real        11.4 user         4.6 sys
-  
+
   [If you use the Bourne shell, you can just type time . -JP  ] This reports that the program ran for 60.8 seconds before terminating, using 11.4 seconds of user time and 4.6 seconds of system time, for a total of 16 seconds of CPU time.
-  
+
   There's a third timer on many systems: timex . It can give much more detail if your system has process accounting enabled. Check the timex (1) manpage.
-  
+
   Article 39.5 has more about the terms used in this article.
-  
+
   UNIX Power Tools
   Previous: 40.11 Send Yourself Reminder Mail 	Chapter 40
   Delayed Execution 	Next: 40.13 Adding crontab Entries
-   
+
   40.12 Periodic Program Execution: The cron Facility
-  
+
   cron allows you to schedule programs for periodic execution. For example, you can use cron to call a particular UUCP ( 1.33 ) site every hour, to clean up editor backup files every night, or to perform any number of other tasks. However, cron is not a general facility for scheduling program execution off-hours; use the at command ( 40.3 ) .
-  
+
   With redirection ( 13.1 ) , cron can send program output to a log file or to any username via the mail system ( 1.33 ) .
-  
+
       NOTE: cron jobs are run by a system program in an environment that's much different from your normal login sessions. The search path ( 8.7 ) is usually shorter; you may need to use absolute pathnames for programs that aren't in standard system directories. Be careful about using command aliases, shell functions and variables, and other things that may not be set for you by the system.
-  
+
   40.12.1 Execution Scheduling
-  
+
   The cron system is serviced by the cron daemon ( 1.14 ) . What to run and when to run it are specified to cron by crontab entries, which are stored in the system's cron schedule. Under BSD, this consists of the files /usr/lib/crontab and /usr/lib/crontab.local ; either file may be used to store crontab entries. Both are ASCII files and may be modified with any text editor. Since usually only root has access to these files, all cron scheduling must go through the system administrator. This can be either an advantage or a disadvantage, depending on the needs and personality of your site.
-  
+
   Under System V (and many other versions of UNIX), any user may add entries to the cron schedule. crontab entries are stored in separate files for each user. The crontab files are not edited directly by ordinary users, but are placed there with the crontab command (described later in this section). [In my experience, the cron jobs are run from your home directory. If you read a file or redirect output to a file with a relative pathname ( 14.2 ) , that'll probably be in your home directory. Check your system to be sure. -JP  ]
-  
+
   crontab entries direct cron to run commands at regular intervals. Each one-line entry in the crontab file has the following format:
-  
+
       mins hrs day-of-month month weekday username cmd (BSD)
       mins hrs day-of-month month weekday cmd (System V)
-  
+
   Spaces separate the fields. However, the final field, cmd , can contain spaces within it (i.e., the cmd field consists of everything after the space following weekday ); the other fields must not contain spaces. The username field is used in the BSD version only and specifies the username under which to run the command. Under System V, commands are run by the user who owns the crontab in which they appear (and for whom it is named).
-  
+
   The first five fields specify the times at which cron should execute cmd . Their meanings are described in Table 40.1 .
   Table 40.1: crontab Entry Time Fields Field 	Meaning 	Range
   mins 	The minutes after the hour. 	0-59
@@ -5077,29 +5219,29 @@
   month 	The month of the year. 	1-12
   weekday 	The day of the week. 	1-7 (1 = Monday) BSD
       0-6 (0=Sunday) System V
-  
+
   These fields can contain a single number, a pair of numbers separated by a dash (indicating a range of numbers), a comma-separated list of numbers and ranges, or an asterisk (a wildcard that represents all valid values for that field).
-  
+
   If the first character in an entry is a hash mark (#), cron will treat the entry as a comment and ignore it. This is an easy way to temporarily disable an entry without permanently deleting it.
-  
+
   Here are some example crontab entries (shown in System V format):
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
   2>&1
-   
-  
-  
-  
+
+
+
+
   \%
-   
-  
-    
-  
-  
+
+
+
+
+
   0,15,30,45 * * * *  (echo -n '   '; date; echo "") >/dev/console
   0,10,20,30,40,50 7-18 * * * /usr/lib/atrun
   7 0 * * *  find / -name "*.bak" -type f -atime +7 -exec rm {} \;
@@ -5108,66 +5250,66 @@
   30 3 * * 1 /bin/csh -f /usr/lib/uucp/uu.weekly >/dev/null 2>&1
   12 5 15-21 * * test `date +\%a` = Mon && /usr/local/etc/mtg-notice
   #30 2 * * 0,6  /usr/lib/newsbin/news.weekend
-  
+
   The first entry displays the date on the console terminal every fifteen minutes (on the quarter hour); notice that multiple commands are enclosed in parentheses in order to redirect their output as a group. (Technically, this says to run the commands together in a subshell ( 13.7 ) .) The second entry runs /usr/lib/atrun every ten minutes from 7:00 a.m. to 6:00 p.m. daily. The third entry runs a find command at seven minutes after midnight to remove all .bak files not accessed in seven days. [To cut wear and tear and load on your disk, try to combine find jobs ( 23.22 ) . Also, as article 40.5 explains, try not to schedule your jobs at often-chosen times like 1:00 a.m., 2:00 a.m., and so on; pick oddball times like 4:12 a.m. -JP  ]
-  
+
   The fourth and fifth lines run a shell script every day, at 4:12 a.m. and 2:22 a.m., respectively. The shell to execute the script is specified explicitly on the command line in both cases; the system default shell, usually the Bourne shell, is used if none is explicitly specified. Both lines' entries redirect standard output and standard error, sending it to a file in one case and mailing it to root in the other.
-  
+
   The sixth entry executes a C shell script named uu.weekly , stored in /usr/lib/uucp , at 3:30 a.m. on Monday mornings. Notice that the command format - specifically the output redirection - is for the Bourne shell even though the script itself will be run under the C shell. The seventh entry runs on the third Monday of every month; there's more explanation below. The final entry would run the command /usr/lib/newsbin/news.weekend at 2:30 a.m. on Saturday and Sunday mornings if it were not disabled with a # . ( # can also be used to add comments to your crontab .)
-  
+
   The fourth through sixth entries illustrate three output-handling alternatives: redirecting it to a file, piping it through mail, and discarding it to /dev/null ( 13.14 ) . If no output redirection is performed, the output is sent via mail to the user who ran the command.
-  
+
   The cmd field can be any UNIX command or group of commands (properly separated with semicolons). The entire crontab entry can be arbitrarily long, but it must be a single physical line in the file.
-  
+
   One problem with the crontab syntax is that it lets you specify any day of the month, and any day of the week; but it doesn't let you construct cases like "the third Monday of every month." You might think that the crontab entry:
-  
-      12 5 15-21 * 1 
-  
+
+      12 5 15-21 * 1
+
       your-command
-  
+
   would do the trick, but it won't; this crontab entry runs your command on every Monday, plus the 15th through the 21st of each month. [1] An answer from Greg Ubben is shown in the seventh entry. He uses the test ( 44.20 ) and date ( 51.10 ) commands to compare the name of today (like Tue ) to the day we want the entry to be executed (here, Mon ). This entry will be run between the 15th and 21st of each month, but the mtg-notice command will only run on the Monday during that period. The shell's && operator ( 44.9 ) runs the mtg-notice command only when the previous test succeeds. Greg actually writes the entry as shown here, testing for failure of the test command:
-  
+
       [1] This strange behavior seems to be a System V peculiarity that somehow infected the rest of the world. "True" BSD systems behave the way we explained earlier. However, SunOS 4.X systems have incorporated System V's behavior; and, with the advent of Solaris, there are relatively few true commercial BSD systems left in the world.
-  
+
       12 5 15-21 * * test `date +\%a` != Mon || /usr/local/etc/mtg-notice
-  
+
   He did it in that "backwards" way so the cron job's exit status would be 0 (success) in the case when it doesn't execute mtg-notice . You may need that technique, too.
-  
+
   The cron command starts the cron program. It has no options. Once started, cron never terminates. It is normally started automatically by one of the system initialization scripts. cron reads the crontab file(s) every minute to see whether there have been changes. Therefore, any change to its schedule will take effect within one minute.
-  
+
   - AF , JP
-  
+
   The at facility submits a command line (or a script) for execution at an arbitrary later time. It has the form:
 
-    % 
+    %
 
-    at 
+    at
 
 
 
     options time < scriptfile
 
   This submits the scriptfile for execution at a later time . The redirection ( < ) isn't required on BSD and some other UNIX systems. If you don't want to write a script, you can omit it and type your commands on the terminal, terminated by CTRL-d:
-  
-      % 
-  
-      at 
-  
-  
-  
+
+      %
+
+      at
+
+
+
       options time
       Command 1
       Command 2
-  
-  
+
+
       ...
-  
+
       [CTRL-d]
-  
+
   The time is most commonly a four-digit number representing a time on a 24-hour clock. For example, 0130 represents 1:30 a.m. and 1400 represents 2 p.m. You can also use abbreviations such as 1am , 130pm , and so on.
-  
+
   11.9 Using date and cron to Run a Script on the Nth Day
-  
+
   Problem
   You need to run a script on the Nth weekday of the month (e.g., the second Wednes- day), and most crons will not allow that.
   Solution
@@ -5208,9 +5350,9 @@
       15 16 17 18 19 20 21
       22 23 24 25 26 27 28
       29 30 31
-      
-  
-  
+
+
+
 ## Package management 2m
 
   https://github.com/Homebrew/homebrew/blob/master/share/doc/homebrew/Installation.md
@@ -5219,289 +5361,289 @@
   Get Xcode 6.3 .
   xcode 6.1 for yosemite
   Download and install it, you also need to open Xcode agree to the license and it will install its components.
-  
+
   yosemite-xcode-install
   Get Command Line Tools
-  
+
   xcode-select --install
-  
-   
+
+
   Install Homebrew
-  
+
   To download install Homebrew run the install script on the command line as below and let the script do its thing:
-  
+
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  
+
   homebrew-osx-install-mountain-lion
-  
+
   Download and install Xquartz brew will moan if it is not installed.
-  
+
   After installing and as suggested in the command line, to check for any issues with the install run:
-  
+
   brew doctor
-  
+
   To search for an application:
-  
+
   brew search
-  
+
   To install
-  
+
   brew install <application-name>
-  
+
   To list all apps installed by Homebrew
-  
+
   brew list
-  
+
   To remove an installed application
-  
+
   brew remove <application-name>
-  
+
   To update Homebrew
-  
+
   brew update
-  
+
   To see what else you can do
-  
+
   man brew
-  
+
   Where does Homebrew install stuff …. in the Cellar
-  
+
   /usr/local/Cellar/
-  
-  
-Skip to content
-This repository
 
-    Pull requests
-    Issues
-    Gist
 
-    @kmcd
+  Skip to content
+  This repository
 
-183
-7,871
+      Pull requests
+      Issues
+      Gist
 
-    2,862
+      @kmcd
 
-caskroom/homebrew-cask
+  183
+  7,871
 
-homebrew-cask/USAGE.md
-4caa121 21 days ago
-@vitorgalvao vitorgalvao usage: add '$' to completion commands
-14 contributors
-@rolandwalker
-@vitorgalvao
-@phinze
-@adamchainz
-@tpitale
-@voanhduy1512
-@ujovlado
-@leoj3n
-@jedahan
-@xyb
-@hanjianwei
-@linc01n
-@Cottser
-@pasku
-242 lines (167 sloc) 9.2 KB
-How to Use Homebrew-cask
-Getting Started
+      2,862
 
-First ensure you have Homebrew version 0.9.5 or higher:
+  caskroom/homebrew-cask
 
-$ brew --version
-0.9.5
+  homebrew-cask/USAGE.md
+  4caa121 21 days ago
+  @vitorgalvao vitorgalvao usage: add '$' to completion commands
+  14 contributors
+  @rolandwalker
+  @vitorgalvao
+  @phinze
+  @adamchainz
+  @tpitale
+  @voanhduy1512
+  @ujovlado
+  @leoj3n
+  @jedahan
+  @xyb
+  @hanjianwei
+  @linc01n
+  @Cottser
+  @pasku
+  242 lines (167 sloc) 9.2 KB
+  How to Use Homebrew-cask
+  Getting Started
 
-Install the homebrew-cask tool:
+  First ensure you have Homebrew version 0.9.5 or higher:
 
-$ brew install caskroom/cask/brew-cask
+  $ brew --version
+  0.9.5
 
-Frequently Used Commands
+  Install the homebrew-cask tool:
 
-Homebrew-cask is implemented as a subcommand of Homebrew. All homebrew-cask commands begin with brew cask. Homebrew-cask has its own set of command verbs many of which are similar to Homebrew’s. The most frequently-used commands are:
+  $ brew install caskroom/cask/brew-cask
 
-    search — searches all known Casks
-    install — installs the given Cask
-    uninstall — uninstalls the given Cask
+  Frequently Used Commands
 
-Searching for Casks
+  Homebrew-cask is implemented as a subcommand of Homebrew. All homebrew-cask commands begin with brew cask. Homebrew-cask has its own set of command verbs many of which are similar to Homebrew’s. The most frequently-used commands are:
 
-The brew cask search command accepts a series of substring arguments, and returns tokens representing matching Casks. Let’s see if there’s a Cask for Google Chrome:
+      search — searches all known Casks
+      install — installs the given Cask
+      uninstall — uninstalls the given Cask
 
-$ brew cask search chrome
-google-chrome
+  Searching for Casks
 
-A search command with no search term will list all available Casks:
+  The brew cask search command accepts a series of substring arguments, and returns tokens representing matching Casks. Let’s see if there’s a Cask for Google Chrome:
 
-$ brew cask search
-# <list of all available Casks>
+  $ brew cask search chrome
+  google-chrome
 
-Installing Casks
+  A search command with no search term will list all available Casks:
 
-The command brew cask install accepts a Cask token as returned by brew cask search. Let’s try to install Google Chrome:
+  $ brew cask search
+  # <list of all available Casks>
 
-$ brew cask install google-chrome
-==> Downloading https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg
-==> Success! google-chrome installed to /opt/homebrew-cask/Caskroom/google-chrome/stable-channel
-==> Linking Google Chrome.app to /Users/paulh/Applications/Google Chrome.app
+  Installing Casks
 
-Uninstalling Casks
+  The command brew cask install accepts a Cask token as returned by brew cask search. Let’s try to install Google Chrome:
 
-Easy peasy:
+  $ brew cask install google-chrome
+  ==> Downloading https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg
+  ==> Success! google-chrome installed to /opt/homebrew-cask/Caskroom/google-chrome/stable-channel
+  ==> Linking Google Chrome.app to /Users/paulh/Applications/Google Chrome.app
 
-$ brew cask uninstall google-chrome
+  Uninstalling Casks
 
-This will both uninstall the Cask and remove symlinks which were created in ~/Applications.
+  Easy peasy:
 
-To uninstall all versions of a Cask, use --force:
+  $ brew cask uninstall google-chrome
 
-$ brew cask uninstall --force google-chrome
+  This will both uninstall the Cask and remove symlinks which were created in ~/Applications.
 
-Note that uninstall --force is currently imperfect. See the man page for more information.
-Other Commands
+  To uninstall all versions of a Cask, use --force:
 
-    info — displays information about the given Cask
-    list — with no args, lists installed Casks; given installed Casks, lists staged files
-    fetch — downloads Cask resources to local cache (with --force, re-download even if already cached)
-    doctor — checks for configuration issues
-    cleanup — cleans up cached downloads (with --outdated, only cleans old downloads)
-    home — opens the homepage of the given Cask; or with no arguments, the homebrew-cask project page
-    update — a synonym for brew update
-    zap — try to remove all files associated with a Cask (including resources which may be shared with other applications)
+  $ brew cask uninstall --force google-chrome
 
-The following commands are for Cask authors:
+  Note that uninstall --force is currently imperfect. See the man page for more information.
+  Other Commands
 
-    audit — verifies installability of Casks
-    cat — dumps the given Cask to the standard output
-    create — creates a Cask and opens it in an editor
-    edit — edits the given Cask
+      info — displays information about the given Cask
+      list — with no args, lists installed Casks; given installed Casks, lists staged files
+      fetch — downloads Cask resources to local cache (with --force, re-download even if already cached)
+      doctor — checks for configuration issues
+      cleanup — cleans up cached downloads (with --outdated, only cleans old downloads)
+      home — opens the homepage of the given Cask; or with no arguments, the homebrew-cask project page
+      update — a synonym for brew update
+      zap — try to remove all files associated with a Cask (including resources which may be shared with other applications)
 
-The following aliases and abbreviations are provided for convenience:
+  The following commands are for Cask authors:
 
-    ls — list
-    -S — search
-    rm, remove — uninstall
-    up — update
-    dr — doctor
+      audit — verifies installability of Casks
+      cat — dumps the given Cask to the standard output
+      create — creates a Cask and opens it in an editor
+      edit — edits the given Cask
 
-Tab Completion
+  The following aliases and abbreviations are provided for convenience:
 
-Homebrew/homebrew-completions supports bash and fish completions (only for brew-cask right now). Install them with:
+      ls — list
+      -S — search
+      rm, remove — uninstall
+      up — update
+      dr — doctor
 
-$ brew install homebrew/completions/brew-cask-completion
+  Tab Completion
 
-For zsh completion support, simply run:
+  Homebrew/homebrew-completions supports bash and fish completions (only for brew-cask right now). Install them with:
 
-$ brew install `zsh-completions`
+  $ brew install homebrew/completions/brew-cask-completion
 
-Inspecting Installed Casks
+  For zsh completion support, simply run:
 
-List all installed Casks
+  $ brew install `zsh-completions`
 
-$ brew cask list
-adium          google-chrome     onepassword
+  Inspecting Installed Casks
 
-Show details about a specific Cask:
+  List all installed Casks
 
-$ brew cask info caffeine
-caffeine: 1.1.1
-http://lightheadsw.com/caffeine/
-Not installed
-https://github.com/caskroom/homebrew-cask/blob/master/Casks/caffeine.rb
+  $ brew cask list
+  adium          google-chrome     onepassword
 
-Updating/Upgrading Casks
+  Show details about a specific Cask:
 
-Since the homebrew-cask repository is a Homebrew Tap, you’ll pull down the latest Casks every time you issue the regular Homebrew command brew update. Currently, homebrew-cask cannot always detect if an Application has been updated. You can force an update via the command brew cask install --force. We are working on improving this.
+  $ brew cask info caffeine
+  caffeine: 1.1.1
+  http://lightheadsw.com/caffeine/
+  Not installed
+  https://github.com/caskroom/homebrew-cask/blob/master/Casks/caffeine.rb
 
-It is generally safe to run updates from within an Application.
-Updating/Upgrading the Homebrew-cask Tool
+  Updating/Upgrading Casks
 
-When a new version homebrew-cask is released, it will appear in the output of brew outdated after running brew update. You can upgrade it via the normal Homebrew brew upgrade workflow:
+  Since the homebrew-cask repository is a Homebrew Tap, you’ll pull down the latest Casks every time you issue the regular Homebrew command brew update. Currently, homebrew-cask cannot always detect if an Application has been updated. You can force an update via the command brew cask install --force. We are working on improving this.
 
-$ brew update && brew upgrade brew-cask && brew cleanup && brew cask cleanup
+  It is generally safe to run updates from within an Application.
+  Updating/Upgrading the Homebrew-cask Tool
 
-Additional Taps (optional)
+  When a new version homebrew-cask is released, it will appear in the output of brew outdated after running brew update. You can upgrade it via the normal Homebrew brew upgrade workflow:
 
-The primary homebrew-cask Tap includes most of the Casks that a typical user will be interested in. There are a few additional Taps where we store different kinds of Casks.
-Tap name 	description
-caskroom/versions 	contains alternate versions of Casks (e.g. betas, nightly releases, old versions)
-caskroom/fonts 	contains Casks that install fonts, which are kept separate so we can educate users about the different licensing landscape around font installation/usage
-caskroom/unofficial 	contains Casks that install unofficial builds or forks
+  $ brew update && brew upgrade brew-cask && brew cleanup && brew cask cleanup
 
-There are also alternate Cask Taps maintained by users.
+  Additional Taps (optional)
 
-You can tap any of the above with a brew tap command:
+  The primary homebrew-cask Tap includes most of the Casks that a typical user will be interested in. There are a few additional Taps where we store different kinds of Casks.
+  Tap name 	description
+  caskroom/versions 	contains alternate versions of Casks (e.g. betas, nightly releases, old versions)
+  caskroom/fonts 	contains Casks that install fonts, which are kept separate so we can educate users about the different licensing landscape around font installation/usage
+  caskroom/unofficial 	contains Casks that install unofficial builds or forks
 
-$ brew tap <tap_name>
+  There are also alternate Cask Taps maintained by users.
 
-after which, Casks from the new Tap will be available to search or install just like Casks from the main Tap. brew update will automatically keep your new Tap up to date.
+  You can tap any of the above with a brew tap command:
 
-You may also specify a fully-qualified Cask token (which includes the Tap) for any brew cask command. This will implicitly add the Tap if you have not previously added it with brew tap:
+  $ brew tap <tap_name>
 
-$ brew cask install caskroom/fonts/font-symbola
+  after which, Casks from the new Tap will be available to search or install just like Casks from the main Tap. brew update will automatically keep your new Tap up to date.
 
-Options
+  You may also specify a fully-qualified Cask token (which includes the Tap) for any brew cask command. This will implicitly add the Tap if you have not previously added it with brew tap:
 
-brew cask accepts a number of options:
+  $ brew cask install caskroom/fonts/font-symbola
 
-    --version: print version and exit
-    --debug: output debug information
-    --no-binaries: skip symlinking executable binaries into /usr/local/bin
+  Options
 
-You can also modify the default installation locations used when issuing brew cask install:
+  brew cask accepts a number of options:
 
-    --caskroom=/my/path determines where the actual applications will be located. Should be handled with care — setting it outside /opt or your home directory might mess up your system. Default is /opt/homebrew-cask/Caskroom.
-    --appdir=/my/path changes the path where the symlinks to the applications (above) will be generated. This is commonly used to create the links in the root Applications directory instead of the home Applications directory by specifying --appdir=/Applications. Default is ~/Applications.
-    --prefpanedir=/my/path changes the path for PreferencePane symlinks. Default is ~/Library/PreferencePanes
-    --qlplugindir=/my/path changes the path for Quicklook Plugin symlinks. Default is ~/Library/QuickLook
-    --fontdir=/my/path changes the path for Fonts symlinks. Default is ~/Library/Fonts
-    --binarydir=/my/path changes the path for binary symlinks. Default is /usr/local/bin
-    --input_methoddir=/my/path changes the path for Input Methods symlinks. Default is ~/Library/Input Methods
-    --screen_saverdir=/my/path changes the path for Screen Saver symlinks. Default is ~/Library/Screen Savers
+      --version: print version and exit
+      --debug: output debug information
+      --no-binaries: skip symlinking executable binaries into /usr/local/bin
 
-To make these settings persistent, you might want to add the following line to your .bash_profile or .zshenv:
+  You can also modify the default installation locations used when issuing brew cask install:
 
-# Specify your defaults in this environment variable
-export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/etc/Caskroom"
+      --caskroom=/my/path determines where the actual applications will be located. Should be handled with care — setting it outside /opt or your home directory might mess up your system. Default is /opt/homebrew-cask/Caskroom.
+      --appdir=/my/path changes the path where the symlinks to the applications (above) will be generated. This is commonly used to create the links in the root Applications directory instead of the home Applications directory by specifying --appdir=/Applications. Default is ~/Applications.
+      --prefpanedir=/my/path changes the path for PreferencePane symlinks. Default is ~/Library/PreferencePanes
+      --qlplugindir=/my/path changes the path for Quicklook Plugin symlinks. Default is ~/Library/QuickLook
+      --fontdir=/my/path changes the path for Fonts symlinks. Default is ~/Library/Fonts
+      --binarydir=/my/path changes the path for binary symlinks. Default is /usr/local/bin
+      --input_methoddir=/my/path changes the path for Input Methods symlinks. Default is ~/Library/Input Methods
+      --screen_saverdir=/my/path changes the path for Screen Saver symlinks. Default is ~/Library/Screen Savers
 
-Note that you still can override the environment variable HOMEBREW_CASK_OPTS by explicitly providing options in the command line:
+  To make these settings persistent, you might want to add the following line to your .bash_profile or .zshenv:
 
-# Will force the Chrome app to be linked to ~/Applications
-# even though HOMEBREW_CASK_OPTS specified /Applications
-$ brew cask install --appdir="~/Applications" google-chrome
+  # Specify your defaults in this environment variable
+  export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/etc/Caskroom"
 
-Advanced searching
+  Note that you still can override the environment variable HOMEBREW_CASK_OPTS by explicitly providing options in the command line:
 
-The default search algorithm is a lax substring approach, which does not use the command-line arguments exactly as given. If you need to specify a search more precisely, a single search argument enclosed in / characters will be taken as a Ruby regular expression:
+  # Will force the Chrome app to be linked to ~/Applications
+  # even though HOMEBREW_CASK_OPTS specified /Applications
+  $ brew cask install --appdir="~/Applications" google-chrome
 
-$ brew cask search '/^google.c[a-z]rome$/'
-google-chrome
+  Advanced searching
 
-Other Ways to Specify a Cask
+  The default search algorithm is a lax substring approach, which does not use the command-line arguments exactly as given. If you need to specify a search more precisely, a single search argument enclosed in / characters will be taken as a Ruby regular expression:
 
-Most brew cask commands can accept a Cask token as an argument. As described above, the token on the command line can take the form of:
+  $ brew cask search '/^google.c[a-z]rome$/'
+  google-chrome
 
-    A token as returned by brew cask search, eg: google-chrome.
-    A fully-qualified token which includes the Tap, eg: caskroom/fonts/font-symbola.
+  Other Ways to Specify a Cask
 
-brew cask also accepts three other forms as arguments
+  Most brew cask commands can accept a Cask token as an argument. As described above, the token on the command line can take the form of:
 
-    A path to a Cask file, eg: /usr/local/Cellar/brew-cask/0.25.0/Casks/google-chrome.rb.
-    A curl-retrievable URI to a Cask file, eg: https://raw.github.com/caskroom/homebrew-cask/f54bbfaae0f2fa7210484f46313a459cb8a14d2f/Casks/google-chrome.rb.
-    A file in the current working directory, eg: my-modfied-google-chrome.rb. Note that matching Tapped Cask tokens will be preferred over this form when there is a conflict. To force the use of a Cask file in the current directory, specify a pathname with slashes, eg: ./google-chrome.rb.
+      A token as returned by brew cask search, eg: google-chrome.
+      A fully-qualified token which includes the Tap, eg: caskroom/fonts/font-symbola.
 
-The last three forms are intended for users who wish to maintain private Casks.
-Taps
+  brew cask also accepts three other forms as arguments
 
-You can add Casks to your existing (or new) Taps: just create a directory named Casks inside your Tap, put your Cask files there, and everything will just work.
+      A path to a Cask file, eg: /usr/local/Cellar/brew-cask/0.25.0/Casks/google-chrome.rb.
+      A curl-retrievable URI to a Cask file, eg: https://raw.github.com/caskroom/homebrew-cask/f54bbfaae0f2fa7210484f46313a459cb8a14d2f/Casks/google-chrome.rb.
+      A file in the current working directory, eg: my-modfied-google-chrome.rb. Note that matching Tapped Cask tokens will be preferred over this form when there is a conflict. To force the use of a Cask file in the current directory, specify a pathname with slashes, eg: ./google-chrome.rb.
 
-    Status API Training Shop Blog About Pricing 
+  The last three forms are intended for users who wish to maintain private Casks.
+  Taps
 
-    © 2015 GitHub, Inc. Terms Privacy Security Contact Help 
+  You can add Casks to your existing (or new) Taps: just create a directory named Casks inside your Tap, put your Cask files there, and everything will just work.
+
+    Status API Training Shop Blog About Pricing
+
+    © 2015 GitHub, Inc. Terms Privacy Security Contact Help
 
 
   brew cask search font | sed '/Partial/d' | xargs brew cask info | grep http | xargs open
-  
-  
+
+
 
 ## OUTRO 1m

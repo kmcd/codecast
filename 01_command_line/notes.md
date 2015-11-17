@@ -248,6 +248,8 @@
   * http://www.ee.surrey.ac.uk/Teaching/Unix/unix5.html
   * http://blog.sanctum.geek.nz/series/unix-as-ide/
   * http://lifehacker.com/eight-terminal-utilities-every-os-x-command-line-user-s-1593793109
+  * http://www.learnenough.com/command-line-tutorial
+  
 ## UNIX Power Tools
 
   Faster erasing ( 9.2 )
