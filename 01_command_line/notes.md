@@ -45,7 +45,7 @@
 
   Evaluation
   * Create an alias for X
-  
+
   9.16  backquotes ( ` ` ) does command substitution
   Process substitution ( 9.18 )
 
@@ -54,7 +54,7 @@
   Chapter 11: The Lessons of History
   16.12 Setting Shell History Options
   106 Using History
-  
+
 ## Keyboard shortcuts 2m
 
   Faster erasing ( 9.2 )
@@ -62,12 +62,12 @@
   102 Command Line Editing
   clear
   exit
-  
+
 ## Pattern expansion 2m
 
   9.5 Build Strings with { }
 
-## Directory navigation 4m
+## Directory navigation 2m
 
   e.g. Rails source
 
@@ -78,19 +78,24 @@
   man hier (file system layout)
   /Volumes see: OSX page
   df
+  
+  export CC_CLI=DIR
+  cd $CC_CLI
+  alias cdc="cd DIR"
 
   Chapter 9: Saving Time on the Command Line
 
   Chapter 15: Wildcards (split into two sections?)
 
-## File display 4m
+## Wildcards 4m
+## File display 2m
 
   e.g. Rails source
 
   cat
   less
   (syntax highlight)
-  du
+  du/df
   wc?
   head / tail
   open
@@ -172,9 +177,9 @@
   4.4 Running Several Commands All at Once
   4.10 Running All Scripts in a Directory (loop)
   2.14 Saving or Grouping Output from Several Commands
-  
+
   211 Command Line
-  
+
   Command line substitution : ` ` or $() (in pipe section)
 
 ## Networking 2m
@@ -208,7 +213,7 @@
   OSX launchctl
 
   Job control ( 12.1 )
-  
+
   Chapter 38: Starting, Stopping, and Killing Processes
   Chapter 39: Time and Performance
   Chapter 40: Delayed Execution
@@ -236,7 +241,7 @@
   xcode-select --install
   remove app
   ruby/prog lang env
-  
+
   http://coolestguidesontheplanet.com/installing-homebrew-os-x-yosemite-10-10-package-manager-unix-apps/
 
 ## OUTRO 1m
@@ -254,7 +259,7 @@
   * http://blog.sanctum.geek.nz/series/unix-as-ide/
   * http://lifehacker.com/eight-terminal-utilities-every-os-x-command-line-user-s-1593793109
   * http://www.learnenough.com/command-line-tutorial
-  
+
 ## UNIX Power Tools
 
   Faster erasing ( 9.2 )

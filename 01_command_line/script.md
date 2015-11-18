@@ -57,7 +57,7 @@
   [me@linuxbox ~]$ man ls
   On most Linux systems, man uses less to display the manual page, so all of the familiar less commands work while displaying the page.
 
-  The “manual” that man displays is broken into sections and covers not only user commands but also system administration commands, program- ming interfaces, file formats, and more. Table 5-1 describes the layout of the manual.
+  The "manual" that man displays is broken into sections and covers not only user commands but also system administration commands, program- ming interfaces, file formats, and more. Table 5-1 describes the layout of the manual.
 
   Table 5-1: Man Page Organization
    Section
@@ -223,7 +223,7 @@
   which works only for executable programs, not builtins or aliases that are substitutes for actual executable programs. When we try to use which on a shell builtin (for example, cd), we get either no response or an error message:
   [me@linuxbox ~]$ which cd
   /usr/bin/which: no cd in (/opt/jre1.6.0_03/bin:/usr/lib/qt-3.3/bin:/usr/kerber os/bin:/opt/jre1.6.0_03/bin:/usr/lib/ccache:/usr/local/bin:/usr/bin:/bin:/home /me/bin)
-  This is a fancy way of saying “command not found.”
+  This is a fancy way of saying "command not found."
 
   A login bash will read .bash_profile , .bash_login , or .profile . A bash subshell - but not a login shell - will read a file named .bashrc in your home directory.
 
@@ -444,7 +444,7 @@
   previous word.
   CTRL-Y Yank text from the kill-ring and insert it at the cursor location.
                             THE META KEY
-  If you venture into the Readline documentation, which can be found in the “READLINE” section of the bash man page, you will encounter the term meta key.
+  If you venture into the Readline documentation, which can be found in the "READLINE" section of the bash man page, you will encounter the term meta key.
 
   On modern keyboards this maps to the ALT key, but it wasn’t always so.
   Back in the dim times (before PCs but after Unix) not everybody had their own computer.
@@ -487,7 +487,7 @@
 
   This happened because D matches more than one entry in the directory.
 
-  For completion to be successful, the “clue” you give it has to be unambiguous.
+  For completion to be successful, the "clue" you give it has to be unambiguous.
 
   We can go further:
   [me@linuxbox ~]$ ls Do Then press TAB:
@@ -508,7 +508,7 @@
   This is useful when you want to use more than one possible match.
   There quite a few more that I find rather obscure.
 
-  You can see a list in the bash man page under the “READLINE” section.
+  You can see a list in the bash man page under the "READLINE" section.
 
   line-kill character - typically CTRL-u o
 
@@ -565,6 +565,10 @@
   CTL + L clear
   CTL + D exit
   CTL + C cancel/quit
+
+  ctrlw is the standard "kill word" (aka werase).
+
+  ctrlu kills the whole line (kill).
 
 ## Pattern expansion 2m
   9.5 Build Strings with { }
@@ -639,6 +643,7 @@
   ...
   end
 
+
   Yes, csh also has built-in arithmetic, but its @ operator ( 47.4 ) can't make numbers with leading zeros. This nice trick shows that the {} operators are good for more than just filenames.
 
   To create sets of subdirectories:
@@ -666,7 +671,6 @@
       %
 
       lpr project_repor{t,t,t,t,t,t,t,t,t,t}
-
 ### VO 300w
   Build Strings with pattern-expansion characters: {}
 
@@ -685,10 +689,11 @@
   To copy filename to filename.bak in one easy step:
 
   $ cp filename{,.bak}
-  
+
   To print files from other directory(s) without retyping the whole pathname:
 
   $ lpr /usr3/hannah/training/{ed,vi,mail}/lab.{ms,out}
+
 
   /usr3/hannah/training/ed/lab.ms
   /usr3/hannah/training/ed/lab.out
@@ -764,7 +769,7 @@
 
   (Material in the preceding paragraphs has been adapted from Edition 2.5b of The GNU Bash Reference Manual for bash Version 2.05b, last updated July 15, 2002; http://www.gnu.org/software/bash/manual/bashref.html.)
 
-  As of bash version 3, there is a fascinating new variable called $HISTTIMEFORMAT. If set and non-null, it specifies an strftime format string to use when displaying or writing the history. If you don’t have bash version 3, but you do use a terminal with a scroll- back buffer, adding a date and time stamp to your prompt can also be very helpful. See Recipe 16.2, “Customizing Your Prompt.” Watch out because stock bash does not put a trailing space after the format, but some systems (e.g., Debian) have patched it to do so:
+  As of bash version 3, there is a fascinating new variable called $HISTTIMEFORMAT. If set and non-null, it specifies an strftime format string to use when displaying or writing the history. If you don’t have bash version 3, but you do use a terminal with a scroll- back buffer, adding a date and time stamp to your prompt can also be very helpful. See Recipe 16.2, "Customizing Your Prompt." Watch out because stock bash does not put a trailing space after the format, but some systems (e.g., Debian) have patched it to do so:
 
   bash-3.00# export HISTTIMEFORMAT='%Y-%m-%d_%H:%M:%S'
   bash-3.00# history
@@ -799,7 +804,7 @@
      7  : 2006-10-25_20:48:47; HISTTIMEFORMAT='%Y-%m-%d_%H:%M:%S; '
      8  : 2006-10-25_20:48:48; history
 
-  The last example uses the : built-in with the ; metacharacter to encapsulate the date stamp into a “do nothing” command (e.g., : 2006-10-25_20:48:48;).
+  The last example uses the : built-in with the ; metacharacter to encapsulate the date stamp into a "do nothing" command (e.g., : 2006-10-25_20:48:48;).
 
   This allows you to reuse a literal line from the history file without having to bother parsing out the date stamp.
 
@@ -852,7 +857,7 @@
 
   When you find it, you can either press ENTER to execute the command or press CTRL-J to copy the line from the history list to the current command line.
 
-  To find the next occurrence of the text (moving “up” the history list), press CTRL-R again.
+  To find the next occurrence of the text (moving "up" the history list), press CTRL-R again.
 
   To quit searching, press either CTRL-G or CTRL-C.
 
@@ -862,7 +867,7 @@
   (reverse-i-search)`':
   The prompt changes to indicate that we are performing a reverse incre- mental search.
 
-  It is “reverse” because we are searching from “now” to some time in the past.
+  It is "reverse" because we are searching from "now" to some time in the past.
 
   Next, we start typing our search text, which in this example is /usr/bin:
   (reverse-i-search)`/usr/bin': ls -l /usr/bin > ls-output.txt
@@ -876,28 +881,32 @@
   Press CTRL-J:
   [me@linuxbox ~]$ ls -l /usr/bin > ls-output.txt
   Our shell prompt returns, and our command line is loaded and ready for action!
+
   Table 8-5 lists some of the keystrokes used to manipulate the history list.
-  Table 8-5: History Commands
-  Key Action
+
   CTRL-P Move to the previous history entry.
-
   Same action as the up arrow.
-  CTRL-N Move to the next history entry.
 
+  CTRL-N Move to the next history entry.
   Same action as the down arrow.
+
   ALT-< Move to the beginning (top) of the history list.
   ALT-> Move to the end (bottom) of the history list; i.e., the current command line.
-  CTRL-R Reverse incremental search.
 
+  CTRL-R Reverse incremental search.
   Searches incrementally from the current command line up the history list.
+
   ALT-P Reverse search, non-incremental.
 
   With this key, type the search string and press ENTER before the search is performed.
   ALT-N Forward search, non-incremental.
+
   CTRL-O Execute the current item in the history list and advance to the next one.
 
   This is handy if you are trying to re-execute a sequence of commands in the history list.
+
   History Expansion
+
   The shell offers a specialized type of expansion for items in the history list by using the ! character.
 
   We have already seen how the exclamation point can be followed by a number to insert an entry from the history list.
@@ -906,7 +915,7 @@
   I would caution against using the !string and !?string forms unless you are absolutely sure of the contents of the history list items.
   Many more elements are available in the history expansion mechanism, but this subject is already too arcane and our heads may explode if we con- tinue.
 
-  The “HISTORY EXPANSION” section of the bash man page goes into all the gory details.
+  The "HISTORY EXPANSION" section of the bash man page goes into all the gory details.
 
   Table 8-6: History Expansion Commands
 
@@ -916,8 +925,88 @@
   It is probably easier to press the up arrow and ENTER.
   !number Repeat history list item number.
   !string Repeat last history list item starting with string.
-
   !?string Repeat last history list item containing string.
+
+
+### VO 300w
+
+  *history
+
+  The history command lists the saved commands, each with an identifying number.
+
+  $ history 20
+
+  shows your last 20 commands
+
+  *filter
+
+  $ history | head
+  $ history | tail
+  $ history | grep
+
+  *search
+
+  To start an incre- mental search, enter CTRL-R followed by the text you are looking for.
+
+  When you find it, you can either press ENTER to execute the command or press CTRL-J to copy the line from the history list to the current command line.
+
+  To find the next occurrence of the text (moving "up" the history list), press CTRL-R again.
+
+  To quit searching, press either CTRL-G or CTRL-C.
+
+  [me@linuxbox ~]$ ls
+
+  First press CTRL-R:
+
+  Now we can execute the command by pressing ENTER
+
+  *expansion
+
+  !$  means "take the last thing on the previous command line
+
+  !number Repeat history list item number
+
+  SD:
+  * !string Repeat last history list item starting with string.
+  * !?string Repeat last history list item containing string.
+
+  Other expansions available; never needed them - simply edit history.
+
+  *configuration
+
+  Increasing $HISTSIZE may be useful, and unsetting it causes the $HISTFILE length to be unlimited.
+
+  $HISTFILE
+
+  The $HISTSIZE variable sets the number of lines permit- ted in the history stack in memory.
+
+  $HISTIGNORE and $HISTCONTROL control what goes into your history in the first place.
+
+  $HISTIGNORE is more flexible since it allows you to specify patterns to decide what command lines to save to the history.
+
+  $HISTCONTROL is more limited in that it sup- ports only the few keywords listed here (any other value is ignored):
+
+  ignorespace
+  Command lines that begin with a space character are not saved in the history list.
+
+  ignoredups
+  Command lines that match the previous history entry are not saved in the his- tory list.
+
+  ignoreboth
+  Shorthand for both ignorespace and ignoredups.
+
+  erasedups
+  All previous command lines that match the current line are removed from the history list before that line is saved.
+
+  $HISTTIMEFORMAT. strftime format string to use when displaying or writing the history.
+
+  bash-3.00# HISTTIMEFORMAT=': %Y-%m-%d_%H:%M:%S; '
+  bash-3.00# history
+  4  : 2006-10-25_20:48:18; history
+  5  : 2006-10-25_20:48:39; export HISTTIMEFORMAT='%Y-%m-%d_%H:%M:%S'
+  6  : 2006-10-25_20:48:41; history
+  7  : 2006-10-25_20:48:47; HISTTIMEFORMAT='%Y-%m-%d_%H:%M:%S; '
+  8  : 2006-10-25_20:48:48; history
 
 ## Directory navigation 4m
 
@@ -929,8 +1018,8 @@
   /Volumes see: OSX page
   df
 
-
   tree
+
   Tree  is  a  recursive  directory  listing program that produces a depth indented listing of files, which is colorized ala dircolors if the LS_COLORS environment variable is set and output is to tty.
 
   With  no  arguments,  tree  lists the files in the current directory.  When directory arguments are given, tree lists all the files and/or directories found in the given  directories  each  in  turn.
@@ -1028,7 +1117,7 @@
 
   Wildcards can be used at any point or points within a path. Remember, wildcards only match names that already exist. You can't use them to create new files ( 9.4 ) - though some shells have curly braces ( {} ) ( 9.5 , 15.3 ) for doing that. Article 1.18 has more about how wildcards are handled.
 
-   1.18 Who Handles Wildcards?
+  1.18 Who Handles Wildcards?
 
   Wildcards ( 1.16 ) are actually defined by the UNIX shells, rather than the UNIX filesystem. In theory, a new shell could define new wildcards, and consequently, we should discuss wildcarding when we discuss the shell. In practice, all UNIX shells (including ksh , bash , and other variants ( 1.8 ) ) honor the same wildcard conventions, and we don't expect to see anyone change the rules. (But different shells do different things when a wildcard doesn't match ( 15.4 ) .)
 
@@ -1118,18 +1207,18 @@
 
   pwd
   cd
-  “Print Working Directory”. Shows the current location in the directory tree.
+  "Print Working Directory". Shows the current location in the directory tree.
   cd
   cd, chdir
-  “Change Directory”. When typed all by itself, it returns you to your home directory.
+  "Change Directory". When typed all by itself, it returns you to your home directory.
   cd directory
   cd directory
   Change into the specified directory name. Example: cd /usr/src/linux
   cd ~
-  “~” is an alias for your home directory. It can be used as a shortcut to your “home”, or other directories relative to your home.
+  "~" is an alias for your home directory. It can be used as a shortcut to your "home", or other directories relative to your home.
   cd ..
   cd..
-  Move up one directory. For example, if you are in /home/vic and you type “cd ..”, you will end up in /home.
+  Move up one directory. For example, if you are in /home/vic and you type "cd ..", you will end up in /home.
   cd -
   Return to previous directory. An easy way to get back to your previous location!
   ls
@@ -1140,18 +1229,161 @@
   List the files in the specified directory. Example:ls /var/log
   ls -l
   dir
-  List files in “long” format, one file per line. This also shows you additional info about the file, such as ownership, permissions, date, and size.
+  List files in "long" format, one file per line. This also shows you additional info about the file, such as ownership, permissions, date, and size.
   ls -a
   dir /a
-  List all files, including “hidden” files. Hidden files are those files that begin with a “.”, e.g. The .bash_history file in your home directory.
+  List all files, including "hidden" files. Hidden files are those files that begin with a ".", e.g. The .bash_history file in your home directory.
   ls -ld
   directory
-  A “long” list of “directory”, but instead of showing the directory contents, show the directory's detailed information. For example, compare the output of the following two commands:
+  A "long" list of "directory", but instead of showing the directory contents, show the directory's detailed information. For example, compare the output of the following two commands:
   ls -l /usr/bin
   ls -ld /usr/bin
   ls /usr/bin/d*
   dir d*.*
-  List all files whose names begin with the letter “d” in the /usr/bin directory.
+  List all files whose names begin with the letter "d" in the /usr/bin directory.
+
+### VO 300w
+  ( download rails src)
+
+  See: https://developer.apple.com/library/mac/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html
+
+  $ man hier
+
+  pwd
+  "Print Working Directory". Shows the current location in the directory tree.
+
+  cd
+  Changes the working directory to your home directory.
+
+  cd cd -
+  Changes the working directory to the previous working directory.
+
+  cd ~username
+  Changes the working directory to the home directory of username. For example, cd ~bob changes the directory to the home directory of user bob.
+
+  An absolute pathname begins with the root directory
+  a relative pathname starts from the working directory
+  ./
+  ../
+
+  cd
+  "Change Directory". returns you to your home directory.
+
+  cd directory
+  Change into the specified directory name. Example: cd /usr/src/linux
+
+  cd ~
+  "~" is an alias for your home directory. It can be used as a shortcut to your "home", or other directories relative to your home.
+
+  cd ..
+  cd .
+  Move up one directory. For example, if you are in /home/vic and you type "cd ..", you will end up in /home.
+
+  cd - Return to previous directory.
+
+  ls List all files in the current directory, in column format.
+
+  ls directory
+  List the files in the specified directory. Example:ls /var/log
+
+  ls -l
+  List files in "long" format, one file per line.
+
+  ls -a
+
+  List all files, including "hidden" files. Hidden files are those files that begin with a ".", e.g. The .bash_history file in your home directory.
+
+  ls -ld directory
+  A "long" list of "directory", but instead of showing the directory contents, show the directory's detailed information. For example, compare the output of the following two commands:
+
+  ls -l /usr/bin
+  ls -ld /usr/bin
+
+  ls -lR recursive
+
+  *tree
+
+  -a     All files are printed.
+  -d     List directories only.
+  -f     Prints the full path prefix for each file.
+  -x     Stay on the current file-system only.  Ala find -xdev.
+  -L level Max display depth of the directory tree.
+  -P pattern
+  List only those files that match the wild-card pattern.
+  -I pattern
+  Do not list those files that match the wild-card pattern.
+  -r     Sort the output in reverse alphabetic order.
+  -t     Sort the output by last modification time instead of alphabetically.
+
+## Wildcards 4m
+  ?
+  *
+
+### VO 600w
+  abbreviate filenames or refer to groups of files.
+
+  Like a wildcard in a poker game, a wildcard in a filename can have any value.
+
+  ? matches any single character.
+
+  For example, letter? letterA , letter1, filenames with a non-printing character as their last letter, like letter ^C.
+
+  The * wildcard matches any character or group of zero or more characters.
+
+  For example, \*.txt matches all files whose names end with .txt ,
+
+  For example, you may want to list files whose names end with .txt , mail , or let: use a separate * with each filename ending:
+
+  \*.txt \*mail \*let
+
+  list all filenames that begin with digits, or all filenames that begin with uppercase letters. 
+  
+  program.[0123456789]
+
+  wildcard [ character-list ] matches any single character that appears in the list. The character list can be any group of ASCII characters;
+
+  if they are consecutive (e.g., A-Z, a-z, 0-9, or 3-5, for that matter), you can use a hyphen as shorthand for the range. For example, [a-zA-Z] means any alphabetic character.
+
+  Wildcards never match / , which is both the name of the filesystem root ( 1.19 ) and the character used to separate directory names in a path.
+
+  Therefore, the equivalent of rm * does virtually nothing on most operating systems. Under UNIX, it is very dangerous: it means "delete all the files in the current directory, regardless of their name." 
+
+  If a file's name begins with . , you always have to type the . explicitly.
+
+  For example, .*rc matches all files whose names begin with . and end with rc .
+
+  ? 	Any single character
+  * 	Any group of zero or more characters
+  [ab] 	Either a or b
+  [a-z] 	Any character between a and z, inclusive
+
+  Wildcards can be used at any point or points within a path. Remember, wildcards only match names that already exist.
+
+  You can't use them to create new files ( 9.4 ) - though some shells have curly braces ( {} ) ( 9.5 , 15.3 ) for doing that.
+
+  Most of the time, a program never sees wildcards. For example, typing:
+
+  $ lpr *
+
+  is exactly the same as typing:
+  $ lpr file1 file2 file3 file4 file5
+
+  you want to read some files from a tape, which requires the command tar x ( 20.4 ) , so you type the command tar x *.txt .
+
+  The shell expands the wildcard \*.txt , according to what's in the current directory, before it hands the completed command line over to tar for execution. 
+  
+  Problem: reference file archive not current directory.
+
+  use {} to generate any string - not just filenames that already exist. You have to type the unique part of each name, but you only have to type the common part once.
+
+  For example, to extract the files called project/wk9/summary , project/wk14/summary , and project/wk15/summary from a tar tape, you might use:
+
+  $ tar xv project/wk{9,14,15}/summary
+  x project/wk9/summary, 3161 bytes, 7 tape blocks
+  x project/wk14/summary, 878 bytes, 2 tape blocks
+  x project/wk15/summary, 2268 bytes, 5 tape blocks
+
+  put \*.txt in quotes to prevent the shell from expanding the wildcard
 
 ## File display 4m
   git clone RAILS
@@ -1277,7 +1509,7 @@
   Add the -a option, though, and open knows that you’re talking about an application, so it’ll search in the /Applications directory to find and launch it:
   $ open -a messages
       166 | Chapter 7: Multitasking
-  Notice that open is smart enough to ignore case: the actual application is called Messages. You can also use the open -a command to open applications that are in a subdirectory of /Applications. Want to launch the Console (located in /Applications/Utilities)? Use open -a console. Ready to compare the output of Activity Monitor to the ps command, as discussed earlier in this chapter? Launch Activity Monitor with open -a “activity monitor”.
+  Notice that open is smart enough to ignore case: the actual application is called Messages. You can also use the open -a command to open applications that are in a subdirectory of /Applications. Want to launch the Console (located in /Applications/Utilities)? Use open -a console. Ready to compare the output of Activity Monitor to the ps command, as discussed earlier in this chapter? Launch Activity Monitor with open -a "activity monitor".
   If you want to open a file with TextEdit, there’s another option to open that’s worth knowing: use open -e, and whatever you specify will be opened with the TextEdit pro­ gram, regardless of its type. For example, if you wanted to open an HTML file in TextEdit instead of with BBEdit, you could use the following:
   $ open -e ~/Sites/someFile.html
   The open command will then look in your Sites folder for the file someFile.html and open
@@ -1950,7 +2182,7 @@
       /Users/taylor/Documents/Books/Cool Web Sites/As Submitted/app-a.doc
       /Users/taylor/Documents/BlogWorld Expo/jazz-performances.doc
       /Users/taylor/Documents/Blog Backups/Nov-1-2007/art_dolls.txt
-  This output is quite interesting because it matches not only files where the word “Jazz” is part of the Spotlight metadata (as in the iTunes files), but also files that have “Jazz” in their name (the BlogWorld Expo document jazz-performances.doc), and even a plain- text file where the word “Jazz” appears in the text itself (art_dolls.txt). Pretty nifty, eh?
+  This output is quite interesting because it matches not only files where the word "Jazz" is part of the Spotlight metadata (as in the iTunes files), but also files that have "Jazz" in their name (the BlogWorld Expo document jazz-performances.doc), and even a plain- text file where the word "Jazz" appears in the text itself (art_dolls.txt). Pretty nifty, eh?
   Making Spotlight Useful
   Before leaving Spotlight, and certainly before we give up and assume that it’s only useful on the command line, let’s have a look at a couple of simple Unix commands that can extract useful information from the mdls information stream.
   Curious about the size in pixels of your JPEG files? You can quickly ascertain their height and width by using grep:
@@ -2286,7 +2518,7 @@
       /Users/taylor/Documents/Books/Cool Web Sites/As Submitted/app-a.doc
       /Users/taylor/Documents/BlogWorld Expo/jazz-performances.doc
       /Users/taylor/Documents/Blog Backups/Nov-1-2007/art_dolls.txt
-  This output is quite interesting because it matches not only files where the word “Jazz” is part of the Spotlight metadata (as in the iTunes files), but also files that have “Jazz” in their name (the BlogWorld Expo document jazz-performances.doc), and even a plain- text file where the word “Jazz” appears in the text itself (art_dolls.txt). Pretty nifty, eh?
+  This output is quite interesting because it matches not only files where the word "Jazz" is part of the Spotlight metadata (as in the iTunes files), but also files that have "Jazz" in their name (the BlogWorld Expo document jazz-performances.doc), and even a plain- text file where the word "Jazz" appears in the text itself (art_dolls.txt). Pretty nifty, eh?
   Making Spotlight Useful
   Before leaving Spotlight, and certainly before we give up and assume that it’s only useful on the command line, let’s have a look at a couple of simple Unix commands that can extract useful information from the mdls information stream.
   Curious about the size in pixels of your JPEG files? You can quickly ascertain their height and width by using grep:
@@ -2326,7 +2558,7 @@
   Discussion
   The syntax for the find utility is unlike other Unix tools. It doesn’t use options in the typical way, with dash and single-letter collections up front followed by several words of arguments. Rather, the options look like short words, and are ordered in a logical sequence describing the logic of which files are to be found, and what to do with them, if anything, when they are found. These word-like options are often called predicates.
   A find command’s first arguments are the directory or directories in which to search. A typical use is simply (.) for the current directory. But you can provide a whole list of directories, or even search the entire filesystem (permissions allowing) by specify- ing the root of the filesystem (/) as the starting point.
-  In our example the first option (the -name predicate) specifies the pattern we will search for. Its syntax is like the bash pattern matching syntax, so *.mp3 will match all filenames that end in the characters “.mp3”. Any file that matches this pattern is con- sidered to return true and will thus continue to the next predicate of the command.
+  In our example the first option (the -name predicate) specifies the pattern we will search for. Its syntax is like the bash pattern matching syntax, so *.mp3 will match all filenames that end in the characters ".mp3". Any file that matches this pattern is con- sidered to return true and will thus continue to the next predicate of the command.
   Think of it this way: find will climb around on the filesystem and each filename that it finds it will present to this gauntlet of conditions that must be run. Any condition that is true is passed. Encounter a false and that filename’s turn is immediately over, and the next filename is processed.
   Now the -print condition is easy. It is always true and it has the side effect of print- ing the name to standard output. So any file that has made it this far in the sequence of conditions will have its name printed.
   The -exec is a bit odd. Any filename making it this far will become part of a com- mand that is executed. The remainder of the lineup to the \; is the command to be executed. The {} is replaced by the name of the file that was found. So in our exam- ple, if find encounters a file named mhsr.mp3 in the ./music/jazz subdirectory, then the command that will be executed will be:
@@ -2336,14 +2568,14 @@
   consolidating arguments several to a line. (But with machines getting faster all the time, this is less and less of an issue. It might even be something worthwhile for your dual core or quad core processor to do.)
 
   9.2 Handling Filenames Containing Odd Characters Problem
-  You used a find command like the one in Recipe 9.1, “Finding All Your MP3 Files” but the results were not what you intended because many of your filenames contain odd characters.
+  You used a find command like the one in Recipe 9.1, "Finding All Your MP3 Files" but the results were not what you intended because many of your filenames contain odd characters.
   Solution
-  First, understand that to Unix folks, odd means “anything not a lowercase letter, or maybe a number.” So uppercase, spaces, punctuation, and character accents are all odd. But you’ll find all of those and more in the names of many songs and bands.
+  First, understand that to Unix folks, odd means "anything not a lowercase letter, or maybe a number." So uppercase, spaces, punctuation, and character accents are all odd. But you’ll find all of those and more in the names of many songs and bands.
   Depending on the oddness of the characters, your system, tools, and goal, it might be enough to simply quote the replacement string (i.e., put single quotes around the {}, as in '{}') . You did test your command first, right?
   If that’s no good, try using the -print0 argument to find and the -0 argument to xargs. -print0 tells find to use the null character (\0) instead of whitespace as the output delimiter between pathnames found. -0 then tells xargs the input delimiter. These will always work, but they are not supported on every system.
-  The xargs command takes whitespace delimited (except when using -0) pathnames from standard input and executes a specified command on as many of them as possi- ble (up to a bit less than the system’s ARG_MAX value; see Recipe 15.13, “Working Around “argument list too long” Errors”). Since there is a lot of overhead associated with calling other commands, using xargs can drastically speed up operations because you are calling the other command as few times as possible, rather than each time a pathname is found.
+  The xargs command takes whitespace delimited (except when using -0) pathnames from standard input and executes a specified command on as many of them as possi- ble (up to a bit less than the system’s ARG_MAX value; see Recipe 15.13, "Working Around "argument list too long" Errors"). Since there is a lot of overhead associated with calling other commands, using xargs can drastically speed up operations because you are calling the other command as few times as possible, rather than each time a pathname is found.
    186 | Chapter 9: Finding Files: find, locate, slocate
-   So, to rewrite the solution from Recipe 9.1, “Finding All Your MP3 Files” to handle odd characters:
+   So, to rewrite the solution from Recipe 9.1, "Finding All Your MP3 Files" to handle odd characters:
        $ find . -name '*.mp3' -print0 | xargs -i -0 mv '{}' ~/songs
   Here is a similar example demonstrating how to use xargs to work around spaces in a path or filename when locating and then coping files:
        $ locate P1100087.JPG PC220010.JPG PA310075.JPG PA310076.JPG | xargs -i cp '{}' .
@@ -2354,16 +2586,16 @@
   See Also
   • man find
   • man xargs
-  • Recipe 9.1, “Finding All Your MP3 Files”
-  • Recipe 15.13, “Working Around “argument list too long” Errors”
+  • Recipe 9.1, "Finding All Your MP3 Files"
+  • Recipe 15.13, "Working Around "argument list too long" Errors"
   9.3 Speeding Up Operations on Found Files Problem
-  You used a find command like the one in Recipe 9.1, “Finding All Your MP3 Files” and the resulting operations take a long time because you found a lot of files, so you want to speed it up.
+  You used a find command like the one in Recipe 9.1, "Finding All Your MP3 Files" and the resulting operations take a long time because you found a lot of files, so you want to speed it up.
    Speeding Up Operations on Found Files | 187
    Solution
-  See the discussion on xargs Recipe 9.2, “Handling Filenames Containing Odd Characters.”
+  See the discussion on xargs Recipe 9.2, "Handling Filenames Containing Odd Characters."
   See Also
-  • Recipe 9.1, “Finding All Your MP3 Files”
-  • Recipe 9.2, “Handling Filenames Containing Odd Characters”
+  • Recipe 9.1, "Finding All Your MP3 Files"
+  • Recipe 9.2, "Handling Filenames Containing Odd Characters"
   9.4 Finding Files Across Symbolic Links Problem
   You issued a find command to find your .mp3 files but it didn’t find all of them—it missed all those that were part of your filesystem but were mounted via a symbolic link. Is find unable to cross that kind of boundary?
   Solution
@@ -2381,7 +2613,7 @@
        $ find . -follow -iname '*.mp3' -print0 | xargs -i -0 mv '{}' ~/songs
   Discussion
   Sometimes you care about the case of the filename and sometimes you don’t. Use the -iname option when you don’t care, in situations like this, where .mp3 or .MP3 both indicate that the file is probably an MP3 file. (We say probably because on Unix-like systems you can name a file anything that you want. It isn’t forced to have a particu- lar extension.)
-  One of the most common places where you’ll see the upper- and lowercase issue is when dealing with Microsoft Windows-compatible filesystems, especially older or “lowest common denominator” filesystems. A digital camera that we use stores its files with filenames like PICT001.JPG, incrementing the number with each picture. If you were to try:
+  One of the most common places where you’ll see the upper- and lowercase issue is when dealing with Microsoft Windows-compatible filesystems, especially older or "lowest common denominator" filesystems. A digital camera that we use stores its files with filenames like PICT001.JPG, incrementing the number with each picture. If you were to try:
        $ find . -name '*.jpg' -print
   you wouldn’t find many pictures. In this case you could also try:
        $ find . -name '*.[Jj][Pp][Gg]' -print
@@ -2410,7 +2642,7 @@
    190 | Chapter 9: Finding Files: find, locate, slocate
    9.7 Finding Files by Type
   Problem
-  You are looking for a directory with the word “java” in it. When you tried:
+  You are looking for a directory with the word "java" in it. When you tried:
        $ find . -name '*java*' -print
   you got way too many files—including all the Java source files in your part of the filesystem.
   Solution
@@ -2422,11 +2654,11 @@
   b block special file
   c character special file
   d directory
-  p pipe (or “fifo”)
+  p pipe (or "fifo")
   f plain ol’ file
   l symbolic link
   s socket
-  D (Solaris only) “door”
+  D (Solaris only) "door"
      Finding Files by Type
   | 191
    See Also
@@ -2442,7 +2674,7 @@
   See Also
   • man find • man du
   9.9 Finding Files by Content Problem
-  How do you find a file of some known content? Let’s say that you had written an important letter and saved it as a text file, putting .txt on the end of the filename. Beyond that, the only thing you remember about the content of the letter is that you had used the word “portend.”
+  How do you find a file of some known content? Let’s say that you had written an important letter and saved it as a text file, putting .txt on the end of the filename. Beyond that, the only thing you remember about the content of the letter is that you had used the word "portend."
    192 | Chapter 9: Finding Files: find, locate, slocate
    Solution
   If you are in the vicinity of that file, say within the current directory, you can start with a simple grep:
@@ -2464,7 +2696,7 @@
   You’d like to be able to find files without having to wait for a long find command to complete, or you need to find a file with some specific content.
   Solution
   If your system has locate, slocate, Beagle, Spotlight or some other indexer, you are already set. If not, look into them.
-  As we discussed in Recipe 1.3, “Finding and Running Commands”, locate and slocate consult database files about the system (usually compiled and updated by a cron job) to find file or command names almost instantly. The location of the actual database files, what is indexed therein, and how often, may vary from system to sys- tem. Consult your system’s manpages for details.
+  As we discussed in Recipe 1.3, "Finding and Running Commands", locate and slocate consult database files about the system (usually compiled and updated by a cron job) to find file or command names almost instantly. The location of the actual database files, what is indexed therein, and how often, may vary from system to sys- tem. Consult your system’s manpages for details.
        $ locate apropos
        /usr/bin/apropos
        /usr/share/man/de/man1/apropos.1.gz
@@ -2472,7 +2704,7 @@
        /usr/share/man/it/man1/apropos.1.gz
        /usr/share/man/ja/man1/apropos.1.gz
        /usr/share/man/man1/apropos.1.gz
-  locate and slocate don’t index content though, so see Recipe 9.9, “Finding Files by Content” for that.
+  locate and slocate don’t index content though, so see Recipe 9.9, "Finding Files by Content" for that.
   Beagle and Spotlight are examples of a fairly recent technology known as desktop search engines or indexers. Google Desktop Search and Copernic Desktop Search are two examples from the Microsoft Windows world. Desktop search tools use some kind of indexer to crawl, parse, and index the names and contents of all of the files (and usually email messages) in your personal file space; i.e., your home directory on a Unix or Linux system. This information is then almost instantly available to you when you look for it. These tools are usually very configurable, graphical, operate on a per-user basis, and index the contents of your files.
   Discussion
   slocate stores permission information (in addition to filenames and paths) so that it will not list programs to which the user does not have access. On most Linux sys- tems locate is a symbolic link to slocate; other systems may have separate programs, or may not have slocate at all. Both of these are command-line tools that crawl and index the entire filesystem, more or less, but they only contain filenames and locations.
@@ -2506,8 +2738,8 @@
 
   SEARCHING FOR FILES
 
-  As we have wandered around our Linux system, one thing has become abundantly clear: A typical Linux system has a lot of files! This raises the question “How
-  do we find things?” We already know that the Linux filesystem is well organized according to conventions that have been passed down from one generation of Unix-like systems to the next, but the sheer number of files can present a daunting problem.
+  As we have wandered around our Linux system, one thing has become abundantly clear: A typical Linux system has a lot of files! This raises the question "How
+  do we find things?" We already know that the Linux filesystem is well organized according to conventions that have been passed down from one generation of Unix-like systems to the next, but the sheer number of files can present a daunting problem.
   In this chapter, we will look at two tools that are used to find files on a system:
     locate—Find files by name.
     find—Search for files in a directory hierarchy.
@@ -2576,7 +2808,7 @@
   Symbolic link
             We can also search by file size and filename by adding some additional tests. Let’s look for all the regular files that match the wildcard pattern *.JPG and are larger than 1 megabyte:
   [me@linuxbox ~]$ find ~ -type f -name "*.JPG" -size +1M | wc -l 840
-  In this example, we add the -name test followed by the wildcard pattern. Notice that we enclose it in quotes to prevent pathname expansion by the shell. Next, we add the -size test followed by the string +1M. The leading plus sign indicates that we are looking for files larger than the specified number. A leading minus sign would change the string to mean “smaller than the specified number.” Using no sign means “match the value exactly.” The trailing letter M indicates that the unit of measurement is megabytes. The characters shown in Table 17-2 may be used to specify units.
+  In this example, we add the -name test followed by the wildcard pattern. Notice that we enclose it in quotes to prevent pathname expansion by the shell. Next, we add the -size test followed by the string +1M. The leading plus sign indicates that we are looking for files larger than the specified number. A leading minus sign would change the string to mean "smaller than the specified number." Using no sign means "match the value exactly." The trailing letter M indicates that the unit of measurement is megabytes. The characters shown in Table 17-2 may be used to specify units.
   Table 17-2: find Size Units
   Character Unit
   b 512-byte blocks (the default if no unit is specified)
@@ -2644,7 +2876,7 @@
   (expression 1) -or (expression 2)
   This makes sense, since we are searching for files with a certain set of permissions and for directories with a different set. If we are looking for both files and directories, why do we use -or instead of -and? Because as find scans through the files and directories, each one is evaluated to see if it matches the specified tests. We want to know if it is either a file with bad permissions or a directory with bad permissions. It can’t be both at the same time. So if we expand the grouped expressions, we can see it this way:
           (file with bad perms) -or (directory with bad perms)
-  Our next challenge is how to test for “bad permissions.” How do we do that? Actually we don’t. What we will test for is “not good permissions,” since we know what “good permissions” are. In the case of files, we define good as 0600; for directories, 0700. The expression that will test files for “not good” permissions is:
+  Our next challenge is how to test for "bad permissions." How do we do that? Actually we don’t. What we will test for is "not good permissions," since we know what "good permissions" are. In the case of files, we define good as 0600; for directories, 0700. The expression that will test files for "not good" permissions is:
           -type f -and -not -perms 0600
   and the expression for directories is:
           -type d -and -not -perms 0700
@@ -2773,11 +3005,11 @@
   This updates all files in the playground that are named file-B. Next we’ll use find to identify the updated files by comparing all the files to the refer- ence file timestamp:
   [me@linuxbox ~]$ find playground -type f -newer playground/timestamp
   The results contain all 100 instances of file-B. Since we performed
-  a touch on all the files in the playground that are named file-B after we updated timestamp, they are now “newer” than timestamp and thus can be identified with the -newer test.
+  a touch on all the files in the playground that are named file-B after we updated timestamp, they are now "newer" than timestamp and thus can be identified with the -newer test.
   Finally, let’s go back to the bad permissions test we performed earlier and apply it to playground:
   [me@linuxbox ~]$ find playground \( -type f -not -perm 0600 \) -or \( -type d -not -perm 0700 \)
               Searching for Files 199
-  This command lists all 100 directories and 2,600 files in playground (as well as timestamp and playground itself, for a total of 2,702) because none of them meets our definition of “good permissions.” With our knowledge of operators and actions, we can add actions to this command to apply new permissions to the files and directories in our playground:
+  This command lists all 100 directories and 2,600 files in playground (as well as timestamp and playground itself, for a total of 2,702) because none of them meets our definition of "good permissions." With our knowledge of operators and actions, we can add actions to this command to apply new permissions to the files and directories in our playground:
   [me@linuxbox ~]$ find playground \( -type f -not -perm 0600 -exec chmod 0600 '{}' ';' \) -or \( -type d -not -perm 0700 -exec chmod 0700 '{}' ';' \)
   On a day-to-day basis, we might find it easier to issue two commands, one for the directories and one for the files, rather than this one large compound command, but it’s nice to know that we can do it this way. The important point here is to understand how operators and actions can be used together to perform useful tasks.
   Options
@@ -2834,9 +3066,9 @@
   >
   Redirect output of a command into a new file. If the file already exists, over-write it. Example: ls > myfiles.txt
   >>
-  Redirect the output of a command onto the end of an existing file. Example: echo “Mary 555-1234” >> phonenumbers.txt
+  Redirect the output of a command onto the end of an existing file. Example: echo "Mary 555-1234" >> phonenumbers.txt
 
-  There are times when it is useful to save the output of a command to a file, instead of displaying it to the screen. For example, if we want to create a file that lists all of the MP3 files in a directory, we can do something like this, using the “>” redirection character:
+  There are times when it is useful to save the output of a command to a file, instead of displaying it to the screen. For example, if we want to create a file that lists all of the MP3 files in a directory, we can do something like this, using the ">" redirection character:
 
   ls -l /home/vic/MP3/*.mp3 > mp3files.txt
 
@@ -2897,7 +3129,7 @@
   A regular file that is readable and writable by the file’s owner. Members of the file’s owner group may read the file. The file is world readable.
   A regular file that is readable, writable, and executable by the file’s owner. The file may be read and executed by everybody else.
   A regular file that is readable and writable by the file’s owner and members of the file’s owner group only.
-  A symbolic link. All symbolic links have “dummy” permis- sions. The real permissions are kept with the actual file pointed to by the symbolic link.
+  A symbolic link. All symbolic links have "dummy" permis- sions. The real permissions are kept with the actual file pointed to by the symbolic link.
   A directory. The owner and the members of the owner group may enter the directory and create, rename, and remove files within the directory.
   A directory. The owner may enter the directory and create, rename, and delete files within the directory. Members of the owner group may enter the directory but cannot create, delete, or rename files.
 
@@ -3430,7 +3662,7 @@
   Most Unix programs can be used to form pipes. Some programs that are commonly used as filters are described in the next sections. (Note that these programs aren’t used only as filters or parts of pipes, though; they’re also useful in their own right.)
   wc
   The wc program is one of the most useful pipe programs, believe it or not. By default, the program counts characters, words, and lines in the input file or standard input, but you can constrain the output to just characters (-c), words (-w), or lines (-l). Counting lines turns out to be wonderfully useful.
-  A classic example is identifying how many “core” files are in the filesystem.
+  A classic example is identifying how many "core" files are in the filesystem.
   Core files are identified with the suffix .core; they’re crashed program debugging datafiles and can be deleted to free up disk space as needed.
   This is done with a call to find with the output piped to wc:
   $ sudo find / -name "*.core" -print | wc -l 13
@@ -3451,7 +3683,7 @@
   3. SIGH
       4. GO BACK TO BED.
       $
-  The tr command has a number of different options for power users, including -c to invert the specified pattern (that is, if you specify tr -c “abc”, the program matches anything other than a, b, or c), and -d deletes any characters from the first pattern specified.
+  The tr command has a number of different options for power users, including -c to invert the specified pattern (that is, if you specify tr -c "abc", the program matches anything other than a, b, or c), and -d deletes any characters from the first pattern specified.
   To remove all vowels from the input, you could use:
   $ tr -d "[aeiou]" < todo 1. Wk p
   2. Lk n mrrr
@@ -3467,7 +3699,7 @@
   As you learned in the previous chapter, grep searches the contents of files for lines that contain a certain pattern. The syntax is:
   grep "pattern" file(s)
   Most of the earlier discussion, however, focused on how grep can help you search through files to find lines that match a specified pattern. In fact, grep is a tremendously useful command for pipes, too, because it can help you easily weed out the few lines you care about from hundreds or thousands of lines of information.
-  As an example, let’s use the mdfind command to identify files on the system that reference the word “ipod” (mdfind, a part of Spotlight, is discussed in Chapter 5). The default command reveals that there are 1,030 matches, by using wc:
+  As an example, let’s use the mdfind command to identify files on the system that reference the word "ipod" (mdfind, a part of Spotlight, is discussed in Chapter 5). The default command reveals that there are 1,030 matches, by using wc:
   $ mdfind ipod | wc -l 1030
   It turns out that many of these are actually related to the scripting Automator utility and other library files. They’re easily identified by their Library directory location, however, so grep, with its useful -v option (which returns everything but lines that match this pattern) helps us identify how many files aren’t in the Library subdirectory:
   $ mdfind ipod | grep -v "Library" | wc -l 150
@@ -3537,7 +3769,7 @@
   $ tr -cs "[:alpha:]" "\n" < alice.txt | uniq | wc -l 27313
   Or is it? That’s not correct, because in this situation, uniq needs to have the input sorted. Add that step and the number changes dramatically:
   $ tr -cs "[:alpha:]" "\n" < alice.txt | sort | uniq | wc -l 2868
-  Further, we should also ensure that all the letters are lowercase, so that “Hello” and “hello,” for example, are counted as one word, not two. This can be done by using the - f (ignore case) flag to sort:
+  Further, we should also ensure that all the letters are lowercase, so that "Hello" and "hello," for example, are counted as one word, not two. This can be done by using the - f (ignore case) flag to sort:
   $ tr -cs "[:alpha:]" "\n" < alice.txt | sort -f | uniq | wc -l 2577
   So now you know—the entire novel is written using only 2,577 different words.
   Piping Output to a Pager
@@ -3735,7 +3967,7 @@
   Ubuntu
   5 03/20/2006 6 10/24/2006 7 05/31/2007 8 11/08/2007 9 05/13/2008 10 11/25/2008 10.1 05/11/2006 10.2 12/07/2006 10.3 10/04/2007 11.0 06/19/2008 6.06 06/01/2006 6.10 10/26/2006 7.04 04/19/2007 7.10 10/18/2007 8.04 04/24/2008 8.10 10/30/2008
    240 Chapter 20
-  Though we used the long form of the option for clarity, -k 1,1 -k 2n would be exactly equivalent. In the first instance of the key option, we spe- cified a range of fields to include in the first key. Since we wanted to limit the sort to just the first field, we specified 1,1, which means “start at field 1 and end at field 1.” In the second instance, we specified 2n, which means that field 2 is the sort key and that the sort should be numeric. An option letter may be included at the end of a key specifier to indicate the type of sort to be performed. These option letters are the same as the global options for the sort program: b (ignore leading blanks), n (numeric sort), r (reverse sort), and so on.
+  Though we used the long form of the option for clarity, -k 1,1 -k 2n would be exactly equivalent. In the first instance of the key option, we spe- cified a range of fields to include in the first key. Since we wanted to limit the sort to just the first field, we specified 1,1, which means "start at field 1 and end at field 1." In the second instance, we specified 2n, which means that field 2 is the sort key and that the sort should be numeric. An option letter may be included at the end of a key specifier to indicate the type of sort to be performed. These option letters are the same as the global options for the sort program: b (ignore leading blanks), n (numeric sort), r (reverse sort), and so on.
   The third field in our list contains a date in an inconvenient format for sorting. On computers, dates are usually formatted in YYYY-MM-DD order to make chronological sorting easy, but ours are in the American format of MM/DD/YYYY. How can we sort this list in chronological order?
   Fortunately, sort provides a way. The key option allows specification of offsets within fields, so we can define keys within fields:
   [me@linuxbox ~]$ sort -k 3.7nbr -k 3.1nbr -k 3.4nbr distros.txt
@@ -3817,7 +4049,7 @@
   Extract one or more fields from the line as defined by field_list. The list may contain one or more fields or field ranges separated by commas.
   When -f is specified, use delim_char as the field delimit- ing character. By default, fields must be separated by a single tab character.
   Extract the entire line of text, except for those portions specified by -c and/or -f.
-          As we can see, the way cut extracts text is rather inflexible. cut is best used to extract text from files that are produced by other programs, rather than text directly typed by humans. We’ll take a look at our distros.txt file to see if it is “clean” enough to be a good specimen for our cut examples. If we use cat with the -A option, we can see if the file meets our requirements of tab-separated fields.
+          As we can see, the way cut extracts text is rather inflexible. cut is best used to extract text from files that are produced by other programs, rather than text directly typed by humans. We’ll take a look at our distros.txt file to see if it is "clean" enough to be a good specimen for our cut examples. If we use cat with the -A option, we can see if the file meets our requirements of tab-separated fields.
   [me@linuxbox ~]$ cat -A distros.txt SUSE^I10.2^I12/07/2006$ Fedora^I10^I11/25/2008$ SUSE^I11.0^I06/19/2008$ Ubuntu^I8.04^I04/24/2008$ Fedora^I8^I11/08/2007$ SUSE^I10.3^I10/04/2007$ Ubuntu^I6.10^I10/26/2006$ Fedora^I7^I05/31/2007$ Ubuntu^I7.10^I10/18/2007$ Ubuntu^I7.04^I04/19/2007$ SUSE^I10.1^I05/11/2006$ Fedora^I6^I10/24/2006$ Fedora^I9^I05/13/2008$ Ubuntu^I6.06^I06/01/2006$ Ubuntu^I8.10^I10/30/2008$ Fedora^I5^I03/20/2006$
   It looks good—no embedded spaces, just single tab characters between the fields. Since the file uses tabs rather than spaces, we’ll use the -f option to extract a field:
   [me@linuxbox ~]$ cut -f 3 distros.txt 12/07/2006
@@ -3963,7 +4195,7 @@
   [me@linuxbox ~]$ cut -f 2,2 distros-by-date.txt > distros-vernums.txt [me@linuxbox ~]$ paste distros-dates.txt distros-vernums.txt > distros-key- vernums.txt
   [me@linuxbox ~]$ head distros-key-vernums.txt
   11/25/2008 10 10/30/2008 8.10 06/19/2008 11.0 05/13/2008 9 04/24/2008 8.04 11/08/2007 8 10/18/2007 7.10 10/04/2007 10.3 05/31/2007 7 04/19/2007 7.04
-  We now have two files with a shared key (the “release date” field). It is important to point out that the files must be sorted on the key field for join to work properly.
+  We now have two files with a shared key (the "release date" field). It is important to point out that the files must be sorted on the key field for join to work properly.
   [me@linuxbox ~]$ join distros-key-names.txt distros-key-vernums.txt | head 11/25/2008 Fedora 10
   10/30/2008 Ubuntu 8.10
   06/19/2008 SUSE 11.0
@@ -4001,7 +4233,7 @@
    echo "frperg grkg" | tr a-zA-Z n-za-mN-ZA-M
   secret text
      A number of email programs and Usenet news readers support ROT13 encoding. Wikipedia contains a good article on the subject: http://en.wikipedia .org/wiki/ROT13.
-    tr can perform another trick, too. Using the -s option, tr can “squeeze” (delete) repeated instances of a character:
+    tr can perform another trick, too. Using the -s option, tr can "squeeze" (delete) repeated instances of a character:
   [me@linuxbox ~]$ echo "aaabbbccc" | tr -s ab abccc
   Here we have a string containing repeated characters. By specifying
   the set ab to tr, we eliminate the repeated instances of the letters in the set, while leaving the character that is missing from the set (c) unchanged. Note that the repeating characters must be adjoining. If they are not, the squeez- ing will have no effect:
@@ -4101,7 +4333,7 @@
   Substitute the contents of replacement wherever regexp is found. replacement may include the special character &, which is equivalent to the text matched by regexp. In addition, replacement may include the sequences \1 through \9, which are the contents of the corresponding subexpressions in regexp. For more about this, see the following discussion on back references. After the trailing slash following replacement, an optional flag may be specified to modify the s command’s behavior.
   Perform transliteration by converting characters from set1 to the corresponding characters in set2. Note that unlike tr, sed requires that both sets be of the same length.
        y/set1/set2
-    The s command is by far the most commonly used editing command. We will demonstrate just some of its power by performing an edit on our distros.txt file. We discussed before how the date field in distros.txt was not in a “computer-friendly” format. While the date is formatted MM/DD/YYYY,
+    The s command is by far the most commonly used editing command. We will demonstrate just some of its power by performing an edit on our distros.txt file. We discussed before how the date field in distros.txt was not in a "computer-friendly" format. While the date is formatted MM/DD/YYYY,
   it would be better (for ease of sorting) if the format were YYYY-MM-DD. To perform this change on the file by hand would be both time consuming and error prone, but with sed, this change can be performed in one step:
   [me@linuxbox ~]$ sed 's/\([0-9]\{2\}\)\/\([0-9]\{2\}\)\/\([0-9]\{4\}\)$/\3-\1
    -\2/' distros.txt
@@ -4149,7 +4381,7 @@
   10.1
   6
   9 6.06 8.10 5
-   Wow! Now that is an ugly-looking command. But it works. In just one step, we have changed the date format in our file. It is also a perfect example of why regular expressions are sometimes jokingly referred to as a “write-only”
+   Wow! Now that is an ugly-looking command. But it works. In just one step, we have changed the date format in our file. It is also a perfect example of why regular expressions are sometimes jokingly referred to as a "write-only"
   Text Processing 259
   260 Chapter 20
   medium. We can write them, but we sometimes cannot read them. Before we are tempted to run away in terror from this command, let’s look at how it was constructed. First, we know that the command will have this basic structure:
@@ -4236,7 +4468,7 @@
   And, of course, you can take text from one file, do something to it, and put it into another file:
        $ cat pl.txt | tr "[:upper:]" "[:lower:]" | tr "z" "Z" > plz.txt
        productively laZy
-  Here is a more practical example. Suppose I have a large Java project with a bunch of classes that are “helpers” for other classes, and follow a naming convention of Class Helper, for the class it is helping. I want to find them all, even though they are scattered all over my project:
+  Here is a more practical example. Suppose I have a large Java project with a bunch of classes that are "helpers" for other classes, and follow a naming convention of Class Helper, for the class it is helping. I want to find them all, even though they are scattered all over my project:
   $ find . -name *Helper.java
   And my army of trained minions dutifully responds:
          ./src/java/org/sample/domain/DomainHelper.java
@@ -4266,7 +4498,7 @@
      .
     From the current directory.
      -name
-     Matching name of “*Helper.java”.
+     Matching name of "*Helper.java".
    The Command Line 195
      Character(s)
     What it’s doing
@@ -4277,11 +4509,11 @@
      -l
      Show the files with matching lines.
      "extends .*Helper"
-   Match the regular expression for lines matching “extends” + a single space + zero or more characters + “Helper”.
+   Match the regular expression for lines matching "extends" + a single space + zero or more characters + "Helper".
      {}
      The placeholder for the filename found by find.
      \;
-    Terminate the command after -exec. Because this is a Unix command, you might want to pipe the results of this into another command, and the find command has to know when the “exec” is done.
+    Terminate the command after -exec. Because this is a Unix command, you might want to pipe the results of this into another command, and the find command has to know when the "exec" is done.
    Wow, that’s a lot of bang for the buck in a compact syntax. Which is, of course, the point. Just to prove that many ways exist to do everything on a Unix command line, here is an alternative version that produces the same results, using the xargs command:
        $ find . -name *Helper.java | xargs grep -l "extends .*Helper"
        ./src/java/org/sample/logic/DocumentHelper.java
@@ -4344,7 +4576,7 @@
   6 packets transmitted, 6 received, 0% packet loss, time 6010ms rtt min/avg/max/mdev = 105.647/107.052/108.118/0.824 ms
   After it is interrupted (in this case after the sixth packet) by the pressing of CTRL-C, ping prints performance statistics. A properly performing network will exhibit zero percent packet loss. A successful ping will indicate that the elements of the network (its interface cards, cabling, routing, and gateways) are in generally good working order.
   traceroute—Trace the Path of a Network Packet
-  The traceroute program (some systems use the similar tracepath program instead) displays a listing of all the “hops” network traffic takes to get from the local system to a specified host. For example, to see the route taken to reach http://www.slashdot.org/, we would do this:
+  The traceroute program (some systems use the similar tracepath program instead) displays a listing of all the "hops" network traffic takes to get from the local system to a specified host. For example, to see the route taken to reach http://www.slashdot.org/, we would do this:
   [me@linuxbox ~]$ traceroute slashdot.org The output looks like this:
   traceroute to slashdot.org (216.34.181.45), 30 hops max, 40 byte packets 1 ipcop.localdomain (192.168.1.1) 1.066 ms 1.366 ms 1.720 ms
   2 * **
@@ -4388,7 +4620,7 @@
   UP LOOPBACK RUNNING MTU:16436 Metric:1
   RX packets:2208 errors:0 dropped:0 overruns:0 frame:0 TX packets:2208 errors:0 dropped:0 overruns:0 carrier:0 collisions:0 txqueuelen:0
   RX bytes:111490 (108.8 KB) TX bytes:111490 (108.8 KB)
-  In the example above, we see that our test system has two network inter- faces. The first, called eth0, is the Ethernet interface; the second, called lo, is the loopback interface, a virtual interface that the system uses to “talk to itself.”
+  In the example above, we see that our test system has two network inter- faces. The first, called eth0, is the Ethernet interface; the second, called lo, is the loopback interface, a virtual interface that the system uses to "talk to itself."
   When performing causal network diagnostics, the important things to look for are the presence of the word UP at the beginning of the fourth line for each interface, indicating that the network interface is enabled, and the presence of a valid IP address in the inet addr field on the second line. For systems using Dynamic Host Configuration Protocol (DHCP), a valid IP address in this field will verify that the DHCP is working.
      178 Chapter 16
   Using the -r option will display the kernel’s network routing table. This shows how the network is configured to send packets from network to network:
@@ -4406,7 +4638,7 @@
   Transporting Files over a Network
   What good is a network unless we know how to move files across it? There are many programs that move data over networks. We will cover two of them now and several more in later sections.
   ftp—Transfer Files with the File Transfer Protocol
-  One of the true “classic” programs, ftp gets its name from the protocol it uses, the File Transfer Protocol. FTP is used widely on the Internet for file downloads. Most, if not all, web browsers support it, and you often see URIs starting with the protocol ftp://.
+  One of the true "classic" programs, ftp gets its name from the protocol it uses, the File Transfer Protocol. FTP is used widely on the Internet for file downloads. Most, if not all, web browsers support it, and you often see URIs starting with the protocol ftp://.
   Before there were web browsers, there was the ftp program. ftp is used to communicate with FTP servers, machines that contain files that can be uploaded and downloaded over a network.
   FTP (in its original form) is not secure, because it sends account names and passwords in cleartext. This means that they are not encrypted and any- one sniffing the network can see them. Because of this, almost all FTP done over the Internet is done by anonymous FTP servers. An anonymous server allows anyone to log in using the login name anonymous and a meaningless password.
   In the following example, we show a typical session with the ftp pro- gram downloading an Ubuntu ISO image located in the /pub/cd_images/ Ubuntu-8.04 directory of the anonymous FTP server fileserver.
@@ -4613,7 +4845,7 @@
   such as a keystroke or network packet.
   D Uninterruptible sleep. Process is waiting for I/O such as a disk drive.
   T Stopped. Process has been instructed to stop (more on this later).
-  Z A defunct or “zombie” process. This is a child process that has terminated but has not been cleaned up by its parent.
+  Z A defunct or "zombie" process. This is a child process that has terminated but has not been cleaned up by its parent.
   < A high-priority process. It’s possible to grant more importance to a process, giving it more time on the CPU. This property of a process is called niceness. A process with high priority is said to be less nice because it’s taking more of the CPU’s time, which leaves less for everybody else.
   N A low-priority process. A process with low priority (a nice process) will get processor time only after other processes with higher priority have been serviced.
                   Processes 97
@@ -4643,7 +4875,7 @@
   0:06 [wa]
   0:36 [ev]
   0:00 [kh]
-   This set of options displays the processes belonging to every user. Using the options without the leading dash invokes the command with “BSD-style” behavior. The Linux version of ps can emulate the behavior of the ps pro- gram found in several Unix implementations. With these options, we get the additional columns shown in Table 10-2.
+   This set of options displays the processes belonging to every user. Using the options without the leading dash invokes the command with "BSD-style" behavior. The Linux version of ps can emulate the behavior of the ps pro- gram found in several Unix implementations. With these options, we get the additional columns shown in Table 10-2.
   Table 10-2: BSD-Style ps Column Headers
   Header Meaning
   USER User ID. This is the owner of the process. %CPU CPU usage as a percent.
@@ -4657,7 +4889,7 @@
   The top program displays a continuously updating (by default, every
   3 seconds) display of the system processes listed in order of process activity.
                  98 Chapter 10
-  Its name comes from the fact that the top program is used to see the “top” processes on the system. The top display consists of two parts: a system sum- mary at the top of the display, followed by a table of processes sorted by CPU activity:
+  Its name comes from the fact that the top program is used to see the "top" processes on the system. The top display consists of two parts: a system sum- mary at the top of the display, followed by a table of processes sorted by CPU activity:
   top - 14:59:20 up 6:30, 2 users, load average: 0.07, 0.02, 0.00 Tasks: 109 total, 1 running, 106 sleeping, 0 stopped, 2 zombie Cpu(s): 0.7%us, 1.0%sy, 0.0%ni, 98.3%id, 0.0%wa, 0.0%hi, 0.0%si
    Mem:    319496k total,   314860k used,
   Swap:   875500k total,   149128k used,
@@ -4776,13 +5008,13 @@
   Why would you want to launch a graphical program from the com- mand line? There are two reasons. First, the program you wish to run might not be listed on the window manager’s menus (such as xlogo).
   Second, by launching a program from the command line, you might be able to see error messages that would be invisible if the program were launched graphically. Sometimes, a program will fail to start up when launched from the graphical menu. By launching it from the command line instead, we may see an error message that will reveal the problem. Also, some graphical pro- grams have many interesting and useful command-line options.
   Signals
-  The kill command is used to “kill” (terminate) processes. This allows us to end the execution of a program that is behaving badly or otherwise refuses to terminate on its own. Here’s an example:
+  The kill command is used to "kill" (terminate) processes. This allows us to end the execution of a program that is behaving badly or otherwise refuses to terminate on its own. Here’s an example:
   [me@linuxbox ~]$ xlogo &
   [1] 28401
   [me@linuxbox ~]$ kill 28401
   [1]+ Terminated xlogo
   We first launch xlogo in the background. The shell prints the jobspec and the PID of the background process. Next, we use the kill command and spe- cify the PID of the process we want to terminate. We could also have specified the process using a jobspec (for example, %1) instead of a PID.
-  While this is all very straightforward, there is more to it. The kill com- mand doesn’t exactly “kill” processes; rather it sends them signals. Signals are one of several ways that the operating system communicates with pro- grams. We have already seen signals in action with the use of CTRL-C and CTRL-Z. When the terminal receives one of these keystrokes, it sends a signal to the program in the foreground. In the case of CTRL-C, a signal called INT (Interrupt) is sent; with CTRL-Z, a signal called TSTP (Terminal Stop) is sent. Programs, in turn, “listen” for signals and may act upon them as they are received. The fact that a program can listen and act upon signals allows it to do things like save work in progress when it is sent a termination signal.
+  While this is all very straightforward, there is more to it. The kill com- mand doesn’t exactly "kill" processes; rather it sends them signals. Signals are one of several ways that the operating system communicates with pro- grams. We have already seen signals in action with the use of CTRL-C and CTRL-Z. When the terminal receives one of these keystrokes, it sends a signal to the program in the foreground. In the case of CTRL-C, a signal called INT (Interrupt) is sent; with CTRL-Z, a signal called TSTP (Terminal Stop) is sent. Programs, in turn, "listen" for signals and may act upon them as they are received. The fact that a program can listen and act upon signals allows it to do things like save work in progress when it is sent a termination signal.
   Sending Signals to Processes with kill
   The most common syntax for the kill command looks like this: kill [-signal] PID...
   If no signal is specified on the command line, then the TERM (Termin- ate) signal is sent by default. The kill command is most often used to send the signals shown in Table 10-4.
@@ -4791,11 +5023,11 @@
    Number Name
   1 HUP
   Meaning
-  Hang up. This is a vestige of the good old days when terminals were attached to remote computers with phone lines and modems. The signal is used to indicate to programs that the controlling ter- minal has “hung up.” The effect of this signal can be demonstrated by closing a terminal session. The foreground program running on the terminal will be sent the signal and will terminate.
+  Hang up. This is a vestige of the good old days when terminals were attached to remote computers with phone lines and modems. The signal is used to indicate to programs that the controlling ter- minal has "hung up." The effect of this signal can be demonstrated by closing a terminal session. The foreground program running on the terminal will be sent the signal and will terminate.
   This signal is also used by many daemon programs to cause a reinitialization. This means that when a daemon is sent this signal, it will restart and reread its configuration file. The Apache web server is an example of a daemon that uses the HUP signal in this way.
   Interrupt. Performs the same function as the CTRL-C key sent from the terminal. It will usually terminate a program.
-  Kill. This signal is special. Whereas programs may choose to handle signals sent to them in different ways, including by ignoring them altogether, the KILL signal is never actually sent to the target program. Rather, the kernel immediately termin- ates the process. When a process is terminated in this manner, it is given no opportunity to “clean up” after itself or save its work. For this reason, the KILL signal should be used only as a last resort when other termination signals fail.
-  Terminate. This is the default signal sent by the kill command. If a program is still “alive” enough to receive signals, it will terminate.
+  Kill. This signal is special. Whereas programs may choose to handle signals sent to them in different ways, including by ignoring them altogether, the KILL signal is never actually sent to the target program. Rather, the kernel immediately termin- ates the process. When a process is terminated in this manner, it is given no opportunity to "clean up" after itself or save its work. For this reason, the KILL signal should be used only as a last resort when other termination signals fail.
+  Terminate. This is the default signal sent by the kill command. If a program is still "alive" enough to receive signals, it will terminate.
   Continue. This will restore a process after a STOP signal.
   Stop. This signal causes a process to pause without terminating. Like the KILL signal, it is not sent to the target process, and thus it cannot be ignored.
      2 INT
@@ -4919,7 +5151,7 @@
   such as a keystroke or network packet.
   D Uninterruptible sleep. Process is waiting for I/O such as a disk drive.
   T Stopped. Process has been instructed to stop (more on this later).
-  Z A defunct or “zombie” process. This is a child process that has terminated but has not been cleaned up by its parent.
+  Z A defunct or "zombie" process. This is a child process that has terminated but has not been cleaned up by its parent.
   < A high-priority process. It’s possible to grant more importance to a process, giving it more time on the CPU. This property of a process is called niceness. A process with high priority is said to be less nice because it’s taking more of the CPU’s time, which leaves less for everybody else.
   N A low-priority process. A process with low priority (a nice process) will get processor time only after other processes with higher priority have been serviced.
                   Processes 97
@@ -4949,7 +5181,7 @@
   0:06 [wa]
   0:36 [ev]
   0:00 [kh]
-   This set of options displays the processes belonging to every user. Using the options without the leading dash invokes the command with “BSD-style” behavior. The Linux version of ps can emulate the behavior of the ps pro- gram found in several Unix implementations. With these options, we get the additional columns shown in Table 10-2.
+   This set of options displays the processes belonging to every user. Using the options without the leading dash invokes the command with "BSD-style" behavior. The Linux version of ps can emulate the behavior of the ps pro- gram found in several Unix implementations. With these options, we get the additional columns shown in Table 10-2.
   Table 10-2: BSD-Style ps Column Headers
   Header Meaning
   USER User ID. This is the owner of the process. %CPU CPU usage as a percent.
@@ -4963,7 +5195,7 @@
   The top program displays a continuously updating (by default, every
   3 seconds) display of the system processes listed in order of process activity.
                  98 Chapter 10
-  Its name comes from the fact that the top program is used to see the “top” processes on the system. The top display consists of two parts: a system sum- mary at the top of the display, followed by a table of processes sorted by CPU activity:
+  Its name comes from the fact that the top program is used to see the "top" processes on the system. The top display consists of two parts: a system sum- mary at the top of the display, followed by a table of processes sorted by CPU activity:
   top - 14:59:20 up 6:30, 2 users, load average: 0.07, 0.02, 0.00 Tasks: 109 total, 1 running, 106 sleeping, 0 stopped, 2 zombie Cpu(s): 0.7%us, 1.0%sy, 0.0%ni, 98.3%id, 0.0%wa, 0.0%hi, 0.0%si
    Mem:    319496k total,   314860k used,
   Swap:   875500k total,   149128k used,
@@ -5082,13 +5314,13 @@
   Why would you want to launch a graphical program from the com- mand line? There are two reasons. First, the program you wish to run might not be listed on the window manager’s menus (such as xlogo).
   Second, by launching a program from the command line, you might be able to see error messages that would be invisible if the program were launched graphically. Sometimes, a program will fail to start up when launched from the graphical menu. By launching it from the command line instead, we may see an error message that will reveal the problem. Also, some graphical pro- grams have many interesting and useful command-line options.
   Signals
-  The kill command is used to “kill” (terminate) processes. This allows us to end the execution of a program that is behaving badly or otherwise refuses to terminate on its own. Here’s an example:
+  The kill command is used to "kill" (terminate) processes. This allows us to end the execution of a program that is behaving badly or otherwise refuses to terminate on its own. Here’s an example:
   [me@linuxbox ~]$ xlogo &
   [1] 28401
   [me@linuxbox ~]$ kill 28401
   [1]+ Terminated xlogo
   We first launch xlogo in the background. The shell prints the jobspec and the PID of the background process. Next, we use the kill command and spe- cify the PID of the process we want to terminate. We could also have specified the process using a jobspec (for example, %1) instead of a PID.
-  While this is all very straightforward, there is more to it. The kill com- mand doesn’t exactly “kill” processes; rather it sends them signals. Signals are one of several ways that the operating system communicates with pro- grams. We have already seen signals in action with the use of CTRL-C and CTRL-Z. When the terminal receives one of these keystrokes, it sends a signal to the program in the foreground. In the case of CTRL-C, a signal called INT (Interrupt) is sent; with CTRL-Z, a signal called TSTP (Terminal Stop) is sent. Programs, in turn, “listen” for signals and may act upon them as they are received. The fact that a program can listen and act upon signals allows it to do things like save work in progress when it is sent a termination signal.
+  While this is all very straightforward, there is more to it. The kill com- mand doesn’t exactly "kill" processes; rather it sends them signals. Signals are one of several ways that the operating system communicates with pro- grams. We have already seen signals in action with the use of CTRL-C and CTRL-Z. When the terminal receives one of these keystrokes, it sends a signal to the program in the foreground. In the case of CTRL-C, a signal called INT (Interrupt) is sent; with CTRL-Z, a signal called TSTP (Terminal Stop) is sent. Programs, in turn, "listen" for signals and may act upon them as they are received. The fact that a program can listen and act upon signals allows it to do things like save work in progress when it is sent a termination signal.
   Sending Signals to Processes with kill
   The most common syntax for the kill command looks like this: kill [-signal] PID...
   If no signal is specified on the command line, then the TERM (Termin- ate) signal is sent by default. The kill command is most often used to send the signals shown in Table 10-4.
@@ -5097,11 +5329,11 @@
    Number Name
   1 HUP
   Meaning
-  Hang up. This is a vestige of the good old days when terminals were attached to remote computers with phone lines and modems. The signal is used to indicate to programs that the controlling ter- minal has “hung up.” The effect of this signal can be demonstrated by closing a terminal session. The foreground program running on the terminal will be sent the signal and will terminate.
+  Hang up. This is a vestige of the good old days when terminals were attached to remote computers with phone lines and modems. The signal is used to indicate to programs that the controlling ter- minal has "hung up." The effect of this signal can be demonstrated by closing a terminal session. The foreground program running on the terminal will be sent the signal and will terminate.
   This signal is also used by many daemon programs to cause a reinitialization. This means that when a daemon is sent this signal, it will restart and reread its configuration file. The Apache web server is an example of a daemon that uses the HUP signal in this way.
   Interrupt. Performs the same function as the CTRL-C key sent from the terminal. It will usually terminate a program.
-  Kill. This signal is special. Whereas programs may choose to handle signals sent to them in different ways, including by ignoring them altogether, the KILL signal is never actually sent to the target program. Rather, the kernel immediately termin- ates the process. When a process is terminated in this manner, it is given no opportunity to “clean up” after itself or save its work. For this reason, the KILL signal should be used only as a last resort when other termination signals fail.
-  Terminate. This is the default signal sent by the kill command. If a program is still “alive” enough to receive signals, it will terminate.
+  Kill. This signal is special. Whereas programs may choose to handle signals sent to them in different ways, including by ignoring them altogether, the KILL signal is never actually sent to the target program. Rather, the kernel immediately termin- ates the process. When a process is terminated in this manner, it is given no opportunity to "clean up" after itself or save its work. For this reason, the KILL signal should be used only as a last resort when other termination signals fail.
+  Terminate. This is the default signal sent by the kill command. If a program is still "alive" enough to receive signals, it will terminate.
   Continue. This will restore a process after a STOP signal.
   Stop. This signal causes a process to pause without terminating. Like the KILL signal, it is not sent to the target process, and thus it cannot be ignored.
      2 INT
@@ -5442,7 +5674,7 @@
     228
   | Chapter 11: Working with Dates and Times
   Discussion
-  Most versions of cron (including Linux’s Vixie Cron) do not allow you to schedule a job on the Nth day of the month. To get around that, we schedule the job to run dur- ing the range of days when the Nth day we need occurs, then check to see if it is the correct day on which to run. The “second Wednesday of the month” must occur somewhere in the range of the 8th to 14th day of the month. So we simply run every day and see if it’s Wednesday. If so, we execute our command.
+  Most versions of cron (including Linux’s Vixie Cron) do not allow you to schedule a job on the Nth day of the month. To get around that, we schedule the job to run dur- ing the range of days when the Nth day we need occurs, then check to see if it is the correct day on which to run. The "second Wednesday of the month" must occur somewhere in the range of the 8th to 14th day of the month. So we simply run every day and see if it’s Wednesday. If so, we execute our command.
   Table 11-2 shows the ranges noted above.
   Table 11-2. Day ranges for each week of a month
   Week
