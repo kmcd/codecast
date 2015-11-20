@@ -729,6 +729,11 @@
   To print ten copies of the file project_report command doesn't have a -#10 option):
 
   $ lpr project_repor{t,t,t,t,t,t,t,t,t,t}
+  
+  $ mkdir -p playground/dir-{00{1..9},0{10..99},100}
+  $ touch playground/dir-{00{1..9},0{10..99},100}/file-{A..Z}
+  
+  Marvel in the power of the command line! With these two lines, we cre- ated a playground directory containing 100 subdirectories, each containing 26 empty files. Try that with the GUI!
 
 
 ## History 2m
@@ -1319,8 +1324,48 @@
   If you give du the name of a directory, it calculates the sizes of everything inside that directory, including any subdirectories and their contents:
 
 ## Wildcards 4m
-  ?
   *
+
+      Match zero or more characters. For example, a* matches the files a , ab , abc , abc.d , and so on.
+  ?
+
+      Match exactly one character. For example, a? matches aa , ab , ac , etc.
+  [12..a..z]
+
+      Match any character listed in the brackets. For example, a[ab] matches aa or ab .
+  [a-z]
+
+      Match all characters between a and z. For example, a[0-9] matches a0 , a1 , and so on, up to a9 .
+  [!ab..z]
+
+      Match any character that does not appear within the brackets. For example, a[!0-9] doesn't match a0 , but does match aa . bash , Korn, and newer Bourne shells only.
+  [^ab..z]
+
+      Match any character that does not appear within the brackets. For example, a[^0-9] doesn't match a0 , but does match aa . tcsh only.
+  {word1,word2...}
+
+      Match word1 , word2 , etc. E.g., a_{dog,cat,horse} matches the filenames a_dog , a_cat , and a_horse . bash and C shells only. These ( 9.5 ) actually aren't filename-matching wildcards. They expand any string, including filenames that don't exist yet, email addresses, and more.
+  ?(abc)
+
+      Match zero or one instance of abc . For example, x?(abc)x matches xx or xabcx . Korn shell only.
+  *(abc)
+
+      Match zero or more instances of abc . For example, x*(abc)x matches xx , xabcx , xabcabcx , etc. Korn shell only.
+  +(abc)
+
+      Match one or more instances of abc . For example, x+(abc)x matches xabcx , xabcabcx , etc. Korn shell only.
+  !(abc)
+
+      Match anything that doesn't contain abc . For example, x!(abc)x doesn't match xabcx or xabcabcx , but does match practically anything else that begins or ends with x . Korn shell only.
+  ^ pat
+
+      Match any name that doesn't match pat . pat must include at least one of the wildcards * , ? and [] . To match all except a single name, here's a trick: put brackets around one character. For instance, you can match all except abc with ^ab[c] . tcsh only. (For other shells, see nom ( 15.9 ) .)
+
+  Note: wildcards do not match files whose names begin with a dot ( . ), like .cshrc . [1] This prevents you from deleting (or otherwise mucking around with) these files by accident. To match those files, type the dot literally. For example, .[a-z]* matches anything whose name starts with a dot and a lowercase letter. Watch out for plain .* , though; it matches the directory entries . and .. (see article 15.5 for suggestions on solving that problem).
+
+      [1] Setting the bash variable glob_dot_filenames includes these names in wildcard expansion.
+
+  And a final note: many operating systems (VAX/VMS and DOS included) consider a file's name and extension to be different entities; therefore, you can't use a single wildcard to match both. What do I mean? Consider the file abc.def . Under DOS or VMS, to match this filename you'd need the wildcard expression *.* . The first * matches the name (the part before the period), and the second matches the extension (the part after the period). Although UNIX uses extensions, they aren't considered a separate part of the filename, so a single * will match the entire name.
 
 ### VO 600w
   abbreviate filenames or refer to groups of files.
@@ -1355,10 +1400,44 @@
 
   For example, .*rc matches all files whose names begin with . and end with rc .
 
-  ? 	Any single character
-  * 	Any group of zero or more characters
-  [ab] 	Either a or b
-  [a-z] 	Any character between a and z, inclusive
+  *
+
+      Match zero or more characters. For example, a* matches the files a , ab , abc , abc.d , and so on.
+  ?
+
+      Match exactly one character. For example, a? matches aa , ab , ac , etc.
+  [12..a..z]
+
+      Match any character listed in the brackets. For example, a[ab] matches aa or ab .
+  [a-z]
+
+      Match all characters between a and z. For example, a[0-9] matches a0 , a1 , and so on, up to a9 .
+  [!ab..z]
+
+      Match any character that does not appear within the brackets. For example, a[!0-9] doesn't match a0 , but does match aa . bash , Korn, and newer Bourne shells only.
+  [^ab..z]
+
+      Match any character that does not appear within the brackets. For example, a[^0-9] doesn't match a0 , but does match aa . tcsh only.
+  {word1,word2...}
+
+      Match word1 , word2 , etc. E.g., a_{dog,cat,horse} matches the filenames a_dog , a_cat , and a_horse . bash and C shells only. These ( 9.5 ) actually aren't filename-matching wildcards. They expand any string, including filenames that don't exist yet, email addresses, and more.
+  ?(abc)
+
+      Match zero or one instance of abc . For example, x?(abc)x matches xx or xabcx . Korn shell only.
+  *(abc)
+
+      Match zero or more instances of abc . For example, x*(abc)x matches xx , xabcx , xabcabcx , etc. Korn shell only.
+  +(abc)
+
+      Match one or more instances of abc . For example, x+(abc)x matches xabcx , xabcabcx , etc. Korn shell only.
+  !(abc)
+
+      Match anything that doesn't contain abc . For example, x!(abc)x doesn't match xabcx or xabcabcx , but does match practically anything else that begins or ends with x . Korn shell only.
+  ^ pat
+
+      Match any name that doesn't match pat . pat must include at least one of the wildcards * , ? and [] . To match all except a single name, here's a trick: put brackets around one character. For instance, you can match all except abc with ^ab[c] . tcsh only. (For other shells, see nom ( 15.9 ) .)
+
+  Note: wildcards do not match files whose names begin with a dot ( . ), like .cshrc . [1] This prevents you from deleting (or otherwise mucking around with) these files by accident. To match those files, type the dot literally. For example, .[a-z]* matches anything whose name starts with a dot and a lowercase letter. Watch out for plain .* , though; it matches the directory entries . and .. (see article 15.5 for suggestions on solving that problem).
 
   Wildcards can be used at any point or points within a path. Remember, wildcards only match names that already exist.
 
@@ -2639,12 +2718,19 @@
    Solution
   The find utility can locate all of those files and then execute a command to move them where you want. For example:
        $ find . -name '*.mp3' -print -exec mv '{}' ~/songs \;
+
   Discussion
+
   The syntax for the find utility is unlike other Unix tools. It doesn’t use options in the typical way, with dash and single-letter collections up front followed by several words of arguments. Rather, the options look like short words, and are ordered in a logical sequence describing the logic of which files are to be found, and what to do with them, if anything, when they are found. These word-like options are often called predicates.
+
   A find command’s first arguments are the directory or directories in which to search. A typical use is simply (.) for the current directory. But you can provide a whole list of directories, or even search the entire filesystem (permissions allowing) by specify- ing the root of the filesystem (/) as the starting point.
+
   In our example the first option (the -name predicate) specifies the pattern we will search for. Its syntax is like the bash pattern matching syntax, so *.mp3 will match all filenames that end in the characters ".mp3". Any file that matches this pattern is con- sidered to return true and will thus continue to the next predicate of the command.
+
   Think of it this way: find will climb around on the filesystem and each filename that it finds it will present to this gauntlet of conditions that must be run. Any condition that is true is passed. Encounter a false and that filename’s turn is immediately over, and the next filename is processed.
+
   Now the -print condition is easy. It is always true and it has the side effect of print- ing the name to standard output. So any file that has made it this far in the sequence of conditions will have its name printed.
+
   The -exec is a bit odd. Any filename making it this far will become part of a com- mand that is executed. The remainder of the lineup to the \; is the command to be executed. The {} is replaced by the name of the file that was found. So in our exam- ple, if find encounters a file named mhsr.mp3 in the ./music/jazz subdirectory, then the command that will be executed will be:
        mv ./music/jazz/mhsr.mp3 ~/songs
   The command will be issued for each file that matches the pattern. If lots and lots of matching files are found, lots and lots of commands will be issued. Sometimes this is too demanding of system resources and it can be a better idea to use find just to find the files and print the filenames into a datafile and issue fewer commands by
@@ -2775,6 +2861,7 @@
   If you’re running a version of grep that doesn’t have the -H option, then just put /dev/ null as one of the filenames on the grep command. The grep command will then have more than one file to open, and will print out the filename if it finds the text.
   See Also
   • man find
+
    Finding Files by Content | 193
   9.10 Finding Existing Files and Content Fast Problem
   You’d like to be able to find files without having to wait for a long find command to complete, or you need to find a file with some specific content.
@@ -3058,8 +3145,11 @@
      Using this technique, we can ensure that all files, even those containing embedded spaces in their names, are handled correctly.
     A Return to the Playground
   It’s time to put find to some (almost) practical use. First, let’s create a play- ground with lots of subdirectories and files:
+  
   [me@linuxbox ~]$ mkdir -p playground/dir-{00{1..9},0{10..99},100} [me@linuxbox ~]$ touch playground/dir-{00{1..9},0{10..99},100}/file-{A..Z}
+  
   Marvel in the power of the command line! With these two lines, we cre- ated a playground directory containing 100 subdirectories, each containing 26 empty files. Try that with the GUI!
+  
   The method we employed to accomplish this magic involved a familiar command (mkdir); an exotic shell expansion (braces); and a new command, touch. By combining mkdir with the -p option (which causes mkdir to create the parent directories of the specified paths) with brace expansion, we were able to create 100 directories.
   The touch command is usually used to set or update the modification times of files. However, if a filename argument is that of a non-existent file, an empty file is created.
   In our playground, we created 100 instances of a file named file-A. Let’s find them:
@@ -3110,6 +3200,133 @@
   Set the minimum number of levels that find will descend into a directory tree before applying tests and actions.
   Direct find not to traverse directories that are mounted on other filesystems.
   Direct find not to optimize its search based on the assumption that it is searching a Unix-like filesystem. This is needed when scanning DOS/Windows file- systems and CD-ROMs.
+
+### VO 600w
+  find is one of UNIX's most useful and important utilities. It finds files that match a given set of parameters, ranging from the file's name to its modification date. 
+
+  $ find path operators
+
+  where path is the directory in which find will begin to search and operators (or, in more customary jargon, options ) tell find which files you're interested in. The operators are:
+
+  -name   filename
+
+  Find files with the given filename . This is the most commonly used operator. filename may include wildcards ( 15.2 ) , but if it does, it must be quoted to prevent the shell from interpreting the wildcards. See article 17.4 .
+  
+  -perm   mode
+  
+  Find files with the given access mode ( 22.2 ) . You must give the access mode in octal ( 1.23 ) . See articles 17.10 and 17.15 .
+  -type   c
+  
+  The files of the given type, specified by c . c is a one-digit code; for example, f for a plain file, b for a block special file, l for a symbolic link, etc. See article 17.13 .
+  -user   name
+  
+  Find files belonging to user name . name may also be a user ID number ( 38.3 ) . See article 17.16 .
+  -group   name
+  
+  Find files belonging to group name . name may also be a group ID number ( 38.3 ) . See article 17.16 .
+  -size   n
+  
+  Find files that are n blocks long. A block equals 512 bytes. The notation + n says "find files that are over n  blocks long." The notation n c says "find files that are n  characters long." Can you guess what + n c means? See article 17.14 .
+  -inum   n
+  
+  Find files with the inode number ( 1.22 ) n . See article 17.10 .
+  -atime   n
+  
+  Find files that were accessed n days ago. + n means "find files that were accessed over n days ago" (i.e., not accessed in the last n days). - n means "find files that were accessed less than n days ago" (i.e., accessed in the last n days). See articles 17.5 and 17.7 .
+  -mtime   n
+  
+  Similar to atime , except that it checks the time the file's contents were modified. See articles 17.5 and 17.7 .
+  -ctime   n
+  
+  Similar to atime , except that it checks the time the inode ( 1.22 ) was last changed. "Changed" means that the file was modified or that one of its attributes (for example, its owner) was changed. See articles 17.5 and 17.7 .
+  -newer   file
+  
+  Find files that have been modified more recently than the given file . See articles 17.8 and 17.9 .
+  
+  Of course, you often want to take some action on files that match several criteria. So we need some way to combine several operators:
+  
+  operator1   -a   operator2
+  
+  Find files that match both operator1 and operator2 . The -a isn't necessary; when two search parameters are juxtaposed, find assumes you want files that match both of them. See article 17.12 .
+  operator1   -o   operator2
+  
+  Find files that match either operator1 or operator2 . See article 17.6 .
+  !   operator
+  
+  Find all files that do not match the given operator . The ! performs a logical NOT operation. See article 17.6 .
+  \(  expression  \)
+  
+  Logical precedence; in a complex expression, evaluate this part of the expression before the rest. See article 17.6 .
+  
+  Another group of operators tells find what action to take when it locates a file:
+  
+  -print
+  
+  Print the file's name on standard output. See articles 17.2 and 17.3 .
+  -exec   command
+  
+  Execute command . To include the pathname of the file that's just been found in command , use the special symbol {} . command must end with a backslash followed by a semicolon ( \; ). For example:
+  
+      %
+  
+      find -name "*.o" -exec rm -f {} \;
+  
+  tells find to delete any files whose names end in .o . See article 17.10 .
+  -ok   command
+  
+  Same as -exec , except that find prompts you for permission before executing command . This is a useful way to test find commands. See article 17.10 .
+  
+  find . -print
+  
+  The first arguments to find are directory and file pathnames - in that example, a dot ( . ) is one name for the current directory ( 1.21 ) . The arguments after the pathnames always start with a minus sign ( - ) and tell find what to do once it finds a file. These are the search operators. In this case, the filename is printed. You can use the tilde ( ~ ) ( 14.11 ) supported by the C shell, as well as particular paths. For example:
+  
+  ls -l `find . -print`
+  
+  17.5 Searching for Old Files
+  
+  If you want to find a file that is seven days old, use the -mtime operator:
+  
+  %
+  
+  find . -mtime 7 -print
+  
+  An alternate way is to specify a range of times:
+  
+  %
+  
+  find . -mtime +6 -mtime -8 -print
+  
+  mtime is the last modified time of a file. If you want to look for files that have not been used, check the access time with the -atime argument. A command to list all files that have not been read in 30 days or more is:
+  
+  %
+  
+  find . -type f -atime +30 -print
+  
+  It is difficult to find directories that have not been accessed because the find command modifies the directory's access time.
+  
+  There is another time associated with each file, called the ctime , the inode ( 1.22 ) change time. Access it with the -ctime operator. The ctime will have a more recent value if the owner, group, permission, or number of links has changed, while the file itself does not. If you want to search for files with a specific number of links, use the -links operator.
+  
+  
+  MP3 audio files scattered all over your filesystem; find utility can locate all of those files and then execute a command to move them where you want. For example:
+  
+  $ find . -name '*.mp3' -print -exec mv '{}' ~/songs \;
+  
+  $ find . -name '*.mp3' -print -exec rm '{}' ~/songs \;
+  $ -delete
+  
+  -print condition is always true and prints name to standard output.
+
+  The -exec is a bit odd. Any filename making it this far will become part of a com- mand that is executed. The remainder of the lineup to the \; is the command to be executed. The {} is replaced by the name of the file that was found.
+
+  find . -name ' *.c' -newer Makefile -print
+
+  find -and -not -perms 0700
+  find ~ (-type f -not -perms 0600) -or (-type d -not -perms 0700)
+  -and
+  -or
+  -not
+
+  FURTHER EXPLORATION: mdfind, mdls, mdutil
 
 ## File modification 2m
 
