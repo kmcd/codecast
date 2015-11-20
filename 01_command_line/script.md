@@ -375,7 +375,7 @@
   * prompt customisation export PS1="\[\e[34;1m\]\w\[\e[0m\] $ "
   * create a desk clone
 
-## Keyboard shortcuts 4m
+## Keyboard speed 4m
 
   Command 	Function
   CTRL-b 	Move backward one character (without deleting).
@@ -729,12 +729,6 @@
   To print ten copies of the file project_report command doesn't have a -#10 option):
 
   $ lpr project_repor{t,t,t,t,t,t,t,t,t,t}
-
-  $ mkdir -p playground/dir-{00{1..9},0{10..99},100}
-  $ touch playground/dir-{00{1..9},0{10..99},100}/file-{A..Z}
-
-  Marvel in the power of the command line! With these two lines, we cre- ated a playground directory containing 100 subdirectories, each containing 26 empty files. Try that with the GUI!
-
 
 ## History 2m
 
@@ -3373,7 +3367,7 @@
   -rw-rw-r-- 1 me me 0 2012-03-06 14:52 foo.txt
      The first 10 characters of the listing are the file attributes (see Figure 9-1). The first of these characters is the file type. Table 9-1 lists the file types you are most likely to see (there are other, less common types too).
   The remaining nine characters of the file attributes, called the file mode, represent the read, write, and execute permissions for the file’s owner, the file’s group owner, and everybody else.
-  Figure 9-1: Breakdown of file attributes
+  Figure 9-1: Breakdow<!--  -->n of file attributes
    Permissions 79
   When set, the r, w, and x mode attributes have certain effects on files and directories, as shown in Table 9-2.
   Table 9-1: File Types
@@ -3486,10 +3480,12 @@
 
 
 ### VO 300w
+  (create day,month,year files & directories)
 
-  $ touch
+  we cre- ated a playground directory containing 100 subdirectories, each containing 26 empty files
 
-  $ mkdir -p
+  $ mkdir -p playground/dir-{00{1..9},0{10..99},100}
+  $ touch playground/dir-{00{1..9},0{10..99},100}/file-{A..Z}
 
   *redirection
 
@@ -3499,7 +3495,7 @@
   Redirect the output of a command onto the end of an existing file. Example: echo "Mary 555-1234" >> phonenumbers.txt
 
   save the output of a command to a file, instead of displaying it to the screen.
-  
+
   ls -l /home/vic/MP3/*.mp3 > mp3files.txt
   ls -l /home/vic/extraMP3s/*.mp3 >> mp3files.txt
 
@@ -4066,9 +4062,10 @@
   head and tail
   When you have output of hundreds or thousands of lines, being able to peek in and see the first few or last few lines is critically important. Those two tasks are enabled by the helpful head and tail commands. With both commands, the default action is to show 10 lines (the first 10 for head, and the last 10 for tail). You can change this by specifying n, where n is the desired number of lines. To see just the first three lines, use head -3, and to see the last 15, use tail -15.
   For example, we can see that the last 15 words of Alice’s Adventures in Wonderland are:
-  $ tr -cs "[:alpha:]" "\n" < alice.txt | tail -15 in
-  all
-  their
+  $ tr -cs "[:alpha:]" "\n" < alice.txt | tail -15
+      in
+      all
+      their
       simple
       joys
       remembering
@@ -4889,6 +4886,140 @@
   APPENDIX: BUILDING BLOCKS
   While the individual commands were pretty trivial, with the pipe and the backtick, I can combine them in ways their original authors might not have anticipated (and that is a major philosophical point behind Unix). With the knowledge of a dozen commands or so, you too can look like a Unix power user. More importantly, you can slice and dice your projects in ways that just are not available from the menus inside of IDEs.
 
+### VO 600w
+  *sed
+
+  Substitute on all lines (all occurrences):
+
+      s/xx/yy/g
+
+  Delete lines containing BSD :
+
+      /BSD/d
+
+  Print the lines between each pair of BEGIN and END , inclusive:
+
+      /^BEGIN/,/^END/p
+
+  Delete any line that doesn't contain SAVE :
+
+      /SAVE/!d
+
+  Substitute on all lines, except between BEGIN and END :
+
+      /BEGIN/,/END/!s/xx/yy/g
+
+  Example
+
+      # Replace first 100 lines in a file:
+      1,100c\
+
+      ...first replacement line
+      \
+
+      ...second replacement line
+      \
+
+      ...
+      \
+
+      ...last replacement line
+
+  d
+
+      [ address1 ][, address2 ]d
+
+      Delete the addressed line (or lines) from the pattern space. Thus, the line is not passed to standard output. A new line of input is read, and editing resumes with the first command in the script. See articles 34.4 and 34.18 .
+
+      Example
+
+          # delete all blank lines:
+          /^$/d
+
+  i
+
+          [ address ]i\
+          text
+
+      Insert text before each line matched by address . (See a for details on text .) Article 43.20 shows a script that uses i .
+
+      Example
+
+          /Item 1/i\
+          The five items are listed below:
+
+  s
+
+      [ address1 ][ , address2 ] s/ pattern / replacement / [ flags ]
+
+      Substitute replacement for pattern on each addressed line. If pattern addresses are used, the pattern // represents the last pattern address specified. The following flags can be specified:
+
+    g
+  
+        Replace all instances of / pattern / on each addressed line, not just the first instance.
+
+  *tr
+
+  tr "[:lower:]" "[:upper:]" < file1
+  For example:
+  $ tr "[:lower:]" "[:upper:]" < todo 1. WAKE UP
+  2. LOOK IN MIRROR
+  3. SIGH
+      4. GO BACK TO BED.
+      $
+  The tr command has a number of different options for power users, including -c to invert the specified pattern (that is, if you specify tr -c "abc", the program matches anything other than a, b, or c), and -d deletes any characters from the first pattern specified.
+  To remove all vowels from the input, you could use:
+  $ tr -d "[aeiou]" < todo 1. Wk p
+
+  *cut
+
+  The cut program is used to extract a section of text from a line and output the extracted section to standard output. It can accept multiple file argu- ments or input from standard input.
+  Specifying the section of the line to be extracted is somewhat awkward and is specified using the options shown in Table 20-3.
+   
+  Option
+  -c char_list
+  -f field_list
+  -d delim_char
+  --complement
+  Description
+  Extract the portion of the line defined by char_list. The list may consist of one or more comma-separated numerical ranges.
+  Extract one or more fields from the line as defined by field_list. The list may contain one or more fields or field ranges separated by commas.
+  When -f is specified, use delim_char as the field delimit- ing character. By default, fields must be separated by a single tab character.
+  Extract the entire line of text, except for those portions specified by -c and/or -f.
+
+  *sort
+
+  $ ls -l | sort -nk 5 | less
+   -b         --ignore-leading-blanks
+  -f --ignore-case -n --numeric-sort
+  -r --reverse
+  -k --key=field1[,field2]
+  -m --merge
+  -o --output=file
+  -t --field-separator=cha
+
+  *uniq
+
+  Compared to sort, the uniq program is a lightweight. uniq performs a seem- ingly trivial task. When given a sorted file (including standard input), it removes any duplicate lines and sends the results to standard output. It is often used in conjunction with sort to clean the output of duplicates.
+  
+  Note: While uniq is a traditional Unix tool often used with sort, the GNU version of sort supports a -u option, which removes duplicates from the sorted output.
+
+  -c -d
+  -f n
+  -i -s n -u
+  Description
+  Output a list of duplicate lines preceded by the number of times the line occurs.
+  Output only repeated lines, rather than unique lines.
+  Ignore n leading fields in each line. Fields are separated by whitespace as they are in sort; however, unlike sort, uniq has no option for setting an alternative field separator.
+  Ignore case during the line comparisons.
+  Skip (ignore) the leading n characters of each line. Output only unique lines. This is the default.
+              Here we see uniq used to report the number of duplicates found in our text file, using the -c option:
+  [me@linuxbox ~]$ sort foo.txt | uniq -c 2a
+
+  *wc
+
+  $ find . -name *.rb | wc -l
+
 ## Networking 2m
 
   NETWORKING
@@ -5138,6 +5269,8 @@
   /home/me/ubuntu-8.04-desktop-i386.iso 100% 699MB 7.4MB/s 01:35 sftp> bye
   Note: The SFTP protocol is supported by many of the graphical file managers found in Linux distributions. Using either Nautilus (GNOME) or Konqueror (KDE), we can enter a URI beginning with sftp:// into the location bar and operate on files stored on a remote system running an SSH server.
 
+### VO 300w
+  
 ## Processes 4m
 
   PROCESSES

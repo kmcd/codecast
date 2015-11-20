@@ -55,7 +55,7 @@
   16.12 Setting Shell History Options
   106 Using History
 
-## Keyboard shortcuts 2m
+## Keyboard speed 2m
 
   Faster erasing ( 9.2 )
   Filename completion ( 9.8 , 9.9 , 9.10 )
@@ -132,7 +132,6 @@
   219 Searching for files
 
 ## File modification 2m
-
   (CRUD)
 
   cp *-dt-*-nt-~
