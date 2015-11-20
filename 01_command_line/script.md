@@ -5130,7 +5130,7 @@
   FTP (in its original form) is not secure, because it sends account names and passwords in cleartext. This means that they are not encrypted and any- one sniffing the network can see them. Because of this, almost all FTP done over the Internet is done by anonymous FTP servers. An anonymous server allows anyone to log in using the login name anonymous and a meaningless password.
   In the following example, we show a typical session with the ftp pro- gram downloading an Ubuntu ISO image located in the /pub/cd_images/ Ubuntu-8.04 directory of the anonymous FTP server fileserver.
   Networking 179
-   [me@linuxbox ~]$ ftp fileserver
+  [me@linuxbox ~]$ ftp fileserver
   Connected to fileserver.localdomain.
   220 (vsFTPd 2.0.1)
   Name (fileserver:me): anonymous
@@ -5270,7 +5270,87 @@
   Note: The SFTP protocol is supported by many of the graphical file managers found in Linux distributions. Using either Nautilus (GNOME) or Konqueror (KDE), we can enter a URI beginning with sftp:// into the location bar and operate on files stored on a remote system running an SSH server.
 
 ### VO 300w
+
+  $ nmap
+  $ lsof
   
+  ping—Send an ICMP ECHO_REQUEST to network hosts.
+  traceroute—Print the route packets trace to a network host.
+  
+  
+  $ ping google.com
+  $ traceroute google.com
+  (xtraceroute ?)
+  
+  ftp—Internet file transfer program.
+  
+  ftp archive.org
+  
+  wget—Non-interactive network downloader.
+  
+  $ wget -r $RAILS_GUIDES
+  
+  open `find guides.rubyonrails.org -iname "*active_record*"`
+  
+  ssh—OpenSSH SSH client (remote login program).
+  
+  keys
+  
+  As stated before, ssh verifies the authenticity of the remote host. 
+  
+  If the remote host does not successfully authenticate, the following message appears:
+  
+  @ WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! @ 
+  
+  Add correct host key in /home/me/.ssh/known_hosts to get rid of this message.
+  
+  Offending key in /home/me/.ssh/known_hosts:1
+  RSA host key for remote-sys has changed and you have requested strict checking.
+  
+  This message is caused by one of two possible situations. First, an attacker may be attempting a man-in-the-middle attack. This is rare, because every- body knows that ssh alerts the user to this. 
+  
+  The more likely culprit is that the remote system has been changed somehow; for example, its operating system or SSH server has been reinstalled. In the interests of security and safety, however, the first possibility should not be dismissed out of hand. 
+  
+  Always check with the administrator of the remote system when this message occurs.
+  
+  After determining that the message is due to a benign cause, it is safe to correct the problem on the client side. 
+  
+  This is done by using a text editor (vim perhaps) to remove the obsolete key from the ~/.ssh/known_hosts file. In the example message above, we see this:
+  
+  Offending key in /home/me/.ssh/known_hosts:1
+  
+  This means that line 1 of the known_hosts file contains the offending key. 
+  
+  Delete this line from the file, and the ssh program will be able to accept new authentication credentials from the remote system.
+  
+  Besides opening a shell session on a remote system, ssh also allows us to execute a single command on a remote system. 
+  
+  For example, we can execute the free command on a remote host named remote-sys and have the results displayed on the local system:
+  
+  [me@linuxbox ~]$ ssh remote-sys free
+  
+  It’s possible to use this technique in more interesting ways, such as this example in which we perform an ls on the remote system and redirect the output to a file on the local system:
+
+  [me@linuxbox ~]$ ssh remote-sys 'ls *' > dirlist.txt me@twin4's password:
+  [me@linuxbox ~]$
+  
+  Notice the use of the single quotes. This is done because we do not want the pathname expansion performed on the local machine; rather, we want it to be performed on the remote system. Likewise, if we had wanted the output
+  Mem:        775536
+  -/+ buffers/cache:
+  Swap:      1572856        0    1572856
+  [me@linuxbox ~]$
+
+  redirected to a file on the remote machine, we could have placed the redir- ection operator and the filename within the single quotes:
+  [me@linuxbox ~]$ ssh remote-sys 'ls * > dirlist.txt'
+   
+  scp and sftp—Securely Transfer Files
+  
+  [me@linuxbox ~]$ scp remote-sys:document.txt .
+  me@remote-sys's password:
+  document.txt 100% 5581 5.5KB/s 00:00 [me@linuxbox ~]$
+  
+  [me@linuxbox ~]$ scp bob@remote-sys:document.txt .
+
 ## Processes 4m
 
   PROCESSES
