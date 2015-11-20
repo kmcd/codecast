@@ -3212,30 +3212,24 @@
 
   Find files with the given filename . This is the most commonly used operator. filename may include wildcards ( 15.2 ) , but if it does, it must be quoted to prevent the shell from interpreting the wildcards. See article 17.4 .
   
+  -type   d
+  
+  *attibutes
+  
   -perm   mode
-  
-  Find files with the given access mode ( 22.2 ) . You must give the access mode in octal ( 1.23 ) . See articles 17.10 and 17.15 .
-  -type   c
-  
-  The files of the given type, specified by c . c is a one-digit code; for example, f for a plain file, b for a block special file, l for a symbolic link, etc. See article 17.13 .
   -user   name
-  
-  Find files belonging to user name . name may also be a user ID number ( 38.3 ) . See article 17.16 .
   -group   name
-  
-  Find files belonging to group name . name may also be a group ID number ( 38.3 ) . See article 17.16 .
   -size   n
   
-  Find files that are n blocks long. A block equals 512 bytes. The notation + n says "find files that are over n  blocks long." The notation n c says "find files that are n  characters long." Can you guess what + n c means? See article 17.14 .
-  -inum   n
-  
-  Find files with the inode number ( 1.22 ) n . See article 17.10 .
+  *time range
   -atime   n
   
   Find files that were accessed n days ago. + n means "find files that were accessed over n days ago" (i.e., not accessed in the last n days). - n means "find files that were accessed less than n days ago" (i.e., accessed in the last n days). See articles 17.5 and 17.7 .
+  
   -mtime   n
   
   Similar to atime , except that it checks the time the file's contents were modified. See articles 17.5 and 17.7 .
+  
   -ctime   n
   
   Similar to atime , except that it checks the time the inode ( 1.22 ) was last changed. "Changed" means that the file was modified or that one of its attributes (for example, its owner) was changed. See articles 17.5 and 17.7 .
@@ -3243,88 +3237,82 @@
   
   Find files that have been modified more recently than the given file . See articles 17.8 and 17.9 .
   
-  Of course, you often want to take some action on files that match several criteria. So we need some way to combine several operators:
-  
-  operator1   -a   operator2
-  
-  Find files that match both operator1 and operator2 . The -a isn't necessary; when two search parameters are juxtaposed, find assumes you want files that match both of them. See article 17.12 .
-  operator1   -o   operator2
-  
-  Find files that match either operator1 or operator2 . See article 17.6 .
-  !   operator
-  
-  Find all files that do not match the given operator . The ! performs a logical NOT operation. See article 17.6 .
-  \(  expression  \)
-  
-  Logical precedence; in a complex expression, evaluate this part of the expression before the rest. See article 17.6 .
-  
-  Another group of operators tells find what action to take when it locates a file:
-  
-  -print
-  
-  Print the file's name on standard output. See articles 17.2 and 17.3 .
-  -exec   command
-  
-  Execute command . To include the pathname of the file that's just been found in command , use the special symbol {} . command must end with a backslash followed by a semicolon ( \; ). For example:
-  
-      %
-  
-      find -name "*.o" -exec rm -f {} \;
-  
-  tells find to delete any files whose names end in .o . See article 17.10 .
-  -ok   command
-  
-  Same as -exec , except that find prompts you for permission before executing command . This is a useful way to test find commands. See article 17.10 .
-  
-  find . -print
-  
-  The first arguments to find are directory and file pathnames - in that example, a dot ( . ) is one name for the current directory ( 1.21 ) . The arguments after the pathnames always start with a minus sign ( - ) and tell find what to do once it finds a file. These are the search operators. In this case, the filename is printed. You can use the tilde ( ~ ) ( 14.11 ) supported by the C shell, as well as particular paths. For example:
-  
-  ls -l `find . -print`
-  
-  17.5 Searching for Old Files
-  
   If you want to find a file that is seven days old, use the -mtime operator:
   
-  %
-  
-  find . -mtime 7 -print
+  $ find . -mtime 7 -print
   
   An alternate way is to specify a range of times:
   
-  %
-  
-  find . -mtime +6 -mtime -8 -print
+  % find . -mtime +6 -mtime -8 -print
   
   mtime is the last modified time of a file. If you want to look for files that have not been used, check the access time with the -atime argument. A command to list all files that have not been read in 30 days or more is:
   
-  %
-  
-  find . -type f -atime +30 -print
+  $ find . -type f -atime +30 -print
   
   It is difficult to find directories that have not been accessed because the find command modifies the directory's access time.
   
-  There is another time associated with each file, called the ctime , the inode ( 1.22 ) change time. Access it with the -ctime operator. The ctime will have a more recent value if the owner, group, permission, or number of links has changed, while the file itself does not. If you want to search for files with a specific number of links, use the -links operator.
+  *operate on results
   
+  -print
+  -exec   command
   
-  MP3 audio files scattered all over your filesystem; find utility can locate all of those files and then execute a command to move them where you want. For example:
+   {} pathname of the file; must end with a backslash followed by a semicolon ( \; 
+  
+  $ find -name "*.o" -exec rm -f {} \;
+  
+  tells find to delete any files whose names end in .o . 
+  
+  -ok
+  
+  Same as -exec , except that find prompts you for permission before executing command . This is a useful way to test find commands. See article 17.10 .
+  
+  MP3 audio files scattered all over your filesystem; move them where you want. For example:
   
   $ find . -name '*.mp3' -print -exec mv '{}' ~/songs \;
-  
   $ find . -name '*.mp3' -print -exec rm '{}' ~/songs \;
+  
   $ -delete
   
-  -print condition is always true and prints name to standard output.
-
   The -exec is a bit odd. Any filename making it this far will become part of a com- mand that is executed. The remainder of the lineup to the \; is the command to be executed. The {} is replaced by the name of the file that was found.
 
-  find . -name ' *.c' -newer Makefile -print
-
+  *logical operators
+  
   find -and -not -perms 0700
+  
   find ~ (-type f -not -perms 0600) -or (-type d -not -perms 0700)
   -and
   -or
   -not
+  
+  *text search
+  
+  grep global regular expression print
+  
+  regular expressions describes patterns in text. similar to wildcards
+  
+  grep searches text files for the occurrence of a specified regular expression and outputs any line containing a match to standard output.
+  
+  [me@linuxbox ~]$ ls /usr/bin | grep zip
+  
+  This will list all the files in the /usr/bin directory whose names contain the substring zip.
+  
+  Option Description
+  
+  -i Ignore case. --ignore-case.
+  
+  -v Invert match.
+  
+  -c Print the number of matches instead of the lines themselves. 
+  
+  -l
+  Print the name of each file that contains a match instead of the lines 
+  
+  -L
+  Like the -l option, but print only the names of files that do not contain matches. May also be specified --files-without-match.
+  
+  -n Prefix each matching line with the number of the line within the file. 
+  
+  -h For multifile searches, suppress the output of filenames.
 
   FURTHER EXPLORATION: mdfind, mdls, mdutil
 
