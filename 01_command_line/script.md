@@ -729,10 +729,10 @@
   To print ten copies of the file project_report command doesn't have a -#10 option):
 
   $ lpr project_repor{t,t,t,t,t,t,t,t,t,t}
-  
+
   $ mkdir -p playground/dir-{00{1..9},0{10..99},100}
   $ touch playground/dir-{00{1..9},0{10..99},100}/file-{A..Z}
-  
+
   Marvel in the power of the command line! With these two lines, we cre- ated a playground directory containing 100 subdirectories, each containing 26 empty files. Try that with the GUI!
 
 
@@ -3145,11 +3145,11 @@
      Using this technique, we can ensure that all files, even those containing embedded spaces in their names, are handled correctly.
     A Return to the Playground
   It’s time to put find to some (almost) practical use. First, let’s create a play- ground with lots of subdirectories and files:
-  
+
   [me@linuxbox ~]$ mkdir -p playground/dir-{00{1..9},0{10..99},100} [me@linuxbox ~]$ touch playground/dir-{00{1..9},0{10..99},100}/file-{A..Z}
-  
+
   Marvel in the power of the command line! With these two lines, we cre- ated a playground directory containing 100 subdirectories, each containing 26 empty files. Try that with the GUI!
-  
+
   The method we employed to accomplish this magic involved a familiar command (mkdir); an exotic shell expansion (braces); and a new command, touch. By combining mkdir with the -p option (which causes mkdir to create the parent directories of the specified paths) with brace expansion, we were able to create 100 directories.
   The touch command is usually used to set or update the modification times of files. However, if a filename argument is that of a non-existent file, an empty file is created.
   In our playground, we created 100 instances of a file named file-A. Let’s find them:
@@ -3202,7 +3202,7 @@
   Direct find not to optimize its search based on the assumption that it is searching a Unix-like filesystem. This is needed when scanning DOS/Windows file- systems and CD-ROMs.
 
 ### VO 600w
-  find is one of UNIX's most useful and important utilities. It finds files that match a given set of parameters, ranging from the file's name to its modification date. 
+  find is one of UNIX's most useful and important utilities. It finds files that match a given set of parameters, ranging from the file's name to its modification date.
 
   $ find path operators
 
@@ -3211,107 +3211,107 @@
   -name   filename
 
   Find files with the given filename . This is the most commonly used operator. filename may include wildcards ( 15.2 ) , but if it does, it must be quoted to prevent the shell from interpreting the wildcards. See article 17.4 .
-  
+
   -type   d
-  
+
   *attibutes
-  
+
   -perm   mode
   -user   name
   -group   name
   -size   n
-  
+
   *time range
   -atime   n
-  
+
   Find files that were accessed n days ago. + n means "find files that were accessed over n days ago" (i.e., not accessed in the last n days). - n means "find files that were accessed less than n days ago" (i.e., accessed in the last n days). See articles 17.5 and 17.7 .
-  
+
   -mtime   n
-  
+
   Similar to atime , except that it checks the time the file's contents were modified. See articles 17.5 and 17.7 .
-  
+
   -ctime   n
-  
+
   Similar to atime , except that it checks the time the inode ( 1.22 ) was last changed. "Changed" means that the file was modified or that one of its attributes (for example, its owner) was changed. See articles 17.5 and 17.7 .
   -newer   file
-  
+
   Find files that have been modified more recently than the given file . See articles 17.8 and 17.9 .
-  
+
   If you want to find a file that is seven days old, use the -mtime operator:
-  
+
   $ find . -mtime 7 -print
-  
+
   An alternate way is to specify a range of times:
-  
+
   % find . -mtime +6 -mtime -8 -print
-  
+
   mtime is the last modified time of a file. If you want to look for files that have not been used, check the access time with the -atime argument. A command to list all files that have not been read in 30 days or more is:
-  
+
   $ find . -type f -atime +30 -print
-  
+
   It is difficult to find directories that have not been accessed because the find command modifies the directory's access time.
-  
+
   *operate on results
-  
+
   -print
   -exec   command
-  
-   {} pathname of the file; must end with a backslash followed by a semicolon ( \; 
-  
+
+   {} pathname of the file; must end with a backslash followed by a semicolon ( \;
+
   $ find -name "*.o" -exec rm -f {} \;
-  
-  tells find to delete any files whose names end in .o . 
-  
+
+  tells find to delete any files whose names end in .o .
+
   -ok
-  
+
   Same as -exec , except that find prompts you for permission before executing command . This is a useful way to test find commands. See article 17.10 .
-  
+
   MP3 audio files scattered all over your filesystem; move them where you want. For example:
-  
+
   $ find . -name '*.mp3' -print -exec mv '{}' ~/songs \;
   $ find . -name '*.mp3' -print -exec rm '{}' ~/songs \;
-  
+
   $ -delete
-  
+
   The -exec is a bit odd. Any filename making it this far will become part of a com- mand that is executed. The remainder of the lineup to the \; is the command to be executed. The {} is replaced by the name of the file that was found.
 
   *logical operators
-  
+
   find -and -not -perms 0700
-  
+
   find ~ (-type f -not -perms 0600) -or (-type d -not -perms 0700)
   -and
   -or
   -not
-  
+
   *text search
-  
+
   grep global regular expression print
-  
+
   regular expressions describes patterns in text. similar to wildcards
-  
+
   grep searches text files for the occurrence of a specified regular expression and outputs any line containing a match to standard output.
-  
+
   [me@linuxbox ~]$ ls /usr/bin | grep zip
-  
+
   This will list all the files in the /usr/bin directory whose names contain the substring zip.
-  
+
   Option Description
-  
+
   -i Ignore case. --ignore-case.
-  
+
   -v Invert match.
-  
-  -c Print the number of matches instead of the lines themselves. 
-  
+
+  -c Print the number of matches instead of the lines themselves.
+
   -l
-  Print the name of each file that contains a match instead of the lines 
-  
+  Print the name of each file that contains a match instead of the lines
+
   -L
   Like the -l option, but print only the names of files that do not contain matches. May also be specified --files-without-match.
-  
-  -n Prefix each matching line with the number of the line within the file. 
-  
+
+  -n Prefix each matching line with the number of the line within the file.
+
   -h For multifile searches, suppress the output of filenames.
 
   FURTHER EXPLORATION: mdfind, mdls, mdutil
@@ -3383,7 +3383,8 @@
   l A symbolic link. Notice that with symbolic links, the remaining file attributes are always rwxrwxrwx and are dummy values. The real file attributes are those of the file the symbolic link points to.
   c A character special file. This file type refers to a device that handles data as a stream of bytes, such as a terminal or modem.
   b A block special file. This file type refers to a device that handles data in blocks, such as a hard drive or CD-ROM drive.
-             Table 9-2: Permission Attributes
+
+  Table 9-2: Permission Attributes
    Attribute
   Files
   Allows a file to be opened and read.
@@ -3404,9 +3405,8 @@
   -rw-------
   Meaning
   A regular file that is readable, writable, and executable by the file’s owner. No one else has any access.
-  A regular file that is readable and writable by the file’s owner. No one else has any access.
-      80 Chapter 9
-  Table 9-3 (continued )
+  T
+  able 9-3 (continued )
   File Attributes
   -rw-r--r--
   -rwxr-xr-x
@@ -3484,6 +3484,73 @@
   e.g. PostgreSQL user
   e.g. shell script
 
+
+### VO 300w
+
+  $ touch
+
+  $ mkdir -p
+
+  *redirection
+
+  >
+  Redirect output of a command into a new file. If the file already exists, over-write it. Example: ls > myfiles.txt
+  >>
+  Redirect the output of a command onto the end of an existing file. Example: echo "Mary 555-1234" >> phonenumbers.txt
+
+  save the output of a command to a file, instead of displaying it to the screen.
+  
+  ls -l /home/vic/MP3/*.mp3 > mp3files.txt
+  ls -l /home/vic/extraMP3s/*.mp3 >> mp3files.txt
+
+  { date; who; ls; } > log
+
+  *change file attritutes
+
+  -rwx------
+  A regular file that is readable, writable, and executable by the file’s owner. No one else has any access.
+
+  -rw-r--r--
+  A regular file that is readable and writable by the file’s owner. Members of the file’s owner group may read the file. The file is world readable.
+
+  -rwxr-xr-x
+  A regular file that is readable, writable, and executable by the file’s owner. The file may be read and executed by everybody else.
+
+  -rw-rw----
+  A regular file that is readable and writable by the file’s owner and members of the file’s owner group only.
+
+  Lrwxrwxrwx
+  A symbolic link. All symbolic links have "dummy" permis- sions. The real permissions are kept with the actual file pointed to by the symbolic link.
+
+  drwxrwx---
+  A directory. The owner and the members of the owner group may enter the directory and create, rename, and remove files within the directory.
+
+  drwxr-x---
+  A directory. The owner may enter the directory and create, rename, and delete files within the directory. Members of the owner group may enter the directory but cannot create, delete, or rename files.
+
+  *change file mode
+
+  u Short for user but means the file or directory owner.
+  g Group owner.
+  o Short for others but means world.
+  a Short for all; the combination of u, g, and o.
+
+  If no character is specified, all will be assumed.
+
+  The operation may be
+  a + indicating that a permission is to be added, a - indicating that a permis- sion is to be taken away, or a = indicating that only the specified permissions are to be applied and that all others are to be removed.
+
+  u+x Add execute permission for the owner.
+  u-x Remove execute permission from the owner.
+  +x Add execute permission for the owner, group, and world. Equivalent to a+x.
+
+  *change file owner
+
+  chown [owner][:[group]]
+  chown -R
+
+  SELF DIRECTED:
+  * chmod octal
 
 ## Text processing 4m
 
