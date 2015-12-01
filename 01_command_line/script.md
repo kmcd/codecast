@@ -34,6 +34,18 @@
   Which Java files have not been changed in the last week?
   Of those files, which use the awt libraries?
   Clearly the list could go on. The shell commands may be obscure or terse, but they are powerful and concise. And, because shell commands can be combined into script files (or command files under Windows systems), you can build sequences of commands to automate things you do often.
+### VO 300w
+  
+  PROMO
+  
+  FORTHCOMING
+  
+  Show you how to:
+  * get help from manual pages
+  * use keyboard shortcuts
+  * navigate & understand file system
+  * use history
+  * 
 
 ## Getting help 2m
   man COMMAND
