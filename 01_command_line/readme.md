@@ -93,6 +93,7 @@
 
   https://www.flickr.com/photos/frosch50/12104437315/in/photolist-jrCpv6-53tWgz-82724T-53tWxx-53tWjP-53tWo6-5xfoPQ-53yavA-8fyho4-8fBx8b-5Moqaa-3xzBLw-5ZUiNm-bHMb2g-k9x4kj-4TqK1-4jhJLY-4ZXqfn-7ggS3o-6DZ1Lm-5kEHwW-6DZ1nU-2VV6Xn-4jhKdL-2v775V-7Ud6C9-MuzG8-5H7Q2j-5YrwUn-v5kS6c-9yNPPr-4xq3SZ-4xkuzy-4jdFFk-Bfem8-8fyhmi-8fyhk6-8fyhjk-rJSNvm-8En8Eo-8EiYGa-2pEg4P-3Au62u-3ApG9v-sbF7Vh-4jdFtP-kH8v1-7gtuP-dKPUcT-4xgiwn
   https://www.flickr.com/photos/tabsinthe/8286250862/
+  https://www.flickr.com/photos/paszczak000/4421317209/
 
   $ apropos
   $ man
@@ -309,3 +310,7 @@
   * Credits / attributions
   * Contact info (email address)
   * email list CTA
+  
+https://www.flickr.com/photos/82955120@N05/11108752186/in/photolist-hVDg17-vHmXHi-bvSEsc-bbeATz-rty8Cx-zCaJ7g-fnRHUD-pHiKFn-pHm1RY-bvSF6p-pNTkTh-vqK5iX-zUpkDx-7f9v8G-o7rAfS-aDhpB7-aDdwpp-5jDhCx-pW1sKG-pFJRnn-pW1qrJ-pYeT3N-95ciiT-95fnrL-9mJZtQ-9mJYx7-eyGKta-uB3ux1-uB3sxj-9exEfk-ajsrNa-5iXgHo-tWM1vH-8hKTpf-uB3fW5-56ayiz-95fnHJ-o7sQFa-4sdCBW-uB3rxJ-5iSXzk-5iXgWJ-dVsypM-dYuXt8-oDE4nm-onnScj-vQ5qqb-vzM9gQ-fPgnp6-oJnfvw
+
+https://www.flickr.com/photos/59937401@N07/5857806294/
