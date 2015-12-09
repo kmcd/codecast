@@ -1778,21 +1778,27 @@
   ?
 
       Match exactly one character. For example, a? matches aa , ab , ac , etc.
+  
   [12..a..z]
 
       Match any character listed in the brackets. For example, a[ab] matches aa or ab .
+  
   [a-z]
 
       Match all characters between a and z. For example, a[0-9] matches a0 , a1 , and so on, up to a9 .
+  
   [!ab..z]
 
       Match any character that does not appear within the brackets. For example, a[!0-9] doesn't match a0 , but does match aa . bash , Korn, and newer Bourne shells only.
+  
   [^ab..z]
 
       Match any character that does not appear within the brackets. For example, a[^0-9] doesn't match a0 , but does match aa . tcsh only.
+  
   {word1,word2...}
 
       Match word1 , word2 , etc. E.g., a_{dog,cat,horse} matches the filenames a_dog , a_cat , and a_horse . bash and C shells only. These ( 9.5 ) actually aren't filename-matching wildcards. They expand any string, including filenames that don't exist yet, email addresses, and more.
+      
   ?(abc)
 
       Match zero or one instance of abc . For example, x?(abc)x matches xx or xabcx . Korn shell only.

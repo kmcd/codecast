@@ -1,7 +1,7 @@
 .post-commit.log
 .DS_Store
-**/reference/*
-**/export/*
+**/ref/*
+**/dist/*
 **/video/*.mov
 **/video/*.imovielibrary
 **/video/*.aif

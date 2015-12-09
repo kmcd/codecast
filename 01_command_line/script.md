@@ -172,13 +172,34 @@
   Match groups of files so you don't have to specify each file name manually
 
 ## You will be able to ...
-
 ## Examples
   *zero or more
+
+  cd ~/src/git
+
+  ls *
+  ls a*
+
   *exactly one
+
+  ls at*.c
+  ls at?.c
+
   *any char in brackets
+
+  ls -1 test-[mp]*
+  ls -1 test-[dg]*
+
   *char range [a-z]
+
+  ls -1 test-[a-z]*
+  ls -1 test-[d-f]*
+  ls -1 test-[d-g]*
+
   *negation
+
+  ls -1 test-[^d-g]*
+  ls -1 test-[!d-g]*
 
 ## Points to note
 
