@@ -252,11 +252,43 @@
 ## You will be able to ...
 
 ## Examples
-  fix typo
-  quick ext rename
-  directory listing
-  create new file
-  create sub directory
+  *fix typo
+
+  touch april_1.txt
+  mv april_{1,2}.txt
+
+  *quick ext rename
+
+  touch README.txt
+  cp README{,.bak}
+
+  *directory listing
+
+  tree  action{mailer,view}/lib/action*/
+
+  *create new file
+
+  $ vi /usr/foo/file{a,b,c,d,e,f,g,h,i,j}
+
+  for n in ({0,1,2}{0,1,2,3,4,5,6,7,8,9}{0,1,2,3,4,5,6,7,8,9})
+  end
+
+  *create sub directory
+
+  mkdir man/{man,cat}{1,2,3,4,5,6,7,8}
+
+  *non-existent tar file listing
+
+  man tar
+  tar zcvf rails.tgz rails
+  man tar
+  ls rails/[^.git]*
+  tar zcvf rails.tgz rails/[^.git]*
+  man tar
+  tar zcv --exclude .git -f rails.tgz rails
+  tar ztf rails.tgz
+  tar ztf rails.tgz | sort
+  tar ztf rails.tgz rails/{tools,tasks}
 
 ## Points to note
 ## Recap
@@ -264,17 +296,109 @@
 
 # File search L 25
 ## What is it?
+  find is one of UNIX's most useful and important utilities. It finds files that match a given set of parameters, ranging from the file's name to its modification date.
+
 ## Why is it useful?
 ## You will be able to ...
 ## Examples
-  find by atttributes
-  find by time
-  operate on results
-  logical operators
-  text search grep/ack
+  *find by name
+
+  find path operators
+
+  find .
+
+  find rails -name "active*"
+  find rails -name "active*rb"
+  find rails -name "Active*rb"
+  find rails -iname "Active*rb"
+
+  (history 50 | grep find | cut -c 8-99 | pbcopy)
+
+  *find by atttributes
+
+  -user   name
+  -group   name
+
+  find . -user kmcd
+  find . -group staff
+
+  -size   n
+
+  find . -size +1M
+  find . -size +500k
+  find . -size +50k
+  find . -size +100k
+
+  *find by time
+
+  cd ~/src/support_flow/
+  find . -type f -print0 | xargs -0 ls -lt
+
+
+  Modified within last 2 months
+
+  find [!.git]* -mtime -8w -print
+  ll -t `find [!.git]* -type f -mtime -8w -print`
+
+  Modified 2 months ago
+
+  find [!.git]* -mtime +8w -print
+  ll -t `find [!.git]* -type f -mtime +8w -print`
+
+  *operate on results
+
+  -print
+  -exec   command
+
+   {} pathname of the file; must end with a backslash followed by a semicolon ( \;
+
+  $ find -name "*.o" -exec rm -f {} \;
+
+  tells find to delete any files whose names end in .o .
+
+  -ok
+
+  Same as -exec , except that find prompts you for permission before executing command . This is a useful way to test find commands. See article 17.10 .
+
+  MP3 audio files scattered all over your filesystem; move them where you want. For example:
+
+  $ find . -name '*.mp3' -print -exec mv '{}' ~/songs \;
+  $ find . -name '*.mp3' -print -exec rm '{}' ~/songs \;
+
+  $ -delete
+
+  *logical operators
+
+  find -and -not -perms 0700
+
+  find ~ (-type f -not -perms 0600) -or (-type d -not -perms 0700)
+  -and
+  -or
+  -not
+
+  *text search grep/ack
+
+  grep global regular expression print
+  
+  grep - handy for filtering
+  ack - fast for large number of files
+  
+  cd ~/src/rails
+  
+  -i Ignore case. --ignore-case.
+  -v Invert match.
+  -c Print the number of matches instead of the lines themselves.
+  -l
+  Print the name of each file that contains a match instead of the lines
+  -L
+  Like the -l option, but print only the names of files that do not contain matches. May also be specified --files-without-match.
+  -n Prefix each matching line with the number of the line within the file.
+  -h For multifile searches, suppress the output of filenames.
+
 ## Points to note
 ## Recap
 ## Going further
+  mdfind, mdls, mdutil
 
 # Text processing L 29
 ## What is it?
@@ -301,6 +425,9 @@
   attributes
   mode
   owner
+
+  find . -perm -u=x -name "*.*"
+
 ## Points to note
 ## Recap
 ## Going further

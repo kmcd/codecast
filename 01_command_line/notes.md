@@ -3669,7 +3669,6 @@
   regular expressions describes patterns in text. similar to wildcards
 
   grep searches text files for the occurrence of a specified regular expression and outputs any line containing a match to standard output.
-
   [me@linuxbox ~]$ ls /usr/bin | grep zip
 
   This will list all the files in the /usr/bin directory whose names contain the substring zip.
