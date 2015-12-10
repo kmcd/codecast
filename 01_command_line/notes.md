@@ -918,7 +918,7 @@
 
   ALT-F move forward to next word
   ALT-B move backward to previous word
-  
+
   ALT-BACKSPACE Kill text from cursor beginning ofcurrent word.
 
   ALT-D Kill text from cursor end of current word.
@@ -934,7 +934,7 @@
   CTRL-T Transpose (exchange) the character at cursor location with the one preceding it.
 
   CTRL-U Kill text from cursor beginning ofline.
-  
+
   CTRL-d 	Delete one character forward.
 
   CTRL-k 	Delete ("kill") forward to end of line.
@@ -1713,7 +1713,7 @@
   [^ab..z]
 
       Match any character that does not appear within the brackets. For example, a[^0-9] doesn't match a0 , but does match aa . tcsh only.
-      
+
   {word1,word2...}
 
       Match word1 , word2 , etc. E.g., a_{dog,cat,horse} matches the filenames a_dog , a_cat , and a_horse . bash and C shells only. These ( 9.5 ) actually aren't filename-matching wildcards. They expand any string, including filenames that don't exist yet, email addresses, and more.
@@ -1778,27 +1778,27 @@
   ?
 
       Match exactly one character. For example, a? matches aa , ab , ac , etc.
-  
+
   [12..a..z]
 
       Match any character listed in the brackets. For example, a[ab] matches aa or ab .
-  
+
   [a-z]
 
       Match all characters between a and z. For example, a[0-9] matches a0 , a1 , and so on, up to a9 .
-  
+
   [!ab..z]
 
       Match any character that does not appear within the brackets. For example, a[!0-9] doesn't match a0 , but does match aa . bash , Korn, and newer Bourne shells only.
-  
+
   [^ab..z]
 
       Match any character that does not appear within the brackets. For example, a[^0-9] doesn't match a0 , but does match aa . tcsh only.
-  
+
   {word1,word2...}
 
       Match word1 , word2 , etc. E.g., a_{dog,cat,horse} matches the filenames a_dog , a_cat , and a_horse . bash and C shells only. These ( 9.5 ) actually aren't filename-matching wildcards. They expand any string, including filenames that don't exist yet, email addresses, and more.
-      
+
   ?(abc)
 
       Match zero or one instance of abc . For example, x?(abc)x matches xx or xabcx . Korn shell only.
@@ -3863,6 +3863,8 @@
 
 
 ### VO 300w
+  *touch/cp/mv/rm
+  
   (create day,month,year files & directories)
 
   we cre- ated a playground directory containing 100 subdirectories, each containing 26 empty files
@@ -3874,6 +3876,7 @@
 
   >
   Redirect output of a command into a new file. If the file already exists, over-write it. Example: ls > myfiles.txt
+  
   >>
   Redirect the output of a command onto the end of an existing file. Example: echo "Mary 555-1234" >> phonenumbers.txt
 
@@ -3883,7 +3886,16 @@
   ls -l /home/vic/extraMP3s/*.mp3 >> mp3files.txt
 
   { date; who; ls; } > log
+  
+  < 
+  Input from a file
+  
+  &> ~/tmp/wget.log
+  redirect all to file
 
+  &> /dev/null
+  ignore all output (redirect all to null device)
+  
   *change file attritutes
 
   -rwx------
@@ -3930,6 +3942,8 @@
 
   SELF DIRECTED:
   * chmod octal
+  
+  find . -perm -u=x -name "*.*"
 
 ## Text processing 4m
 
@@ -5351,7 +5365,9 @@
       4. GO BACK TO BED.
       $
   The tr command has a number of different options for power users, including -c to invert the specified pattern (that is, if you specify tr -c "abc", the program matches anything other than a, b, or c), and -d deletes any characters from the first pattern specified.
+
   To remove all vowels from the input, you could use:
+
   $ tr -d "[aeiou]" < todo 1. Wk p
 
   *cut
@@ -5373,7 +5389,8 @@
   *sort
 
   $ ls -l | sort -nk 5 | less
-   -b         --ignore-leading-blanks
+
+  -b         --ignore-leading-blanks
   -f --ignore-case -n --numeric-sort
   -r --reverse
   -k --key=field1[,field2]
@@ -5388,20 +5405,31 @@
   Note: While uniq is a traditional Unix tool often used with sort, the GNU version of sort supports a -u option, which removes duplicates from the sorted output.
 
   -c -d
-  -f n
-  -i -s n -u
-  Description
+
   Output a list of duplicate lines preceded by the number of times the line occurs.
+
+  -f n
+
   Output only repeated lines, rather than unique lines.
+
+  -i -s n -u
+
   Ignore n leading fields in each line. Fields are separated by whitespace as they are in sort; however, unlike sort, uniq has no option for setting an alternative field separator.
+
   Ignore case during the line comparisons.
+
   Skip (ignore) the leading n characters of each line. Output only unique lines. This is the default.
-              Here we see uniq used to report the number of duplicates found in our text file, using the -c option:
+
+  Here we see uniq used to report the number of duplicates found in our text file, using the -c option:
+
   [me@linuxbox ~]$ sort foo.txt | uniq -c 2a
 
   *wc
 
   $ find . -name *.rb | wc -l
+
+  find . -name "*.rb" | grep -v test | xargs wc -l | sort
+  j ./actionpack/lib/action_dispatch/routing/mapper.rb
 
 ## Networking 2m
 
@@ -5714,7 +5742,9 @@
 
   It’s possible to use this technique in more interesting ways, such as this example in which we perform an ls on the remote system and redirect the output to a file on the local system:
 
-  [me@linuxbox ~]$ ssh remote-sys 'ls *' > dirlist.txt me@twin4's password:
+  [me@linuxbox ~]$ ssh remote-sys 'ls *' > dirlist.txt 
+  
+  me@twin4's password:
   [me@linuxbox ~]$
 
   Notice the use of the single quotes. This is done because we do not want the pathname expansion performed on the local machine; rather, we want it to be performed on the remote system. Likewise, if we had wanted the output
