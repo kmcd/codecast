@@ -379,21 +379,48 @@
   *text search grep/ack
 
   grep global regular expression print
-  
+
   grep - handy for filtering
   ack - fast for large number of files
-  
+
   cd ~/src/rails
-  
+
   -i Ignore case. --ignore-case.
   -v Invert match.
   -c Print the number of matches instead of the lines themselves.
-  -l
-  Print the name of each file that contains a match instead of the lines
-  -L
-  Like the -l option, but print only the names of files that do not contain matches. May also be specified --files-without-match.
+  -l Print the name of each file that contains a match instead of the lines
+  -L Like the -l option, but print only the names of files that do not contain matches. May also be specified --files-without-match.
   -n Prefix each matching line with the number of the line within the file.
   -h For multifile searches, suppress the output of filenames.
+  
+  -B before
+  -A after
+  -C context
+  
+  cd ~/src/rails
+  
+  ack validates 
+  ack -i validates
+  ack validates -c
+  ack -l validates 
+  ack -h validates
+  ack validate
+  ack validate activemodel/lib/active_model
+  ack validates_length_of activemodel/test/
+  ack -A 2 validates_length_of activemodel/test/
+  ack -B 2 validates_length_of activemodel/test/
+  ack -C 2 validates_length_of activemodel/test/cases/validations_test.rb
+  ack validates_length_of activemodel/test/cases/validations_test.rb
+  ack -C 2 validates_length_of activemodel/test/cases/validations_test.rb
+  ack -C 2 -n validates_length_of activemodel/test/cases/validations_test.rb
+  man ack
+  ack -C 2 -n validates_length_of activemodel/test/cases/validations_test.rb
+  ack validates_length_of activemodel/test/cases/validations_test.rb
+  ack -C 2 -n --with-filename validates_length_of activemodel/test/cases/validations_test.rb
+  j activemodel/test/cases/validations_test.rb
+  
+  ack validate guides --pager='less -r'
+
 
 ## Points to note
 ## Recap
@@ -411,6 +438,7 @@
   sort
   uniq
   wc
+
 ## Points to note
 ## Recap
 ## Going further
