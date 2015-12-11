@@ -5390,7 +5390,7 @@
 
   $ ls -l | sort -nk 5 | less
 
-  -b         --ignore-leading-blanks
+  -b --ignore-leading-blanks
   -f --ignore-case -n --numeric-sort
   -r --reverse
   -k --key=field1[,field2]

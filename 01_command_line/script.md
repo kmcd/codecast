@@ -252,6 +252,20 @@
 ## You will be able to ...
 
 ## Examples
+  *directory listing
+
+  tree  action{mailer,view}/lib/action*/
+
+  *create new file
+
+  touch test_{1,2,3}
+
+  for n in {0,1}{0,1,2}{0,1,2,3} ; do echo $n ;done
+
+  *create sub directory
+
+  mkdir logs/{2014,2015}/{01,02}/{1,2,3,4,5,6,7,8,9}
+
   *fix typo
 
   touch april_1.txt
@@ -261,21 +275,6 @@
 
   touch README.txt
   cp README{,.bak}
-
-  *directory listing
-
-  tree  action{mailer,view}/lib/action*/
-
-  *create new file
-
-  $ vi /usr/foo/file{a,b,c,d,e,f,g,h,i,j}
-
-  for n in ({0,1,2}{0,1,2,3,4,5,6,7,8,9}{0,1,2,3,4,5,6,7,8,9})
-  end
-
-  *create sub directory
-
-  mkdir man/{man,cat}{1,2,3,4,5,6,7,8}
 
   *non-existent tar file listing
 
@@ -307,12 +306,10 @@
 
   find .
 
-  find rails -name "active*"
-  find rails -name "active*rb"
-  find rails -name "Active*rb"
-  find rails -iname "Active*rb"
-
-  (history 50 | grep find | cut -c 8-99 | pbcopy)
+  find . -name "active*"
+  find . -name "active*rb"
+  find . -name "Active*rb"
+  find . -iname "Active*rb"
 
   *find by atttributes
 
@@ -334,7 +331,6 @@
   cd ~/src/support_flow/
   find . -type f -print0 | xargs -0 ls -lt
 
-
   Modified within last 2 months
 
   find [!.git]* -mtime -8w -print
@@ -352,7 +348,7 @@
 
    {} pathname of the file; must end with a backslash followed by a semicolon ( \;
 
-  $ find -name "*.o" -exec rm -f {} \;
+  find -name "*.o" -exec rm -f {} \;
 
   tells find to delete any files whose names end in .o .
 
@@ -362,10 +358,10 @@
 
   MP3 audio files scattered all over your filesystem; move them where you want. For example:
 
-  $ find . -name '*.mp3' -print -exec mv '{}' ~/songs \;
-  $ find . -name '*.mp3' -print -exec rm '{}' ~/songs \;
+  find . -name '*.mp3' -print -exec mv '{}' ~/songs \;
+  find . -name '*.mp3' -print -exec rm '{}' ~/songs \;
 
-  $ -delete
+  -delete
 
   *logical operators
 
@@ -407,16 +403,16 @@
   ack validate
   ack validate activemodel/lib/active_model
   ack validates_length_of activemodel/test/
+
   ack -A 2 validates_length_of activemodel/test/
   ack -B 2 validates_length_of activemodel/test/
   ack -C 2 validates_length_of activemodel/test/cases/validations_test.rb
   ack validates_length_of activemodel/test/cases/validations_test.rb
   ack -C 2 validates_length_of activemodel/test/cases/validations_test.rb
+
   ack -C 2 -n validates_length_of activemodel/test/cases/validations_test.rb
-  man ack
-  ack -C 2 -n validates_length_of activemodel/test/cases/validations_test.rb
-  ack validates_length_of activemodel/test/cases/validations_test.rb
   ack -C 2 -n --with-filename validates_length_of activemodel/test/cases/validations_test.rb
+
   j activemodel/test/cases/validations_test.rb
 
   ack validate guides --pager='less -r'
@@ -428,18 +424,44 @@
 ## Next steps
   mdfind, mdls, mdutil
 
+### Reference
+
 # Text processing L 29
 ## What is it?
 ## Why is it useful?
 ## You will be able to ...
 ## Examples
   (in notes)
-  sed
-  tr
-  cut
-  sort
-  uniq
-  wc
+
+  *sed
+  *tr
+  *cut
+  (history 50 | grep find | cut -c 8-99 | pbcopy)
+
+  *sort
+
+  head data/train.csv | sort -t ',' -k 1
+  head data/train.csv | sort -t ',' -k 3,4 -n
+  head data/train.csv | sort -t ',' -k 4 -n
+
+  *uniq
+  *wc
+
+  man sort
+  man uniq
+  man wc
+
+  history | cut -d ' ' -f 3-99
+  history | cut -d ' ' -f 3-99 | sort
+  history | cut -d ' ' -f 3-99 | sort | uniq
+  history | cut -d ' ' -f 3-99 | sort | uniq | wc -l
+
+  history | cut -d ' ' -f 3-99 | sort | uniq -d | wc -l
+  history | cut -d ' ' -f 3-99 | sort | uniq -d
+  history | cut -d ' ' -f 3-99 | sort | uniq -d -c
+
+  history | cut -d ' ' -f 3-99 | sort | uniq -c
+  history | cut -d ' ' -f 3-99 | sort | uniq -c | sort -n
 
 ## Points to note
 ## Recap
@@ -455,10 +477,16 @@
 
   (create day,month,year files & directories)
 
-  we cre- ated a playground directory containing 100 subdirectories, each containing 26 empty files
-
-  $ mkdir -p playground/dir-{00{1..9},0{10..99},100}
-  $ touch playground/dir-{00{1..9},0{10..99},100}/file-{A..Z}
+  cd tmp/
+  mkdir -p test/dir-{00{1..9},0{10..99},100}
+  tree test
+  touch test/dir-{00{1..9},0{10..99},100}/file-{A..Z}
+  tree test
+  cp -R test test_1
+  cp -R test test.bak
+  rm test.bak
+  rm -Rf test.bak
+  mv test test.bak
 
   *redirection
 
@@ -647,7 +675,7 @@
   mtr
   lsof
   nmap
-  
+
   *ssh tunnel / port forward
   http://www.revsys.com/writings/quicktips/ssh-tunnel.html
 
