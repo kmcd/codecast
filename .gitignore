@@ -2,7 +2,5 @@
 .DS_Store
 **/ref/*
 **/dist/*
-**/video/*.mov
-**/video/*.imovielibrary
-**/video/*.aif
+**/video/*
 **/.DS_Store

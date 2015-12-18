@@ -425,7 +425,7 @@
   mdfind, mdls, mdutil
 
 ### Reference
-
+ 
 # Text processing L 29
 ## What is it?
 ## Why is it useful?
@@ -599,7 +599,7 @@
 
   *ssh keys
 
-  ssh keygen -
+  ssh keygen
   cat ~/.ssh/id_rsa.pub
   cat ~/.ssh/id_rsa.pub | pbcopy
   ls -la ~/.ssh/
